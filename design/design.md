@@ -1,11 +1,9 @@
-test test tes
-
-#Design Decisions
+# Design Decisions
 
 ![bottomButtons.jpg](bottomButtons.jpg)
 
 
-#Alternative Designs
+# Alternative Designs
 
 #User testing
 
