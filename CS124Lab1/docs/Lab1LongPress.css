@@ -35,7 +35,6 @@
     padding-top: 5px;
     padding-bottom: 0;
     margin: 0;
-    back
 }
 
 #button-div {
@@ -64,15 +63,42 @@
     grid-column: 1/span 2;
 }
 
+#eyebutton {
+    position: fixed;
+    font-size: 25px;
+    left: 310px;
+    top: 590px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: aliceblue;
+    border-style: solid;
+}
+
+#eye{
+    width:40px;
+    height:50px;
+    position: relative;
+    top: 4px;
+}
+
 #line1 {
     border-top: solid blue;
     grid-row: 2/span 1;
 }
 #line2 {
     grid-row: 3/span 1;
+    background: lightblue;
+    border-top-color: black;
 }
 #line3 {
     grid-row: 4/span 1;
+    border-top-style: solid;
+    border-top-color: black;
 }
 #line4 {
     grid-row: 5/span 1;
@@ -120,8 +146,8 @@
     grid-row: 19/span 1;
 }
 
-#textbox3 {
-
+#textbox2 {
+    background: lightblue;
 }
 
 #textbox6 {
@@ -131,7 +157,7 @@
     visibility: hidden;
 }
 #textbox7 {
-    visibility: hidden;
+    visibility:hidden;
 }
 #checkbox7 {
     visibility: hidden;
@@ -219,5 +245,4 @@
 #textbox18 {
     visibility: hidden;
 }
-
 

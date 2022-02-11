@@ -35,7 +35,6 @@
     padding-top: 5px;
     padding-bottom: 0;
     margin: 0;
-    back
 }
 
 #button-div {
@@ -120,16 +119,14 @@
     grid-row: 19/span 1;
 }
 
-#textbox3 {
-
-}
-
 #textbox6 {
     font-style: italic;
 }
+
 #checkbox6 {
     visibility: hidden;
 }
+
 #textbox7 {
     visibility: hidden;
 }
@@ -140,6 +137,7 @@
 #textbox8 {
     visibility: hidden;
 }
+
 #checkbox8 {
     visibility: hidden;
 }
@@ -162,6 +160,7 @@
 #textbox11 {
     visibility: hidden;
 }
+
 #checkbox11 {
     visibility: hidden;
 }
@@ -181,6 +180,7 @@
 #textbox13 {
     visibility: hidden;
 }
+
 #checkbox14 {
     visibility: hidden;
 }
@@ -204,6 +204,7 @@
 #textbox16 {
     visibility: hidden;
 }
+
 #checkbox17 {
     visibility: hidden;
 }
