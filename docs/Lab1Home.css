@@ -18,7 +18,7 @@ H1 {
     position: fixed;
     top: 100px;
     left: 50px;
-    font-family: Helvetica;
+    font-family: Georgia;
 }
 
 #bottom-part{
@@ -47,7 +47,8 @@ H1 {
     padding-bottom: 30px;
     padding-left: 15px;
     padding-right: 15px;
-
+    font-family: "Trebuchet MS";
+    font-size: 15px;
 }
 
 #settings {
