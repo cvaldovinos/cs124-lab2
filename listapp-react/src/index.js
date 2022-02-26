@@ -4,28 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let initialData = [
-    {
-        key: 0,
-        value: "hello",
-        checked: "false",
-    },
-    {
-        key: 1,
-        value: "world",
-        checked: "false",
-    },
-    {
-        key: 2,
-        value: "nice",
-        checked: "false",
-    }
-
-];
-
 ReactDOM.render(
   <React.StrictMode>
-    <App initialData = {initialData}/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
