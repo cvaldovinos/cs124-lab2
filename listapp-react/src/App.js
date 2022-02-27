@@ -3,151 +3,186 @@ import './Lab1EmptyList.css';
 import LineList from './LineList.js';
 import {useState} from 'react';
 
-let initialData = [
+const initialData = [
     {
         key: 0,
-        value: "hello",
+        field: "Tap to Add Note",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 1,
-        value: "world",
+        field: "dvsdv",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 2,
-        value: "nice",
+        field: "sdsdsd",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 3,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 4,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 5,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 6,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 7,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 8,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 9,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 10,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 11,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 12,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 13,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 14,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 15,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 16,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 17,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 18,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 19,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 20,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 21,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 22,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 23,
-        value: "",
+        field: "",
         checked: "false",
+        checkbox: "false"
     },
     {
         key: 24,
-        value: "",
+        field: "",
         checked: "false",
-    },
-
-
+        checkbox: "false"
+    }
 ];
+
+
 
 function App() {
     const [list, setList] = useState(initialData);
-    function handleLineChange(lineId,value){
+    const [tapLine, setTapLine] = useState(0);
+
+
+    function handleTapLine(line) {
+        setTapLine(line.position);
+    }
+
+    function handleLineChange(lineId,field){
         return (
             setList(list.map(
-                p => p.key === lineId ? {...p, value:value} : p))
-                // p => p.key === lineId ? console.log('test') : p))
+                p => p.key === lineId ? {...p, field:field} : p))
         );
     }
   return (
       <div id="container">
         <div id="button-div"><button class="back-button">&larr;</button></div>
         <div id="title"><h2>TITLE OF LIST</h2></div>
-          <LineList listData = {initialData}
-                     onLineChangeField={handleLineChange}/>
+          <LineList linelist={list}
+                    listData={initialData}
+                    tapLine={tapLine}
+                    onLineChangeField={handleLineChange}
+                    onTapLine={handleTapLine}/>
+          {console.log(tapLine)}
       </div>
   );
 }
