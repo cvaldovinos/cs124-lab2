@@ -10,11 +10,13 @@ function LineList(props) {
                           line={data}
                           key={data.key}
                           field={data.field}
-                          tapLine={props.tapLine}
                           clicked={data.clicked}
+                          checked={data.checked}
+                          tapLine={props.tapLine}
                           onClickLine={props.onClickLine}
                           onLineChangeField={props.onLineChangeField}
-                          onMoveTapLine = {props.onMoveTapLine}
+                          onMoveTapLine={props.onMoveTapLine}
+                          onShowButton={props.onShowButton}
                           onCheck={props.onCheck}/>)}
             </ul>
         </div>

@@ -2,6 +2,7 @@ import './App.css';
 import './Lab1EmptyList.css';
 import LineList from './LineList.js';
 import {useState} from 'react';
+import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 const initialData = [
     {
@@ -186,6 +187,7 @@ const initialData = [
 function App() {
     const [list, setList] = useState(initialData);
     const [tapLine, setTapLine] = useState(0);
+    const [showButton, setShowButton] = useState(false);
 
 
     function handleTapLine(position) {
@@ -224,6 +226,41 @@ function App() {
         );
     }
 
+    //Checked is about an iteration behind, seems like the list is lagging back a step
+    function handleShowButton(lineId, value) {
+        console.log(list.filter((p) => p.checked === true));
+        if ((list.filter((p) => p.checked === true).length>0)){
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    }
+
+    //ID's don't seem to be being added
+    function handleAddLine() {
+        setList([...list,
+            {
+                key: generateUniqueID(),
+                field: "",
+                checked: false,
+                checkbox: false,
+                clicked: false
+            }]);
+    }
+
+    function handleDeleteChecks() {
+
+        let deletedCount = ((list.length)-(list.filter((p) => p.checked === false)).length);
+        for (let i = 0; i < deletedCount; i++) {
+            handleAddLine();
+        }
+        handleTapLine(tapLine-deletedCount);
+        console.log(list);
+        return (
+            setList(list.filter((p) => p.checked === false))
+        )
+    }
+
   return (
       <div id="container">
         <div id="button-div"><button class="back-button">&larr;</button></div>
@@ -235,7 +272,9 @@ function App() {
                     onTapLine={handleTapLine}
                     onClickLine={handleClick}
                     onCheck={handleCheckbox}
-                    onMoveTapLine={handleMoveTapLine}/>
+                    onMoveTapLine={handleMoveTapLine}
+                    onShowButton={handleShowButton}/>
+          {showButton && <div><button className={"trashButton"} onClick={handleDeleteChecks}>&#128465;</button></div>}
       </div>
   );
 }

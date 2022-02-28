@@ -8,12 +8,19 @@ function Line(props) {
         );
     }
 
-    function clickWrapper() {
+    function clickDivWrapper() {
         {props.onClickLine(-1)};
         props.onMoveTapLine(props.tapLine);
         }
+
     //If you delete a Tap to Add Note line s.t. it's empty then click off the line, the checkbox
     // remains with an empty line
+
+    function changeCheckWrapper() {
+        props.onCheck(props.line.key);
+        props.onShowButton(props.line.key, !props.checked)
+        console.log(props.line);
+    }
 
     //Add logic if empty return tap to add note
     function lineLogic(props) {
@@ -37,7 +44,9 @@ function Line(props) {
             } else {
                 return (<li>
                     <input className={"checkboxes"}
-                           type={"checkbox"}>
+                           type={"checkbox"}
+                           onChange={(e) => {changeCheckWrapper()}}
+                           onClick={(e) => {e.stopPropagation()}}>
                     </input>
                     <input className={"textboxes"}
                            type={"text"}
@@ -74,7 +83,7 @@ function Line(props) {
                 return (<li>
                 <input className={"checkboxes"}
                        type={"checkbox"}
-                       onChange={(e) => {props.onCheck(props.line.key)}}>
+                       onChange={(e) => {changeCheckWrapper()}}>
                 </input>
                 <input className={"textboxes"}
                        type={"text"}
@@ -104,7 +113,7 @@ function Line(props) {
     }
 
 return (
-    <div className={"all-lines"} onClick={(e) => clickWrapper()}>
+    <div className={"all-lines"} onClick={(e) => {clickDivWrapper()}}>
         {lineLogic(props)}
         {/*{console.log(props.position, (props.tapLine===props.position))}*/}
     </div>

@@ -16,6 +16,18 @@ h2 {
     visibility: hidden;
 }
 
+.trashButton {
+    background-color: aliceblue;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    border-style: solid;
+    border-radius: 100px;
+    font-size: 25px;
+    position: relative;
+    z-index: 1;
+}
+
 ul {
     margin-left: -40px;
     position: absolute;
