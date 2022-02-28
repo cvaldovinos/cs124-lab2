@@ -1,6 +1,5 @@
 import './LineList.css';
 import Line from './Line.js';
-import {useState} from 'react';
 
 function LineList(props) {
     return(
@@ -11,12 +10,15 @@ function LineList(props) {
                           line={data}
                           key={data.key}
                           field={data.field}
-                          isTapLine={props.tapLine === index}
-                          onLineChangeField={props.onLineChangeField}/>)}
+                          tapLine={props.tapLine}
+                          clicked={data.clicked}
+                          onClickLine={props.onClickLine}
+                          onLineChangeField={props.onLineChangeField}
+                          onMoveTapLine = {props.onMoveTapLine}
+                          onCheck={props.onCheck}/>)}
             </ul>
         </div>
     )
-
 }
 
 export default LineList;
