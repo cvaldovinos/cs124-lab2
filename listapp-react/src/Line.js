@@ -18,7 +18,6 @@ function Line(props) {
 
     function changeCheckWrapper() {
         props.onCheck(props.line.key);
-        props.onShowButton(props.line.key, !props.checked)
         console.log(props.line);
     }
 

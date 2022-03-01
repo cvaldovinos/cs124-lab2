@@ -187,7 +187,8 @@ const initialData = [
 function App() {
     const [list, setList] = useState(initialData);
     const [tapLine, setTapLine] = useState(0);
-    const [showButton, setShowButton] = useState(false);
+    let showButton = (list.filter((item) => item.checked === true)).length > 0;
+    console.log((list.filter((item) => item.checked === true)));
 
 
     function handleTapLine(position) {
@@ -207,9 +208,11 @@ function App() {
         }
 
     function handleCheckbox(lineId) {
-        return(setList(list.map(
+        // console.log(list);
+        setList(list.map(
             p => p.key === lineId ? {...p, checked:(!p.checked)} : p))
-        );
+        // console.log(list.map(
+        //     p => p.key === lineId ? {...p, checked:(!p.checked)} : p));
     }
 
     function handleLineChange(lineId,field){
@@ -227,14 +230,14 @@ function App() {
     }
 
     //Checked is about an iteration behind, seems like the list is lagging back a step
-    function handleShowButton(lineId, value) {
-        console.log(list.filter((p) => p.checked === true));
-        if ((list.filter((p) => p.checked === true).length>0)){
-            setShowButton(true);
-        } else {
-            setShowButton(false);
-        }
-    }
+    // function handleShowButton(lineId, value) {
+    //     console.log(list.filter((p) => p.checked === true));
+    //     if ((list.filter((p) => p.checked === true).length>0)){
+    //         setShowButton(true);
+    //     } else {
+    //         setShowButton(false);
+    //     }
+    // }
 
     //ID's don't seem to be being added
     function handleAddLine() {
@@ -273,7 +276,7 @@ function App() {
                     onClickLine={handleClick}
                     onCheck={handleCheckbox}
                     onMoveTapLine={handleMoveTapLine}
-                    onShowButton={handleShowButton}/>
+                    />
           {showButton && <div><button className={"trashButton"} onClick={handleDeleteChecks}>&#128465;</button></div>}
       </div>
   );

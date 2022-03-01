@@ -16,7 +16,7 @@ function LineList(props) {
                           onClickLine={props.onClickLine}
                           onLineChangeField={props.onLineChangeField}
                           onMoveTapLine={props.onMoveTapLine}
-                          onShowButton={props.onShowButton}
+
                           onCheck={props.onCheck}/>)}
             </ul>
         </div>
