@@ -19,24 +19,30 @@ function LineList(props) {
     return(
 
         <Fragment>
-            <div>
-                <ul type={"none"}>
-                    {props.linelist.map((data, index) =>
-                        <LineData position={index}
-                                  length={dataLength}
-                                  line={data}
-                                  key={data.key}
-                                  text={data.text}
-                                  clicked={data.clicked}
-                                  checked={data.checked}
-                                  onItemChanged={props.onItemChanged}
-                                  onItemDeleted={props.onItemDeleted}
-                                  onItemAdded={props.onItemAdded}
-                                  onEdited={props.onEdited}/>)}
-                </ul>
-            </div>
+            {/*<div>*/}
+            {/*    <ul type={"none"}>*/}
+            {/*        {props.linelist.map((data, index) =>*/}
+            {/*            <LineData position={index}*/}
+            {/*                      length={dataLength}*/}
+            {/*                      disableChecks={props.disableChecks}*/}
+            {/*                      line={data}*/}
+            {/*                      key={data.key}*/}
+            {/*                      text={data.text}*/}
+            {/*                      clicked={data.clicked}*/}
+            {/*                      checked={data.checked}*/}
+            {/*                      onItemChanged={props.onItemChanged}*/}
+            {/*                      onItemDeleted={props.onItemDeleted}*/}
+            {/*                      onItemAdded={props.onItemAdded}*/}
+            {/*                      onEdited={props.onEdited}*/}
+            {/*            />)}*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
             <div id="display_lines">
                 <img id="firstline"/>
+                <img/>
+                <img/>
+                <img/>
+                <img/>
                 <img/>
                 <img/>
                 <img/>

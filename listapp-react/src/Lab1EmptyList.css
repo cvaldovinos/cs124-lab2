@@ -2,21 +2,36 @@
 
     width: 360px;
     height: 640px;
+    /*display: grid;*/
     border-style: solid;
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    grid-template-rows: 64px 1fr;
     background: lightgoldenrodyellow;
+    overflow: scroll;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 #display_lines {
-    grid-row: 2/span 1;
+    /*grid-column: 1/span all;*/
+    /*grid-row: 2/span 1;*/
     top: 64px;
+    /*left:100px;*/
+}
+
+#yo {
+    position: relative;
+    top:49px;
+    margin-left: 0px;
 }
 
 head {
     width: 360px;
     height: 640px;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 
@@ -33,9 +48,25 @@ img {
 
 ul {
     position: absolute;
-    top: 46px;
+    top: 12px;
     left: 5px;
     list-style: none;
+}
+
+li {
+    /*background: lightblue;*/
+    margin-left:-60px;
+    /*width:318px;*/
+    padding-left: 42px;
+}
+
+#select-button {
+    width:10px;
+    height:15px;
+}
+
+li:hover {
+
 }
 
 .trashButton {
@@ -56,12 +87,16 @@ ul {
 #title {
     z-index: 1;
     text-align: center;
-    grid-row: 1/span 1;
-    grid-column: 2/span 1;
+    position: relative;
+
+    /*grid-row: 1/span 1;*/
+    /*grid-column: 2/span 1;*/
+    order: 2;
     margin: 0;
     border-left: solid red;
     padding-top: 13px;
     padding-bottom: 0;
+    width: 500px;
 }
 
 .back-button {
@@ -102,7 +137,6 @@ ul {
     font-family: "Trebuchet MS";
     height: 14px;
     border-style: none;
-    /*opacity: 0;*/
 }
 
 .all-lines {
@@ -111,5 +145,6 @@ ul {
     padding-right: 130px;
     /*border-top: solid lightblue;border-top: solid lightblue;*/
     margin: 0;
+    grid-row: 2/span 1;
     grid-column: 1/span 2;
 }
