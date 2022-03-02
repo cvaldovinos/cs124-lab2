@@ -2,27 +2,18 @@
 
     width: 360px;
     height: 640px;
-    /*display: grid;*/
     border-style: solid;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    grid-template-rows: 64px 1fr;
     background: lightgoldenrodyellow;
     overflow: scroll;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
 #display_lines {
-    /*grid-column: 1/span all;*/
-    /*grid-row: 2/span 1;*/
-    top: 64px;
-    /*left:100px;*/
-}
-
-#yo {
-    position: relative;
-    top:49px;
-    margin-left: 0px;
+    position:relative;
+    top: -100px;
+    /*z-index: -1;*/
 }
 
 head {
@@ -30,13 +21,11 @@ head {
     height: 640px;
 }
 
-.disabled {
-    pointer-events: none;
-}
-
 
 H2 {
     font-family: Georgia;
+    height: 28px;
+    margin: 20px 0px 0px;
 }
 
 img {
@@ -44,29 +33,20 @@ img {
     width: 360px;
     height:22px;
     content: url("noteLine.png");
+    /*position: absolute;*/
 }
 
 ul {
-    position: absolute;
-    top: 12px;
+    position:relative;
+    top: 42px;
     left: 5px;
     list-style: none;
 }
 
 li {
-    /*background: lightblue;*/
-    margin-left:-60px;
-    /*width:318px;*/
-    padding-left: 42px;
-}
-
-#select-button {
-    width:10px;
-    height:15px;
-}
-
-li:hover {
-
+    padding-top: 2px;
+    padding-bottom: 2px;
+    height:18px
 }
 
 .trashButton {
@@ -87,16 +67,13 @@ li:hover {
 #title {
     z-index: 1;
     text-align: center;
-    position: relative;
-
-    /*grid-row: 1/span 1;*/
-    /*grid-column: 2/span 1;*/
-    order: 2;
+    grid-row: 1/span 1;
+    grid-column: 2/span 1;
     margin: 0;
     border-left: solid red;
+    border-width:3px;
     padding-top: 13px;
     padding-bottom: 0;
-    width: 500px;
 }
 
 .back-button {
@@ -137,6 +114,7 @@ li:hover {
     font-family: "Trebuchet MS";
     height: 14px;
     border-style: none;
+    /*opacity: 0;*/
 }
 
 .all-lines {
@@ -145,6 +123,5 @@ li:hover {
     padding-right: 130px;
     /*border-top: solid lightblue;border-top: solid lightblue;*/
     margin: 0;
-    grid-row: 2/span 1;
     grid-column: 1/span 2;
 }

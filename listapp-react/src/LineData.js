@@ -29,9 +29,9 @@ return (
     <div>
         <li>
             {/*<button id={"select-button"}></button>*/}
-            <input type={"checkbox"}
-                   className={checkClasses.join(" ")}
-                   onChange={(e) => changeCheckWrapper(e, props.line.key)}/>
+            {/*<input type={"checkbox"}*/}
+            {/*       className={checkClasses.join(" ")}*/}
+            {/*       onChange={(e) => changeCheckWrapper(e, props.line.key)}/>*/}
             <input type={"text"}
                    className={textClasses.join(" ")}
                    onClick={(e) => clickTextWrapper(e, props.line.key)}
