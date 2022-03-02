@@ -18,7 +18,6 @@ function Line(props) {
 
     function changeCheckWrapper() {
         props.onCheck(props.line.key);
-        console.log(props.line);
     }
 
     //Add logic if empty return tap to add note
@@ -79,23 +78,24 @@ function Line(props) {
                 </input>
             </li>);
             } else {
-                return (<li>
-                <input className={"checkboxes"}
-                       type={"checkbox"}
-                       onChange={(e) => {changeCheckWrapper()}}>
-                </input>
-                <input className={"textboxes"}
-                       type={"text"}
-                       onClick={(e) => {
-                           {props.onClickLine(props.line.key)}
-                           e.stopPropagation();
-                       }}
-                       onChange={
-                           (e) => props.onLineChangeField(props.line.key, e.target.value)
-                       }
-                       value={props.line.field}>
-                </input>
-            </li>);}
+                    return (<li>
+                        <input className={"checkboxes"}
+                               type={"checkbox"}
+                               onChange={(e) => {changeCheckWrapper()}}>
+                        </input>
+                        <input className={"textboxes"}
+                               type={"text"}
+                               onClick={(e) => {
+                                   {props.onClickLine(props.line.key)}
+                                   e.stopPropagation();
+                               }}
+                               onChange={
+                                   (e) => props.onLineChangeField(props.line.key, e.target.value)
+                               }
+                               value={props.line.field}>
+                        </input>
+                    </li>);
+                }
         } else {
             return (<li>
                 <input className={"emptyCheckbox"}
@@ -114,7 +114,7 @@ function Line(props) {
 return (
     <div className={"all-lines"} onClick={(e) => {clickDivWrapper()}}>
         {lineLogic(props)}
-        {/*{console.log(props.position, (props.tapLine===props.position))}*/}
+        {/*{console.log(props.position )}*/}
     </div>
 )
 }

@@ -10,175 +10,200 @@ const initialData = [
         field: "Tap to Add Note",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 1,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 2,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 3,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 4,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 5,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 6,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 7,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 8,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 9,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 10,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 11,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 12,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 13,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 14,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 15,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 16,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 17,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 18,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 19,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 20,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 21,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 22,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 23,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     },
     {
         key: 24,
         field: "",
         checked: false,
         checkbox: false,
-        clicked: false
+        clicked: false,
+        visible: true
     }
 ];
 
@@ -188,7 +213,7 @@ function App() {
     const [list, setList] = useState(initialData);
     const [tapLine, setTapLine] = useState(0);
     let showButton = (list.filter((item) => item.checked === true)).length > 0;
-    console.log((list.filter((item) => item.checked === true)));
+    // console.log((list.filter((item) => item.checked === true)));
 
 
     function handleTapLine(position) {
@@ -211,8 +236,6 @@ function App() {
         // console.log(list);
         setList(list.map(
             p => p.key === lineId ? {...p, checked:(!p.checked)} : p))
-        // console.log(list.map(
-        //     p => p.key === lineId ? {...p, checked:(!p.checked)} : p));
     }
 
     function handleLineChange(lineId,field){
@@ -247,27 +270,57 @@ function App() {
                 field: "",
                 checked: false,
                 checkbox: false,
-                clicked: false
+                clicked: false,
+                visible: true
             }]);
     }
 
-    function handleDeleteChecks() {
+    function handleAddLine2(p) {
+        p.push(
+            {
+                key: generateUniqueID(),
+                field: "",
+                checked: false,
+                checkbox: false,
+                clicked: false,
+                visible: true
+            });
+    }
 
-        let deletedCount = ((list.length)-(list.filter((p) => p.checked === false)).length);
-        for (let i = 0; i < deletedCount; i++) {
-            handleAddLine();
+    function handleDeletedLine(lineID) {
+        console.log("Before delete:", list)
+        return(setList(list.filter((p) => p.key !== lineID)));
+
+    }
+    function handleDeleteChecks() {
+        let deletedCount = (list.filter((p) => p.checked === true)).length;
+        let unchecked = []
+        for (let i = 0; i < list.length; i++) {
+            // if (list[i].checked === true) {
+            //     console.log("key", list[i].key)
+            //     handleDeletedLine(list[i].key);
+            // }
+            if (list[i].checked === false) {
+                unchecked.push(list[i])
+            }
         }
+        console.log("copy list:", unchecked)
+
+        for (let i = 0; i < deletedCount; i++) {
+            // handleAddLine();
+            handleAddLine2(unchecked)
+        }
+        console.log("copy list post-adding lines", unchecked)
+
+        setList(unchecked)
         handleTapLine(tapLine-deletedCount);
-        console.log(list);
-        return (
-            setList(list.filter((p) => p.checked === false))
-        )
+
     }
 
   return (
       <div id="container">
-        <div id="button-div"><button class="back-button">&larr;</button></div>
-        <div id="title"><h2>TITLE OF LIST</h2></div>
+        <div id="button-div"><button class="back-button" >&larr;</button></div>
+        <div id="title"><h2></h2></div>
           <LineList linelist={list}
                     listData={initialData}
                     tapLine={tapLine}
@@ -276,8 +329,8 @@ function App() {
                     onClickLine={handleClick}
                     onCheck={handleCheckbox}
                     onMoveTapLine={handleMoveTapLine}
-                    />
-          {showButton && <div><button className={"trashButton"} onClick={handleDeleteChecks}>&#128465;</button></div>}
+                    showButton={showButton}
+                    onDelete={handleDeleteChecks}/>
       </div>
   );
 }
