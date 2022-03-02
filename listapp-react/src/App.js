@@ -11,6 +11,202 @@ const initialData = [
         checked: false,
         check_visible: false,
         text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
+    },
+    {
+        key: 0,
+        text: "Tap to Add Note",
+        checked: false,
+        check_visible: true,
+        text_visible: true
     }
 ]
 
