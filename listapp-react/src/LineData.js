@@ -11,6 +11,12 @@ function LineData(props) {
 
     let hideLine = props.hideChecks && props.line.checked;
 
+    if (props.position === props.length - 1 && props.disableChecks === false) {
+        textClasses.push("italics ");
+    }
+    if (props.line.checked) {
+        textClasses.push("checked ");
+    }
     if (!props.line.text_visible) {
         textClasses.push("hidden ");
     }
@@ -20,7 +26,7 @@ function LineData(props) {
     if (!props.line.select_visible)  {
         selectClasses.push("hidden ");
     }
-        if (props.disableChecks) {
+    if (props.disableChecks) {
         checkClasses.push("disabled ");
     }
     if (props.selected) {
@@ -31,15 +37,16 @@ function LineData(props) {
         textClasses.push("normal ");
     }
 
-function clickTextWrapper(e, key) {
-    e.stopPropagation();
-    props.onEdited(key);
-}
+    function clickTextWrapper(e, key) {
+        e.stopPropagation();
+        props.onEdited(key);
+    }
 
-function changeCheckWrapper(e, key) {
-    props.onEdited(-1);
-    props.onItemChanged(key,"checkbox",e.target.value);
-}
+
+    function changeCheckWrapper(e, key) {
+        props.onEdited(-1);
+        props.onItemChanged(key,"checkbox",e.target.value);
+    }
 
 return (<Fragment>
     {!hideLine && <div id={"div1"}>
@@ -55,7 +62,16 @@ return (<Fragment>
                    className={textClasses.join(" ")}
                    onClick={(e) => clickTextWrapper(e, props.line.key)}
                    onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
-                   value={props.text}/>
+                   onKeyDown={(e) =>
+                   {if (e.key === 'Enter') {
+                       console.log("YOU PRESSED ENTER");
+                       props.onItemChanged(props.line.key, e.key, props.text);
+                       props.onEdited(props.line.key);
+                   } if (e.key === 'Backspace') {
+                       props.onItemChanged(props.line.key, e.key, props.text);
+                   }}}
+                   value={props.text}
+                   id={props.line.key}/>
         </li>
     </div>}
     </Fragment>

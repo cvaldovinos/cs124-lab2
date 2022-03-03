@@ -29,10 +29,12 @@ function handleLineEdited(lineID) {
     if (edited === list[list.length-1].key && list[list.length-1].text !== "Tap to Add Note") {
         if (list[list.length-1].text === "") {
             handleItemChanged(list[list.length-1].key, "text", "Tap to Add Note");
+            // console.log("TtAN1 created")
         } else {
             list[list.length-1].check_visible = true;
             list[list.length-1].select_visible = true;
             handleItemAdded("Tap to Add Note");
+            // console.log("TtAN2 created")
         }
     }
     if (lineID === list[list.length-1].key && edited !== lineID) {
@@ -42,11 +44,9 @@ function handleLineEdited(lineID) {
 }
 
 function handleItemChanged(itemID, field, newValue) {
+    console.log('test')
 
     if (field === "text") {
-        if (newValue === "" && itemID !== list[list.length-1].key) {
-            return (handleItemDeleted(itemID));
-        }
         return (
             setList(list.map(
                 p => p.key === itemID ? {...p, [field]:newValue} : p))
@@ -56,17 +56,35 @@ function handleItemChanged(itemID, field, newValue) {
         setList(list.map(
             p => p.key === itemID ? {...p, checked:(!p.checked)} : p))
     }
-}
+    if (field === 'Enter') {
+        console.log("edited line:", edited)
+        console.log("active element: ", document.activeElement)
+        document.activeElement.blur();
+        console.log("active element: ", document.activeElement)
+    }
+    if (field === 'Backspace') {
+        if (newValue === "" && itemID !== list[list.length-1].key) {
+            handleItemDeleted(itemID);
+            if (selected.includes(itemID)) {
+                handleToggleSelectedLines(itemID);
+            }
+            // return (handleToggleSelectedLines(itemID));
+        }
+    }}
 
 function handleHideToggle() {
     console.log(!hidden)
     setHidden(!hidden);
 }
 
-function handleHideChecks() {
-    return (
-        setList(list.filter((p) => p.checked === false))
-    )
+function handleLineKeyPress(keyPress, text) {
+    if (keyPress === 'Enter') {
+        document.activeElement.blur();
+        console.log("active element: ", document.activeElement)
+    }
+    if (keyPress === 'Backspace' && text === "") {
+
+    }
 }
 
 function handleDelete() {

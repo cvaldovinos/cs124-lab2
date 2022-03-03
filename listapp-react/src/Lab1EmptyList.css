@@ -9,6 +9,10 @@
     overflow: scroll;
 }
 
+.italics {
+    font-style: italic;
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -21,6 +25,10 @@
 #lineList {
     position: relative;
     margin-left: 0px;
+}
+
+.checked {
+    text-decoration: line-through;
 }
 
 head {
