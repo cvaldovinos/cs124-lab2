@@ -10,213 +10,18 @@ const initialData = [
         text: "Tap to Add Note",
         checked: false,
         check_visible: false,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
-    },
-    {
-        key: 0,
-        text: "Tap to Add Note",
-        checked: false,
-        check_visible: true,
-        text_visible: true
+        text_visible: true,
+        select_visible: false
     }
 ]
-
-
 
 function App() {
 const [list, setList] = useState(initialData);
 const [selected, setSelected] = useState([]);
 const [edited, setEdited] = useState(-1);
-let showButton = (list.filter((item) => item.checked === true)).length > 0;
+const [hidden, setHidden] = useState(false);
+let showHideButton = (list.filter((item) => item.checked === true)).length > 0;
+let showDeleteButton = selected.length > 0;
 let disableChecks = edited !== -1;
 
 function handleLineEdited(lineID) {
@@ -226,6 +31,7 @@ function handleLineEdited(lineID) {
             handleItemChanged(list[list.length-1].key, "text", "Tap to Add Note");
         } else {
             list[list.length-1].check_visible = true;
+            list[list.length-1].select_visible = true;
             handleItemAdded("Tap to Add Note");
         }
     }
@@ -233,24 +39,9 @@ function handleLineEdited(lineID) {
         handleItemChanged(lineID, "text", "")
     }
     setEdited(lineID)
-    console.log(lineID)
 }
 
 function handleItemChanged(itemID, field, newValue) {
-
-    // if (edited === list[list.length-1].key && list[list.length-1].text !== "Tap to Add Note") {
-    //     if (list[list.length-1].text === "") {
-    //         handleItemChanged(list[list.length-1].key, "text", "Tap to Add Note");
-    //     } else {
-    //         list[list.length-1].check_visible = true;
-    //         handleItemAdded("Tap to Add Note");
-    //     }
-    // }
-    // if (lineID === list[list.length-1].key && edited !== lineID) {
-    //     handleItemChanged(lineID, "text", "")
-    // }
-    // setEdited(lineID)
-    // console.log(lineID)
 
     if (field === "text") {
         if (newValue === "" && itemID !== list[list.length-1].key) {
@@ -267,21 +58,28 @@ function handleItemChanged(itemID, field, newValue) {
     }
 }
 
-function handleDeleteChecks() {
+function handleHideToggle() {
+    console.log(!hidden)
+    setHidden(!hidden);
+}
+
+function handleHideChecks() {
     return (
-    setList(list.filter((p) => p.checked === false))
+        setList(list.filter((p) => p.checked === false))
     )
+}
+
+function handleDelete() {
+        setList(list.filter((p) => !selected.includes(p.key)));
+        setSelected([]);
 }
 
 function handleToggleSelectedLines(lineID) {
     if (selected.includes(lineID)) {
-        setSelected(selected.filter((p) => p.key === lineID))
+        setSelected(selected.filter((p) => p !== lineID))
     } else {
         setSelected([...selected, lineID])
     }
-}
-
-function handleHideChecks() {
 }
 
 function handleItemDeleted(itemID) {
@@ -295,7 +93,8 @@ function handleItemAdded(textValue) {
             text: textValue,
             checked: false,
             check_visible: false,
-            text_visible: true
+            text_visible: true,
+            select_visible: false
         }]);
 }
 
@@ -305,14 +104,19 @@ function handleItemAdded(textValue) {
                 <button className="back-button">&larr;</button>
             </div>
             <div id="title"><h2> TITLE OF LIST</h2></div>
-            <div id={"yo"}>
-                <LineList linelist={list}
+            <div id={"lineList"}>
+                <LineList lineList={list}
                           listData={initialData}
-                          showButton={showButton}
+                          selectedLines={selected}
+                          hideChecks={hidden}
+                          showDeleteButton={showDeleteButton}
+                          showHideButton={showHideButton}
                           disableChecks={disableChecks}
+                          onHideToggle={handleHideToggle}
+                          onToggleSelected={handleToggleSelectedLines}
                           onItemChanged={handleItemChanged}
                           onItemDeleted={handleItemDeleted}
-                          onDeleteChecks = {handleDeleteChecks}
+                          onDelete = {handleDelete}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
                           />

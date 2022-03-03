@@ -2,7 +2,6 @@
 
     width: 360px;
     height: 640px;
-    border-style: solid;
     display: grid;
     grid-template-columns: 64px 1fr;
     grid-template-rows: 64px 1fr;
@@ -17,15 +16,10 @@
 #display_lines {
     grid-column: 1/span 2;
     grid-row: 2/span 1;
-    /*position:relative;*/
-    /*top: -200px;*/
-    /*left:100px;*/
-    /*padding-top: -40px;*/
 }
 
-#yo {
+#lineList {
     position: relative;
-    /*top:64px;*/
     margin-left: 0px;
 }
 
@@ -38,6 +32,11 @@ head {
     pointer-events: none;
 }
 
+.selected {
+    background: lightblue;
+    z-index: 10;
+}
+
 
 H2 {
     font-family: Georgia;
@@ -45,7 +44,7 @@ H2 {
     margin: 20px 0px 0px;
 }
 
-img {
+.lineImage {
     margin-top: -5px;
     width: 360px;
     height:22px;
@@ -60,19 +59,19 @@ ul {
 }
 
 li {
-    /*background: lightblue;*/
-    margin-left:-60px;
-    width:318px;
+    margin-left:-79px;
+    width:352px;
     padding-left: 42px;
     height: 20px;
 }
 
-#select-button {
+.select-button {
+    background-color: aliceblue;
     width:10px;
-    /*height:15px;*/
-}
-
-li:hover {
+    height:15px;
+    border-radius: 10px;
+    margin-right: 19px;
+    border-style: solid;
 
 }
 
@@ -86,7 +85,7 @@ li:hover {
     border-style: solid;
     border-radius: 100px;
     font-size: 25px;
-    position: absolute;
+    position: fixed;
     z-index: 1;
 }
 
@@ -121,36 +120,65 @@ li:hover {
     padding-top: 5px;
     padding-bottom: 0;
     margin: 0;
+    position: relative;
+    top: 2px;
 }
 
 #button-div {
     padding: 7px;
 }
 
-#checkbox1 {
-    margin-top: 2px;
-}
 
 .textboxes {
-    /*margin-top: 4px;*/
     border-style: none;
     font-size: 12px;
     padding: 0px;
     margin: 0px 0px 0px 15px;
-    width: 274px;
-    background: lightgoldenrodyellow;
+    width: 289px;
     font-family: "Trebuchet MS";
     height: 14px;
     border-style: none;
 
+}
+.normal {
+    background: lightgoldenrodyellow;
 }
 
 .all-lines {
     display: flex;
     justify-content: space-between;
     padding-right: 130px;
-    /*border-top: solid lightblue;border-top: solid lightblue;*/
     margin: 0;
     grid-row: 2/span 1;
     grid-column: 1/span 2;
+}
+
+#eyeButton{
+    background-color: aliceblue;
+    width: 50px;
+    height: 50px;
+    top: 580px;
+    left: 300px;
+    border-style: solid;
+    border-radius: 100px;
+    font-size: 25px;
+    position: fixed;
+    z-index: 1;
+}
+
+.open {
+    content:url("https://cdn.pixabay.com/photo/2017/06/09/18/06/eye-2387853_960_720.png");
+}
+
+.closed {
+    content:url("eyeClosed.png");
+
+}
+
+#eye {
+    width: 40px;
+    height: 50px;
+    position: relative;
+    top: -2px;
+    left: -3px;
 }
