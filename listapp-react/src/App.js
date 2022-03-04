@@ -22,6 +22,7 @@ function App() {
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
+    const [showWarning, setWarning] = useState(false);
 
     // stores data on what to display
     let showHideButton = (list.filter((item) => item.checked === true)).length > 0;
@@ -87,8 +88,14 @@ function App() {
 
     // deletes data from the list by filtering out selected keys
     function handleDelete() {
-            setList(list.filter((p) => !selected.includes(p.key)));
-            setSelected([]); // no selected items remain, so update that
+        setList(list.filter((p) => !selected.includes(p.key)));
+        setSelected([]); // no selected items remain, so update that
+        setWarning(false);
+    }
+
+
+    function handleWarning() {
+        setWarning(true);
     }
 
     // changes display of selected lines by filtering selected lines
@@ -136,11 +143,30 @@ function App() {
                           onToggleSelected={handleToggleSelectedLines}
                           onItemChanged={handleItemChanged}
                           onItemDeleted={handleItemDeleted}
-                          onDelete = {handleDelete}
+                          onTrash={handleWarning}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
                           />
             </div>
+            {showWarning && <div>
+                <div>
+                    <div id={"back"} onClick={() => setWarning(false)}/>
+                    <div id={"warning"} >
+                        <div>
+                            The selected items will be <span id={"deleteText"}>permanently deleted</span>.
+                            Are you sure you want to delete these items?
+                        </div>
+                        <div id={"warningButtons"}>
+
+
+                            <div id={"no"} onClick={() => setWarning(false)}>No, Go Back</div>
+                            <div id={"yes"} onClick={handleDelete}>Yes, Delete</div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>}
         </div>
     );
 }
