@@ -1,6 +1,6 @@
-###[Link to Design Document for Lab 1](designlab1.md)
+### [Link to Design Document for Lab 1](designlab1.md)
 
-#Final Design Walkthrough
+# Final Design Walkthrough
 
 Here is the starting page for our list app! The back button is purely decorative and the list title cannot be changed,
 but we figured that those would make more sense to tackle during Lab 4 when we'll be implementing
@@ -56,7 +56,7 @@ system handles things accordingly.
 <img src="screenDeleteorHide.png" width="360" height="640">
 
 
-#Design Decisions
+# Design Decisions
 
 Most of our design remains unchanged from Lab 1. For a more general overview of our design decisions, please This 
 section will describe changes to our design that differ from what's stated in the Lab 1 Markdown.
@@ -71,7 +71,7 @@ done on a line.
 
 <img src="selectDraft.jpg" width="400" height="500">
 
-#Alternative Designs
+# Alternative Designs
 
 We considered different shapes for the select button, including a square and a circle. In the end we settled on the 
 circle in order to distinguish the select from the checkbox and unify it with the other buttons on the page.
@@ -85,18 +85,18 @@ revealed again by the user. Because of this we essentially re-wrote everything t
 (and final) approach uses images for the blue lines while only the data is contained within li's.
 
 
-#User Testing
+# User Testing
 We wanted to do some user testing for this lab, but by the time we were ready we wouldn't have been able to meaningfully 
 consider and implement any feedback on our design.
 
 
-#Challenges
+# Challenges
 
 As previously mentioned, we had a lot of trouble with managing both the data lines and the visual blue lines at once. We 
 also had difficulties getting the window to scroll properly once new lines are added and everything can no longer all 
 fit in the container.
 
-#What We're Most Proud Of
+# What We're Most Proud Of
 
 We're proud of how we got everything to flow together in our final design! We're also proud that we stuck to the visual 
 aesthetic from our Lab 1 proposal, as hard as it was to implement at times.
