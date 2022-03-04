@@ -1,6 +1,5 @@
 import './LineList.css';
 import LineData from './LineData.js';
-import LineDisplay from './LineDisplay.js';
 import {Fragment} from "react";
 
 function LineList(props) {
@@ -15,7 +14,6 @@ function LineList(props) {
     } else {
         hideClass = "closed";
     }
-
 
     return(
 
@@ -44,37 +42,37 @@ function LineList(props) {
             <div id="display_lines">
 
                 {/*uses displayCheck to determine if we need to add only one line or fill the window with lines*/}
-                {displayCheck && props.lineList.map((data) => <LineDisplay/>)}
+                {displayCheck && props.lineList.map((data) => <img className={"lineImage"} alt=""/>)}
                 {!displayCheck && <Fragment>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
-                    <LineDisplay/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
+                    <img className={"lineImage"} alt=""/>
                 </Fragment>}
             </div>
 
@@ -87,7 +85,7 @@ function LineList(props) {
                 <button id="eyeButton"
                         onClick={props.onHideToggle}>
                     <div>
-                        <img id="eye" className={hideClass}/>
+                        <img id="eye" className={hideClass} alt={""}/>
                     </div>
                 </button>}
         </Fragment>
