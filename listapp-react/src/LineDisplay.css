@@ -1,0 +1,6 @@
+.lineImage {
+    margin-top: -5px;
+    width: 360px;
+    height:22px;
+    content: url("noteLine.png");
+}

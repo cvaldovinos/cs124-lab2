@@ -5,10 +5,11 @@ import {Fragment} from "react";
 
 function LineList(props) {
     let dataLength = props.lineList.length;
-    let windowLength = 29;
+    let windowLength = 29; // number of lines that typically fit on our Moto G4 page
     let displayCheck = dataLength > windowLength;
     let hideClass = "";
 
+    // updates the image on the hide button
     if (props.hideChecks) {
         hideClass = "open";
     } else {
@@ -41,6 +42,8 @@ function LineList(props) {
                 </ul>
             </div>
             <div id="display_lines">
+
+                {/*uses displayCheck to determine if we need to add only one line or fill the window with lines*/}
                 {displayCheck && props.lineList.map((data) => <LineDisplay/>)}
                 {!displayCheck && <Fragment>
                     <LineDisplay/>
@@ -74,7 +77,12 @@ function LineList(props) {
                     <LineDisplay/>
                 </Fragment>}
             </div>
-            {props.showDeleteButton && <div><button className={"trashButton"} onClick={props.onDelete}>&#128465;</button></div>}
+
+            {/*displays our trash/"Delete" button*/}
+            {props.showDeleteButton && <div><button className={"trashButton"}
+                                                    onClick={props.onDelete}>&#128465;</button></div>}
+
+            {/*displays our show/hide completed items button */}
             {props.showHideButton &&
                 <button id="eyeButton"
                         onClick={props.onHideToggle}>

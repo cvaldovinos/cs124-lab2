@@ -1,7 +1,7 @@
 import './LineDisplay.css';
 import {Fragment} from "react";
 
-function LineDisplay(props) {
+function LineDisplay() {
     return(<Fragment>
         <img className={"lineImage"}/>
         </Fragment>
