@@ -58,7 +58,7 @@ system handles things accordingly.
 
 # Design Decisions
 
-Most of our design remains unchanged from Lab 1. For a more general overview of our design decisions, please This 
+Most of our design remains unchanged from Lab 1. For a more general overview of our design decisions, please visit the separate Markdown page linked at the top of this one. This 
 section will describe changes to our design that differ from what's stated in the Lab 1 Markdown.
 
 Originally we wanted to use gestures to control things like selecting lines and deleting lines. However, we decided that 

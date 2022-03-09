@@ -2,15 +2,23 @@ import './App.css';
 import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc} from "firebase/firestore";
+import {useCollectionData} from "react-firebase-hooks/firestore";
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
-//     authDomain: "cs124-lab3-fe950.firebaseapp.com",
-//     projectId: "cs124-lab3-fe950",
-//     storageBucket: "cs124-lab3-fe950.appspot.com",
-//     messagingSenderId: "331313494047",
-//     appId: "1:331313494047:web:cab4818df13adc8c9cfd2a"
-// };
+const firebaseConfig = {
+    apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
+    authDomain: "cs124-lab3-fe950.firebaseapp.com",
+    projectId: "cs124-lab3-fe950",
+    storageBucket: "cs124-lab3-fe950.appspot.com",
+    messagingSenderId: "331313494047",
+    appId: "1:331313494047:web:cab4818df13adc8c9cfd2a"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
+const collectionName = "cs124-lab3-fe950";
 
 
 function App() {
@@ -19,25 +27,31 @@ function App() {
     const initialData = [
         {
             key: 0,
+            // text is the value displayed in the textbox
             text: "Tap to Add Note",
+            // checked is whether the checkbox is checked or not
             checked: false,
+            // these fields determine whether the checkbox, textbox, and select button are each visible
             check_visible: false,
             text_visible: true,
             select_visible: false
         }
     ]
 
+    const q = query(collection(db, collectionName));
+    const [list, loading, error] = useCollectionData(q);
+
     // state data to be used later
-    const [list, setList] = useState(initialData);
+    // const [list, setList] = useState(initialData);
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
 
     // stores data on what to display
-    let showHideButton = (list.filter((item) => item.checked === true)).length > 0;
-    let showDeleteButton = selected.length > 0;
-    let disableChecks = (edited !== -1);
+    // const showHideButton = (list.filter((item) => item.checked)).length > 0;
+    const showDeleteButton = selected.length > 0;
+    const disableChecks = (edited !== -1);
 
     // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
     function handleLineEdited(lineID) {
@@ -66,14 +80,14 @@ function App() {
     function handleItemChanged(itemID, field, newValue) {
 
         if (field === "text") {
-            return (
-                setList(list.map(
-                    p => p.key === itemID ? {...p, [field]:newValue} : p))
-            );
+            // return (
+            //     setList(list.map(
+            //         p => p.key === itemID ? {...p, [field]:newValue} : p))
+            // );
         }
         if (field === "checkbox") {
-            setList(list.map(
-                p => p.key === itemID ? {...p, checked:(!p.checked)} : p))
+            // setList(list.map(
+            //     p => p.key === itemID ? {...p, checked:(!p.checked)} : p))
         }
 
         // changes the active/"clicked on" element to body when enter is pressed
@@ -98,7 +112,7 @@ function App() {
 
     // deletes data from the list by filtering out selected keys
     function handleDelete() {
-        setList(list.filter((p) => !selected.includes(p.key)));
+        // setList(list.filter((p) => !selected.includes(p.key)));
         setSelected([]); // no selected items remain, so update that
         setWarning(false);
     }
@@ -119,20 +133,20 @@ function App() {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
-        return(setList(list.filter((p) => p.key !== itemID)));
+        // return(setList(list.filter((p) => p.key !== itemID)));
     }
 
     // adds an item by generating an id and using the passing in text
     function handleItemAdded(textValue) {
-        setList([...list,
-            {
-                key: generateUniqueID(),
-                text: textValue,
-                checked: false,
-                check_visible: false,
-                text_visible: true,
-                select_visible: false
-            }]);
+        // setList([...list,
+        //     {
+        //         key: generateUniqueID(),
+        //         text: textValue,
+        //         checked: false,
+        //         check_visible: false,
+        //         text_visible: true,
+        //         select_visible: false
+        //     }]);
     }
 
     return(
@@ -147,7 +161,7 @@ function App() {
                           selectedLines={selected}
                           hideChecks={hidden}
                           showDeleteButton={showDeleteButton}
-                          showHideButton={showHideButton}
+                          // showHideButton={showHideButton}
                           disableChecks={disableChecks}
                           onHideToggle={handleHideToggle}
                           onToggleSelected={handleToggleSelectedLines}

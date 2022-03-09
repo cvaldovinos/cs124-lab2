@@ -11,7 +11,7 @@ function LineData(props) {
     const divClasses = [];
 
     // hides line if hide button is clicked and item is completed
-    let hideLine = props.hideChecks && props.line.checked;
+    const hideLine = props.hideChecks && props.line.checked;
 
     // display of lines is altered by pushing classes based on the values of the line fields
     if (props.position === props.length - 1 && props.disableChecks === false) {
