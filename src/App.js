@@ -24,34 +24,36 @@ const collectionName = "cs124-lab3-fe950";
 function App() {
 
     // Each list item is initialized with the fields shown below
-    const initialData = [
-        {
-            key: 0,
-            // text is the value displayed in the textbox
-            text: "Tap to Add Note",
-            // checked is whether the checkbox is checked or not
-            checked: false,
-            // these fields determine whether the checkbox, textbox, and select button are each visible
-            check_visible: false,
-            text_visible: true,
-            select_visible: false
-        }
-    ]
+    // const initialData = [
+    //     {
+    //         key: 0,
+    //         // text is the value displayed in the textbox
+    //         text: "Tap to Add Note",
+    //         // checked is whether the checkbox is checked or not
+    //         checked: false,
+    //         // these fields determine whether the checkbox, textbox, and select button are each visible
+    //         check_visible: false,
+    //         text_visible: true,
+    //         select_visible: false
+    //     }
+    // ]
 
     const q = query(collection(db, collectionName));
     const [list, loading, error] = useCollectionData(q);
 
     // state data to be used later
     // const [list, setList] = useState(initialData);
+    // const [initialData, setInitialData] = useState(false);
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
+    let initialData = 0;
 
     // stores data on what to display
-    // const showHideButton = (list.filter((item) => item.checked)).length > 0;
-    const showDeleteButton = selected.length > 0;
-    const disableChecks = (edited !== -1);
+    // let showHideButton = (list.filter((item) => item.checked)).length > 0;
+    let showDeleteButton = selected.length > 0;
+    let disableChecks = (edited !== -1);
 
     // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
     function handleLineEdited(lineID) {
@@ -138,17 +140,28 @@ function App() {
 
     // adds an item by generating an id and using the passing in text
     function handleItemAdded(textValue) {
-        // setList([...list,
-        //     {
-        //         key: generateUniqueID(),
-        //         text: textValue,
-        //         checked: false,
-        //         check_visible: false,
-        //         text_visible: true,
-        //         select_visible: false
-        //     }]);
+        const listId = generateUniqueID();
+        setDoc(doc(db, collectionName, listId),
+            {
+                key: listId,
+                text: textValue,
+                checked: false,
+                check_visible: false,
+                text_visible: true,
+                select_visible: false
+            })
     }
 
+    if (loading) {
+        return <div>
+            {console.log("Your data is loading...")}
+        </div>;
+    }
+    // this line is being displayed twice, one is italicized
+    if (list.length === 0) {
+        handleItemAdded("Tap to Add Note");
+        console.log('running');
+    }
     return(
         <div id="container" onClick= {(e) => {handleLineEdited(-1)}}>
             <div id="button-div">
@@ -157,7 +170,7 @@ function App() {
             <div id="title"><h2> My List</h2></div>
             <div id={"lineList"}>
                 <LineList lineList={list}
-                          listData={initialData}
+                          listData={list}
                           selectedLines={selected}
                           hideChecks={hidden}
                           showDeleteButton={showDeleteButton}
@@ -187,7 +200,6 @@ function App() {
                             <div id={"yes"} onClick={handleDelete}>Yes, Delete</div>
 
                         </div>
-
                     </div>
                 </div>
             </div>}
