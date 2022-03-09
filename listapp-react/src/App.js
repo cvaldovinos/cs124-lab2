@@ -3,6 +3,16 @@ import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
+const firebaseConfig = {
+    apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
+    authDomain: "cs124-lab3-fe950.firebaseapp.com",
+    projectId: "cs124-lab3-fe950",
+    storageBucket: "cs124-lab3-fe950.appspot.com",
+    messagingSenderId: "331313494047",
+    appId: "1:331313494047:web:cab4818df13adc8c9cfd2a"
+};
+
+
 function App() {
 
     // Each list item is initialized with the fields shown below
