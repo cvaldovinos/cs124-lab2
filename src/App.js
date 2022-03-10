@@ -23,55 +23,43 @@ const collectionName = "cs124-lab3-fe950";
 
 function App() {
 
-    // Each list item is initialized with the fields shown below
-    // const initialData = [
-    //     {
-    //         key: 0,
-    //         // text is the value displayed in the textbox
-    //         text: "Tap to Add Note",
-    //         // checked is whether the checkbox is checked or not
-    //         checked: false,
-    //         // these fields determine whether the checkbox, textbox, and select button are each visible
-    //         check_visible: false,
-    //         text_visible: true,
-    //         select_visible: false
-    //     }
-    // ]
-
     const q = query(collection(db, collectionName));
     const [list, loading, error] = useCollectionData(q);
 
+    let showHideButton = false;
+    if (!loading) {
+        showHideButton = list.filter(p => p.checked).length > 0;
+    }
+    console.log(showHideButton)
+
     // state data to be used later
-    // const [list, setList] = useState(initialData);
-    // const [initialData, setInitialData] = useState(false);
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
     let initialData = 0;
-
-    // stores data on what to display
-    // let showHideButton = (list.filter((item) => item.checked)).length > 0;
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
     // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
     function handleLineEdited(lineID) {
-
+        console.log(edited)
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
-        if (edited === list[list.length-1].key && list[list.length-1].text !== "Tap to Add Note") {
-            if (list[list.length-1].text === "") {
-                handleItemChanged(list[list.length-1].key, "text", "Tap to Add Note");
+        if (edited === list[list.length - 1].key && list[list.length - 1].text !== "Tap to Add Note") {
+            if (list[list.length - 1].text === "") {
+                console.log("running 3")
+                handleItemChanged(list[list.length - 1].key, "text", "Tap to Add Note");
 
             } else {
                 // display check and select box for added note, create tap line
-                list[list.length-1].check_visible = true;
-                list[list.length-1].select_visible = true;
+                handleItemChanged(list[list.length - 1].key, "check_visible", true);
+                handleItemChanged(list[list.length - 1].key, "select_visible", true);
+                console.log("running 2")
                 handleItemAdded("Tap to Add Note");
 
             }
         }
-        if (lineID === list[list.length-1].key && edited !== lineID) {
+        if (lineID === list[list.length - 1].key && edited !== lineID) {
             handleItemChanged(lineID, "text", "")
         }
 
@@ -80,32 +68,27 @@ function App() {
 
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
-
-        if (field === "text") {
-            // return (
-            //     setList(list.map(
-            //         p => p.key === itemID ? {...p, [field]:newValue} : p))
-            // );
+        // const x = doc(db, collectionName, itemID);
+        if (field === "text" || field === "check_visible" || field == "select_visible" || field == "checked") {
+            updateDoc(doc(db, collectionName, itemID),
+                {
+                    [field]: newValue,
+                })
         }
-        if (field === "checkbox") {
-            // setList(list.map(
-            //     p => p.key === itemID ? {...p, checked:(!p.checked)} : p))
-        }
-
         // changes the active/"clicked on" element to body when enter is pressed
         if (field === 'Enter') {
             document.activeElement.blur();
         }
-
         // deletes line if backspace is pressed while line is empty
         if (field === 'Backspace') {
-            if (newValue === "" && itemID !== list[list.length-1].key) {
+            if (newValue === "" && itemID !== list[list.length - 1].key) {
                 handleItemDeleted(itemID);
                 if (selected.includes(itemID)) {
                     handleToggleSelectedLines(itemID);
                 }
             }
-        }}
+        }
+    }
 
     // controls whether the hide button should be showing
     function handleHideToggle() {
@@ -115,6 +98,7 @@ function App() {
     // deletes data from the list by filtering out selected keys
     function handleDelete() {
         // setList(list.filter((p) => !selected.includes(p.key)));
+        selected.forEach(id => deleteDoc(doc(db, collectionName, id)));
         setSelected([]); // no selected items remain, so update that
         setWarning(false);
     }
@@ -135,6 +119,7 @@ function App() {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
+        deleteDoc(doc(db, collectionName, itemID));
         // return(setList(list.filter((p) => p.key !== itemID)));
     }
 
@@ -158,23 +143,21 @@ function App() {
         </div>;
     }
     // this line is being displayed twice, one is italicized
-    if (list.length === 0) {
-        handleItemAdded("Tap to Add Note");
-        console.log('running');
-    }
-    return(
-        <div id="container" onClick= {(e) => {handleLineEdited(-1)}}>
+
+    return (
+        <div id="container" onClick={(e) => {
+            handleLineEdited(-1)
+        }}>
             <div id="button-div">
                 <button className="back-button">&larr;</button>
             </div>
             <div id="title"><h2> My List</h2></div>
             <div id={"lineList"}>
                 <LineList lineList={list}
-                          listData={list}
                           selectedLines={selected}
                           hideChecks={hidden}
                           showDeleteButton={showDeleteButton}
-                          // showHideButton={showHideButton}
+                          showHideButton={showHideButton}
                           disableChecks={disableChecks}
                           onHideToggle={handleHideToggle}
                           onToggleSelected={handleToggleSelectedLines}
@@ -183,18 +166,17 @@ function App() {
                           onTrash={handleWarning}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
-                          />
+                />
             </div>
             {showWarning && <div>
                 <div>
                     <div id={"back"} onClick={() => setWarning(false)}/>
-                    <div id={"warning"} >
+                    <div id={"warning"}>
                         <div>
                             The selected items will be <span id={"deleteText"}>permanently deleted</span>.
                             Are you sure you want to delete these items?
                         </div>
                         <div id={"warningButtons"}>
-
 
                             <div id={"no"} onClick={() => setWarning(false)}>No, Go Back</div>
                             <div id={"yes"} onClick={handleDelete}>Yes, Delete</div>

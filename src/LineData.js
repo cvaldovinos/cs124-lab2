@@ -49,7 +49,12 @@ function LineData(props) {
     // updates the value of a checkbox when we click on it
     function changeCheckWrapper(e, key) {
         props.onEdited(-1);
-        props.onItemChanged(key,"checkbox",e.target.value);
+
+        if (props.line.checked) {
+            props.onItemChanged(key,"checked",!e.target.value);
+        } else {
+            props.onItemChanged(key,"checked",e.target.value);
+        }
     }
 
     return (<Fragment>
