@@ -24,7 +24,7 @@ const collectionName = "cs124-lab3-fe950";
 function App() {
 
     const q = query(collection(db, collectionName));
-    const [list, loading, error] = useCollectionData(q);
+    const [list, loading, error] = useCollectionData(q); // bring back error later
 
     let showHideButton = false;
     if (!loading) {
@@ -37,7 +37,6 @@ function App() {
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
-    let initialData = 0;
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
@@ -69,7 +68,7 @@ function App() {
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
         // const x = doc(db, collectionName, itemID);
-        if (field === "text" || field === "check_visible" || field == "select_visible" || field == "checked") {
+        if (field === "text" || field === "check_visible" || field === "select_visible" || field === "checked") {
             updateDoc(doc(db, collectionName, itemID),
                 {
                     [field]: newValue,
@@ -143,7 +142,9 @@ function App() {
         </div>;
     }
     // this line is being displayed twice, one is italicized
-
+    if (list.length === 0){
+        handleItemAdded("Tap to Add Note")
+    }
     return (
         <div id="container" onClick={(e) => {
             handleLineEdited(-1)
