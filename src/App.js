@@ -24,7 +24,7 @@ const collectionName = "cs124-lab3-fe950";
 function App() {
 
     const q = query(collection(db, collectionName));
-    const [list, loading, error] = useCollectionData(q); // bring back error later
+    const [list, loading] = useCollectionData(q); // bring back error later
 
     let showHideButton = false;
     if (!loading) {
