@@ -26,11 +26,13 @@ function LineList(props) {
                                   disableChecks={props.disableChecks}
                                   hideChecks={props.hideChecks}
                                   selected={props.selectedLines.includes(data.key)}
+                                  anySelected={props.selectedLines.length > 0}
                                   line={data}
                                   key={data.key}
                                   text={data.text}
                                   clicked={data.clicked}
                                   checked={data.checked}
+                                  priority={data.priority}
                                   onItemChanged={props.onItemChanged}
                                   onItemDeleted={props.onItemDeleted}
                                   onItemAdded={props.onItemAdded}

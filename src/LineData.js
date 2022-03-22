@@ -60,7 +60,7 @@ function LineData(props) {
     return (<Fragment>
             {!hideLine && <div>
                 <li className={itemClasses.join(" ")}>
-                    <button className={selectClasses.join(" ")} onClick={(e) => props.onToggleSelected(props.line.key)}></button>
+                    <button className={selectClasses.join(" ")} onClick={(e) => props.onToggleSelected(props.line.key)}>{props.anySelected && !!props.priority&&<span className={"selectButtonText"}>{props.priority}</span>}</button>
                     {props.checked && <input type={"checkbox"}
                            className={checkClasses.join(" ")}
                            onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}

@@ -3,7 +3,7 @@ import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc} from "firebase/firestore";
+import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc, serverTimestamp} from "firebase/firestore";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
 const firebaseConfig = {
@@ -46,14 +46,14 @@ function App() {
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
         if (edited === list[list.length - 1].key && list[list.length - 1].text !== "Tap to Add Note") {
             if (list[list.length - 1].text === "") {
-                console.log("running 3")
                 handleItemChanged(list[list.length - 1].key, "text", "Tap to Add Note");
 
             } else {
-                // display check and select box for added note, create tap line
+                // display check and select box for added note, create new tap line
                 handleItemChanged(list[list.length - 1].key, "check_visible", true);
                 handleItemChanged(list[list.length - 1].key, "select_visible", true);
-                console.log("running 2")
+                handleItemChanged(list[list.length - 1].key, "priority", 0);
+                handleItemChanged(list[list.length - 1].key, "created", serverTimestamp());
                 handleItemAdded("Tap to Add Note");
 
             }
@@ -130,6 +130,8 @@ function App() {
                 key: listId,
                 text: textValue,
                 checked: false,
+                created: 0,
+                priority: 0,
                 check_visible: false,
                 text_visible: true,
                 select_visible: false

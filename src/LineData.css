@@ -26,6 +26,13 @@
     border-radius: 10px;
     margin-right: 19px;
     border-style: solid;
+    padding: 1px;
+    font-size: x-small;
+}
+
+.selectButtonText {
+    position: relative;
+    top: -1px;
 }
 
 .italics {
