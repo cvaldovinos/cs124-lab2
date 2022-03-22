@@ -1,4 +1,4 @@
-import './App.css';
+    import './App.css';
 import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
@@ -30,24 +30,22 @@ function App() {
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
     }
-    console.log(showHideButton)
 
     // state data to be used later
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
+    const [showPriorities, setPriorities] = useState(false);
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
     // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
     function handleLineEdited(lineID) {
-        console.log(edited)
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
         if (edited === list[list.length - 1].key && list[list.length - 1].text !== "Tap to Add Note") {
             if (list[list.length - 1].text === "") {
                 handleItemChanged(list[list.length - 1].key, "text", "Tap to Add Note");
-
             } else {
                 // display check and select box for added note, create new tap line
                 handleItemChanged(list[list.length - 1].key, "check_visible", true);
@@ -55,7 +53,6 @@ function App() {
                 handleItemChanged(list[list.length - 1].key, "priority", 0);
                 handleItemChanged(list[list.length - 1].key, "created", serverTimestamp());
                 handleItemAdded("Tap to Add Note");
-
             }
         }
         if (lineID === list[list.length - 1].key && edited !== lineID) {
@@ -68,7 +65,7 @@ function App() {
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
         // const x = doc(db, collectionName, itemID);
-        if (field === "text" || field === "check_visible" || field === "select_visible" || field === "checked") {
+        if (["text", "check_visible", "select_visible", "checked", "priority", "created"].includes(field)) {
             updateDoc(doc(db, collectionName, itemID),
                 {
                     [field]: newValue,
@@ -102,9 +99,18 @@ function App() {
         setWarning(false);
     }
 
+    function handlePrioritySet(priority) {
+        selected.forEach(id => updateDoc(doc(db, collectionName, id),{priority:priority}))
+        setPriorities(false);
+        return(<div><p>Dolt</p></div>)
+    }
 
     function handleWarning() {
         setWarning(true);
+    }
+
+    function handlePriority() {
+        setPriorities(true);
     }
 
     // changes display of selected lines by filtering selected lines
@@ -167,6 +173,7 @@ function App() {
                           onItemChanged={handleItemChanged}
                           onItemDeleted={handleItemDeleted}
                           onTrash={handleWarning}
+                          onPriority={handlePriority}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
                 />
@@ -183,6 +190,20 @@ function App() {
 
                             <div id={"no"} onClick={() => setWarning(false)}>No, Go Back</div>
                             <div id={"yes"} onClick={handleDelete}>Yes, Delete</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>}
+            {showPriorities && <div>
+                <div>
+                    <div id={"back"} onClick={() => setPriorities(false)}/>
+                    <div id={"warning"}>
+                        <div id={"priorityButtons"}>
+                            <div id={"priorityZero"} onClick={() => handlePrioritySet(0)}>Remove Priority</div>
+                            <div id={"priorityOne"} onClick={() => handlePrioritySet(1)}>1</div>
+                            <div id={"priorityTwo"} onClick={() => handlePrioritySet(2)}>2</div>
+                            <div id={"priorityThree"} onClick={() => handlePrioritySet(3)}>3</div>
 
                         </div>
                     </div>

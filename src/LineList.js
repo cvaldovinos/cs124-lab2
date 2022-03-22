@@ -79,8 +79,15 @@ function LineList(props) {
             </div>
 
             {/*displays our trash/"Delete" button*/}
-            {props.showDeleteButton && <div><button className={"trashButton"}
-                                                    onClick={props.onTrash}>&#128465;</button></div>}
+            {props.showDeleteButton && <div><button className={"priority"}
+                                                    onClick={props.onPriority}>
+                                                &#128290;
+                                            </button>
+                                            <button className={"trashButton"}
+                                                    onClick={props.onTrash}>
+                                                &#128465;
+                                            </button>
+                                        </div>}
 
             {/*displays our show/hide completed items button */}
             {props.showHideButton &&

@@ -117,3 +117,32 @@ H2 {
   cursor: default;
   border-radius: 5px;
 }
+
+#priorityZero {
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+#priorityOne {
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+#priorityTwo {
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+#priorityThree {
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
