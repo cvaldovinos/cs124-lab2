@@ -3,7 +3,7 @@ import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc, serverTimestamp} from "firebase/firestore";
+import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc, serverTimestamp, orderBy} from "firebase/firestore";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
 const firebaseConfig = {
@@ -33,6 +33,40 @@ function App() {
     const [showSortOptions, setSortOptions] = useState(false);
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
+
+    // const q = query(collection(db, collectionName), where("created", "!=", "0"), orderBy("created", "desc"));
+    // const q = query(collection(db, collectionName));
+    // const [list, loading] = useCollectionData(q); // bring back error later
+
+    const qCreationAsc = query(collection(db, collectionName));
+    const qCreationDesc = query(collection(db, collectionName), orderBy("created", "desc"));
+    const qTextAsc = query(collection(db, collectionName), orderBy("select_visible", "desc"), orderBy("text", "asc"));
+    const qTextDesc = query(collection(db, collectionName), orderBy("select_visible", "desc"), orderBy("text", "desc"));
+    const qPriorityAsc = query(collection(db, collectionName), orderBy("select_visible", "desc"), orderBy("priority", "asc"));
+    const qPriorityDesc = query(collection(db, collectionName), orderBy("priority", "desc"));
+
+    function collectionSelector() {
+        if (showSort === "creationDesc") {
+            return (qCreationDesc)
+        } else if (showSort === "textAsc") {
+            return (qTextAsc)
+        } else if (showSort === "textDesc") {
+            return (qTextDesc)
+        } else if (showSort === "priorityAsc") {
+            return (qPriorityAsc)
+        } else if (showSort === "priorityDesc") {
+            return (qPriorityDesc)
+        } else{
+            return(qCreationAsc)
+        }
+    }
+    const [list,loading] = useCollectionData(collectionSelector());
+
+    let showHideButton = false;
+    if (!loading) {
+        showHideButton = list.filter(p => p.checked).length > 0;
+    }
+
 
     // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
     function handleLineEdited(lineID) {
@@ -96,7 +130,11 @@ function App() {
     function handlePrioritySet(priority) {
         selected.forEach(id => updateDoc(doc(db, collectionName, id),{priority:priority}))
         setPriorities(false);
-        return(<div><p>Dolt</p></div>)
+    }
+
+    function changeSortOption(sortType) {
+        setSort(sortType);
+        setSortOptions(false);
     }
 
     function handleWarning() {
@@ -213,7 +251,22 @@ function App() {
                     </div>
                 </div>
             </div>}
-        </div>
+            {showSortOptions && <div>
+                <div>
+                    <div id={"back"} onClick={() => setSortOptions(false)}/>
+                    <div id={"warning"}>
+                        <div id={"sortOptions"}>
+                            <div id={"creationDescButton"} onClick={() => changeSortOption("creationDesc")}> Creation Date (Old to New)</div>
+                            <div id={"creationAscButton"} onClick={() => changeSortOption("creationAsc")}>Creation Date (New to Old)</div>
+                            <div id={"textAscButton"} onClick={() => changeSortOption("textAsc")}>Text (Alphabetical)</div>
+                            <div id={"textDescButton"} onClick={() => changeSortOption("textDesc")}>Text (Rev. Alphabetical)</div>
+                            <div id={"priorityDescButton"} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</div>
+                            <div id={"priorityAscButton"} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>}
+       </div>
     );
 }
 
