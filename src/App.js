@@ -23,20 +23,14 @@ const collectionName = "cs124-lab3-fe950";
 
 function App() {
 
-    const q = query(collection(db, collectionName));
-    const [list, loading] = useCollectionData(q); // bring back error later
-
-    let showHideButton = false;
-    if (!loading) {
-        showHideButton = list.filter(p => p.checked).length > 0;
-    }
-
     // state data to be used later
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
     const [showPriorities, setPriorities] = useState(false);
+    const [showSort, setSort] = useState("");
+    const [showSortOptions, setSortOptions] = useState(false);
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
@@ -137,15 +131,23 @@ function App() {
                 text: textValue,
                 checked: false,
                 created: 0,
-                priority: 0,
+                priority: -1,
                 check_visible: false,
                 text_visible: true,
                 select_visible: false
             })
     }
 
+
+
+    //
+    // function sortSet(sort) {
+    //     setSortOptions(false);
+    //     setSort(sort)
+    // }
+
     if (loading) {
-        return <div>
+        return <div id={"loadingScreen"}>
             {console.log("Your data is loading...")}
         </div>;
     }
@@ -160,6 +162,8 @@ function App() {
             <div id="button-div">
                 <button className="back-button">&larr;</button>
             </div>
+                <button className="sort-button"
+                        onClick={() => setSortOptions(true)}>&darr;</button>
             <div id="title"><h2> My List</h2></div>
             <div id={"lineList"}>
                 <LineList lineList={list}

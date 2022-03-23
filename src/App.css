@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 64px 1fr;
   grid-template-rows: 64px 1fr;
-  background: lightgoldenrodyellow;
+  background: #fafad2;
   overflow: scroll;
 }
 
@@ -26,6 +26,20 @@ H2 {
   font-size: 25px;
   grid-row: 1/span 1;
   grid-column: 1/span 1;
+}
+
+.sort-button {
+  z-index: 2;
+  background-color: aliceblue;
+  width: 40px;
+  height: 30px;
+  font-size: 30px;
+  border-style: solid;
+  border-radius: 100px;
+  font-size: 25px;
+  position: fixed;
+  top: 5px;
+  left: 300px;
 }
 
 #button-div {
@@ -145,4 +159,7 @@ H2 {
   font-family: "Trebuchet MS";
   cursor: default;
   border-radius: 5px;
+}
+#loadingScreen {
+  background: yellow;
 }
