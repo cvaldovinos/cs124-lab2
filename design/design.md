@@ -77,6 +77,8 @@ in motion our design works fine.
 
 # User Testing
 
+None for this lab! But we really should for Lab 4, as we're going to be making some pretty big changes (support for 
+multiple lists, keyboard navigation, screen readers, etc.).
 
 # Challenges
 

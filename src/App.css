@@ -31,15 +31,54 @@ H2 {
 .sort-button {
   z-index: 2;
   background-color: aliceblue;
-  width: 40px;
-  height: 30px;
-  font-size: 30px;
+  width: 50px;
+  height: 40px;
+  /*font-size: 15px;*/
   border-style: solid;
   border-radius: 100px;
-  font-size: 25px;
-  position: fixed;
-  top: 5px;
-  left: 300px;
+  /*font-size: 25px;*/
+  position: relative;
+  grid-row: 1/span 1;
+  grid-column: 2/span 1;
+  top: 17px;
+  left: 240px;
+}
+
+#sortArrow{
+  position: relative;
+  left: -10px;
+  top: -3px;
+  font-size: 30px;
+}
+
+#sortText{
+  height: 60px;
+  width:20px;
+  font-size: 15px;
+  position: relative;
+  left: 13px;
+  top: -35px;
+  font-family: "Trebuchet MS";
+}
+
+#sortDate{
+  height: 80px;
+  width: 20px;
+  font-size: 11px;
+  position: relative;
+  left: 13px;
+  top: -35px;
+  font-family: "Trebuchet MS";
+}
+
+#date1{
+  position: relative;
+  top: 3px;
+}
+
+#date2{
+  position: relative;
+  top:8px
 }
 
 #button-div {
@@ -221,5 +260,18 @@ H2 {
   border-radius: 5px;
 }
 #loadingScreen {
+  background: lightgoldenrodyellow;
+  width: 360px;
+  height: 640px;
+  text-align: center;
+  padding-top: 280px;
+  font-size: larger;
+  font-family: "Trebuchet MS";
+}
+
+#loading {
   background: yellow;
+  width: 360px;
+  height: 640px;
+  padding: 0px;
 }

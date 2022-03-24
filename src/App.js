@@ -20,7 +20,6 @@ const db = getFirestore(firebaseApp);
 
 const collectionName = "cs124-lab3-fe950";
 
-
 function App() {
 
     // state data to be used later
@@ -175,9 +174,10 @@ function App() {
         return <div id={"loadingScreen"}>Loading...
         </div>;
     }
+
     // this line is being displayed twice, one is italicized
     if (list.length === 0){
-        handleItemAdded("Tap to Add Note")
+        handleItemAdded("Tap to Add Note");
     }
 
 
