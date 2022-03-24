@@ -132,7 +132,12 @@ H2 {
   border-radius: 5px;
 }
 
+#priorityMessage {
+  margin-bottom: 20px;
+}
+
 #priorityZero {
+  margin-bottom: 10px;
   background: white;
   border: 2px solid gray;
   font-family: "Trebuchet MS";
@@ -140,6 +145,7 @@ H2 {
   border-radius: 5px;
 }
 #priorityOne {
+  margin-bottom: 10px;
   background: white;
   border: 2px solid gray;
   font-family: "Trebuchet MS";
@@ -147,6 +153,7 @@ H2 {
   border-radius: 5px;
 }
 #priorityTwo {
+  margin-bottom: 10px;
   background: white;
   border: 2px solid gray;
   font-family: "Trebuchet MS";
@@ -154,6 +161,59 @@ H2 {
   border-radius: 5px;
 }
 #priorityThree {
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+
+#creationDescButton {
+  margin-bottom: 5px;
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+
+#creationAscButton {
+  margin-bottom: 5px;
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+
+#textDescButton {
+  margin-bottom: 5px;
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+
+#textAscButton {
+  margin-bottom: 5px;
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+
+#priorityDescButton {
+  margin-bottom: 5px;
+  background: white;
+  border: 2px solid gray;
+  font-family: "Trebuchet MS";
+  cursor: default;
+  border-radius: 5px;
+}
+
+#priorityAscButton {
   background: white;
   border: 2px solid gray;
   font-family: "Trebuchet MS";

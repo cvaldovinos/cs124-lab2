@@ -29,14 +29,10 @@ function App() {
     const [hidden, setHidden] = useState(false);
     const [showWarning, setWarning] = useState(false);
     const [showPriorities, setPriorities] = useState(false);
-    const [showSort, setSort] = useState("");
-    const [showSortOptions, setSortOptions] = useState(false);
+    const [sort, setSort] = useState("creationAsc");
+    const [sortOptions, setSortOptions] = useState(false);
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
-
-    // const q = query(collection(db, collectionName), where("created", "!=", "0"), orderBy("created", "desc"));
-    // const q = query(collection(db, collectionName));
-    // const [list, loading] = useCollectionData(q); // bring back error later
 
     const qCreationAsc = query(collection(db, collectionName));
     const qCreationDesc = query(collection(db, collectionName), orderBy("created", "desc"));
@@ -46,15 +42,15 @@ function App() {
     const qPriorityDesc = query(collection(db, collectionName), orderBy("priority", "desc"));
 
     function collectionSelector() {
-        if (showSort === "creationDesc") {
+        if (sort === "creationDesc") {
             return (qCreationDesc)
-        } else if (showSort === "textAsc") {
+        } else if (sort === "textAsc") {
             return (qTextAsc)
-        } else if (showSort === "textDesc") {
+        } else if (sort === "textDesc") {
             return (qTextDesc)
-        } else if (showSort === "priorityAsc") {
+        } else if (sort === "priorityAsc") {
             return (qPriorityAsc)
-        } else if (showSort === "priorityDesc") {
+        } else if (sort === "priorityDesc") {
             return (qPriorityDesc)
         } else{
             return(qCreationAsc)
@@ -63,8 +59,10 @@ function App() {
     const [list,loading] = useCollectionData(collectionSelector());
 
     let showHideButton = false;
+    let showSortButton = false;
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
+        showSortButton = list.length > 2;
     }
 
 
@@ -92,7 +90,6 @@ function App() {
 
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
-        // const x = doc(db, collectionName, itemID);
         if (["text", "check_visible", "select_visible", "checked", "priority", "created"].includes(field)) {
             updateDoc(doc(db, collectionName, itemID),
                 {
@@ -121,7 +118,6 @@ function App() {
 
     // deletes data from the list by filtering out selected keys
     function handleDelete() {
-        // setList(list.filter((p) => !selected.includes(p.key)));
         selected.forEach(id => deleteDoc(doc(db, collectionName, id)));
         setSelected([]); // no selected items remain, so update that
         setWarning(false);
@@ -156,8 +152,7 @@ function App() {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
-        deleteDoc(doc(db, collectionName, itemID));
-        // return(setList(list.filter((p) => p.key !== itemID)));
+        deleteDoc(doc(db, collectionName, itemID)).then(r => {});
     }
 
     // adds an item by generating an id and using the passing in text
@@ -173,26 +168,19 @@ function App() {
                 check_visible: false,
                 text_visible: true,
                 select_visible: false
-            })
+            }).then(r => {})
     }
 
-
-
-    //
-    // function sortSet(sort) {
-    //     setSortOptions(false);
-    //     setSort(sort)
-    // }
-
     if (loading) {
-        return <div id={"loadingScreen"}>
-            {console.log("Your data is loading...")}
+        return <div id={"loadingScreen"}>Loading...
         </div>;
     }
     // this line is being displayed twice, one is italicized
     if (list.length === 0){
         handleItemAdded("Tap to Add Note")
     }
+
+
     return (
         <div id="container" onClick={(e) => {
             handleLineEdited(-1)
@@ -200,8 +188,16 @@ function App() {
             <div id="button-div">
                 <button className="back-button">&larr;</button>
             </div>
-                <button className="sort-button"
-                        onClick={() => setSortOptions(true)}>&darr;</button>
+            {showSortButton && <button className="sort-button"
+                        onClick={() => setSortOptions(true)}>
+                    <div id={"sortArrow"}>&darr;</div>
+                    {(sort === "textAsc") && <div id={"sortText"}>A Z</div>}
+                    {(sort === "textDesc") && <div id={"sortText"}>Z A</div>}
+                    {(sort === "creationAsc") && <div id={"sortDate"}><div id={"date1"}>JAN</div><div id={"date2"}>DEC</div></div>}
+                    {(sort === "creationDesc") && <div id={"sortDate"}><div id={"date1"}>DEC</div><div id={"date2"}>JAN</div></div>}
+                    {(sort === "priorityAsc") && <div id={"sortText"}>1 3</div>}
+                    {(sort === "priorityDesc") && <div id={"sortText"}>3 1</div>}
+                </button>}
             <div id="title"><h2> My List</h2></div>
             <div id={"lineList"}>
                 <LineList lineList={list}
@@ -241,6 +237,7 @@ function App() {
                 <div>
                     <div id={"back"} onClick={() => setPriorities(false)}/>
                     <div id={"warning"}>
+                        <div id={"priorityMessage"}> Set priority value for selected items.</div>
                         <div id={"priorityButtons"}>
                             <div id={"priorityZero"} onClick={() => handlePrioritySet(0)}>Remove Priority</div>
                             <div id={"priorityOne"} onClick={() => handlePrioritySet(1)}>1</div>
@@ -251,15 +248,16 @@ function App() {
                     </div>
                 </div>
             </div>}
-            {showSortOptions && <div>
+            {sortOptions && <div>
                 <div>
                     <div id={"back"} onClick={() => setSortOptions(false)}/>
                     <div id={"warning"}>
+                        <div id={"priorityMessage"}> Choose a sorting option.</div>
                         <div id={"sortOptions"}>
-                            <div id={"creationDescButton"} onClick={() => changeSortOption("creationDesc")}> Creation Date (Old to New)</div>
-                            <div id={"creationAscButton"} onClick={() => changeSortOption("creationAsc")}>Creation Date (New to Old)</div>
-                            <div id={"textAscButton"} onClick={() => changeSortOption("textAsc")}>Text (Alphabetical)</div>
-                            <div id={"textDescButton"} onClick={() => changeSortOption("textDesc")}>Text (Rev. Alphabetical)</div>
+                            <div id={"creationAscButton"} onClick={() => changeSortOption("creationAsc")}> Oldest to Newest</div>
+                            <div id={"creationDescButton"} onClick={() => changeSortOption("creationDesc")}>Newest to Oldest</div>
+                            <div id={"textAscButton"} onClick={() => changeSortOption("textAsc")}>Alphabetical</div>
+                            <div id={"textDescButton"} onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical</div>
                             <div id={"priorityDescButton"} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</div>
                             <div id={"priorityAscButton"} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</div>
                         </div>
