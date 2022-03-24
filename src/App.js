@@ -93,7 +93,7 @@ function App() {
             updateDoc(doc(db, collectionName, itemID),
                 {
                     [field]: newValue,
-                })
+                }).then(() => {})
         }
         // changes the active/"clicked on" element to body when enter is pressed
         if (field === 'Enter') {
@@ -151,7 +151,7 @@ function App() {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
-        deleteDoc(doc(db, collectionName, itemID)).then(r => {});
+        deleteDoc(doc(db, collectionName, itemID)).then(() => {});
     }
 
     // adds an item by generating an id and using the passing in text
@@ -167,7 +167,7 @@ function App() {
                 check_visible: false,
                 text_visible: true,
                 select_visible: false
-            }).then(r => {})
+            }).then(() => {})
     }
 
     if (loading) {
@@ -182,7 +182,7 @@ function App() {
 
 
     return (
-        <div id="container" onClick={(e) => {
+        <div id="container" onClick={() => {
             handleLineEdited(-1)
         }}>
             <div id="button-div">
