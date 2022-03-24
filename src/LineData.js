@@ -11,7 +11,7 @@ function LineData(props) {
     const divClasses = [];
 
     // hides line if hide button is clicked and item is completed
-    let hideLine = props.hideChecks && props.line.checked;
+    const hideLine = props.hideChecks && props.line.checked;
 
     // display of lines is altered by pushing classes based on the values of the line fields
     if (props.position === props.length - 1 && props.disableChecks === false) {
@@ -49,13 +49,18 @@ function LineData(props) {
     // updates the value of a checkbox when we click on it
     function changeCheckWrapper(e, key) {
         props.onEdited(-1);
-        props.onItemChanged(key,"checkbox",e.target.value);
+
+        if (props.line.checked) {
+            props.onItemChanged(key,"checked",!e.target.value);
+        } else {
+            props.onItemChanged(key,"checked",e.target.value);
+        }
     }
 
     return (<Fragment>
             {!hideLine && <div>
                 <li className={itemClasses.join(" ")}>
-                    <button className={selectClasses.join(" ")} onClick={(e) => props.onToggleSelected(props.line.key)}></button>
+                    <button className={selectClasses.join(" ")} onClick={(e) => props.onToggleSelected(props.line.key)}>{props.anySelected && !!props.priority&&<span className={"selectButtonText"}>{props.priority}</span>}</button>
                     {props.checked && <input type={"checkbox"}
                            className={checkClasses.join(" ")}
                            onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
