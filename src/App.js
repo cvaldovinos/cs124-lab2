@@ -26,8 +26,8 @@ function App() {
     const [selected, setSelected] = useState([]);
     const [edited, setEdited] = useState(-1);
     const [hidden, setHidden] = useState(false);
-    const [showWarning, setWarning] = useState(false);
-    const [showPriorities, setPriorities] = useState(false);
+    const [showWarning, setShowWarning] = useState(false);
+    const [showPriorities, setShowPriorities] = useState(false);
     const [sort, setSort] = useState("creationAsc");
     const [sortOptions, setSortOptions] = useState(false);
     let showDeleteButton = selected.length > 0;
@@ -55,7 +55,11 @@ function App() {
             return(qCreationAsc)
         }
     }
-    const [list,loading] = useCollectionData(collectionSelector());
+    const [list,loading,error] = useCollectionData(collectionSelector());
+
+    if (error) {
+        console.log("ERROR: List data failed to load from Firestore")
+    }
 
     let showHideButton = false;
     let showSortButton = false;
@@ -119,12 +123,12 @@ function App() {
     function handleDelete() {
         selected.forEach(id => deleteDoc(doc(db, collectionName, id)));
         setSelected([]); // no selected items remain, so update that
-        setWarning(false);
+        setShowWarning(false);
     }
 
     function handlePrioritySet(priority) {
         selected.forEach(id => updateDoc(doc(db, collectionName, id),{priority:priority}))
-        setPriorities(false);
+        setShowPriorities(false);
     }
 
     function changeSortOption(sortType) {
@@ -133,11 +137,11 @@ function App() {
     }
 
     function handleWarning() {
-        setWarning(true);
+        setShowWarning(true);
     }
 
     function handlePriority() {
-        setPriorities(true);
+        setShowPriorities(true);
     }
 
     // changes display of selected lines by filtering selected lines
@@ -218,7 +222,7 @@ function App() {
             </div>
             {showWarning && <div>
                 <div>
-                    <div id={"back"} onClick={() => setWarning(false)}/>
+                    <div id={"back"} onClick={() => setShowWarning(false)}/>
                     <div id={"warning"}>
                         <div>
                             The selected items will be <span id={"deleteText"}>permanently deleted</span>.
@@ -226,7 +230,7 @@ function App() {
                         </div>
                         <div id={"warningButtons"}>
 
-                            <div id={"no"} onClick={() => setWarning(false)}>No, Go Back</div>
+                            <div id={"no"} onClick={() => setShowWarning(false)}>No, Go Back</div>
                             <div id={"yes"} onClick={handleDelete}>Yes, Delete</div>
 
                         </div>
@@ -235,7 +239,7 @@ function App() {
             </div>}
             {showPriorities && <div>
                 <div>
-                    <div id={"back"} onClick={() => setPriorities(false)}/>
+                    <div id={"back"} onClick={() => setShowPriorities(false)}/>
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Set priority value for selected items.</div>
                         <div id={"priorityButtons"}>

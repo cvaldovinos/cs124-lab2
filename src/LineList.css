@@ -67,7 +67,8 @@ ul {
 
 .lineImage {
     margin-top: -5px;
-    width: 360px;
+    margin-left: -120px;
+    width: 640px;
     height:22px;
     content: url("noteLine.png");
 }
