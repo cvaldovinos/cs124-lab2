@@ -11,8 +11,10 @@
     border-style: none;
     font-size: 12px;
     padding: 0px;
-    margin: 0px 0px 0px 15px;
-    width: 289px;
+    margin: 0px 0px 0px 0px;
+    /*width: 85%;*/
+    width: 85%;
+    height: auto;
     font-family: "Trebuchet MS";
     height: 14px;
     border-style: none;
@@ -62,7 +64,7 @@
 
 li {
     margin-left:-79px;
-    width:352px;
+    width: 100%;
     padding-left: 42px;
     height: 20px;
 }

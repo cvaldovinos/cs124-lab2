@@ -1,4 +1,4 @@
-    import './App.css';
+import './App.css';
 import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";

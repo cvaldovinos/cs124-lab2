@@ -1,6 +1,6 @@
 #container {
-  width: 360px;
-  height: 640px;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 64px 1fr;
   grid-template-rows: 64px 1fr;
@@ -36,11 +36,17 @@ H2 {
   border-style: solid;
   border-radius: 100px;
   /*font-size: 25px;*/
-  position: relative;
+  position: fixed;
   grid-row: 1/span 1;
   grid-column: 2/span 1;
-  top: 17px;
-  left: 240px;
+  top: 18px;
+  left:99%;
+
+  /*margin-top: 20px;*/
+  margin-left: -50px;
+
+  /*top: 17px;*/
+  /*left: 240px;*/
 }
 
 #sortArrow{
@@ -90,7 +96,7 @@ H2 {
 }
 
 #title {
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   grid-row: 1/span 2;
   grid-column: 2/span 1;
@@ -102,15 +108,21 @@ H2 {
 }
 
 #warning {
-  position: absolute;
-  justify-self: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  /*justify-self: center;*/
   text-align: center;
-  z-index: 10;
-  /*top: 200px;*/
-  /*left:90px;*/
+  z-index: 7;
+  /*top: 50%;*/
+  /*left: 50%;*/
   background: aliceblue;
   /*line-height: 200px;*/
   padding: 20px;
+  /*margin-top: 50px;*/
+  margin-top: -100px;
+  margin-left: -100px;
   height: 200px;
   width: 200px;
   font-family: "Trebuchet MS";
@@ -119,7 +131,10 @@ H2 {
   /*position: absolute;*/
   /*top: 50%;*/
   /*-ms-transform: translateY(-50%);*/
-  transform: translateY(50%);
+  /*transform: translateY(-50%);*/
+  /*top: 50%;*/
+  /*-ms-transform: translateY(-50%);*/
+  /*transform: translateY(-50%);*/
   border: solid gray;
 }
 
@@ -127,11 +142,11 @@ H2 {
   position: absolute;
   top: 0px;
   left:0px;
-  width:360px;
-  height:640px;
+  width:100%;
+  height:100%;
   background: gray;
   opacity: 50%;
-  z-index: 9;
+  z-index: 6;
 }
 
 #deleteText {
