@@ -18,65 +18,64 @@ function LineList(props) {
     return(
 
         <Fragment>
-            <div>
-                <ul type={"none"}>
-                    {props.lineList.map((data, index) =>
-                        <LineData position={index}
-                                  length={dataLength}
-                                  disableChecks={props.disableChecks}
-                                  hideChecks={props.hideChecks}
-                                  selected={props.selectedLines.includes(data.key)}
-                                  anySelected={props.selectedLines.length > 0}
-                                  line={data}
-                                  key={data.key}
-                                  text={data.text}
-                                  clicked={data.clicked}
-                                  checked={data.checked}
-                                  priority={data.priority}
-                                  onItemChanged={props.onItemChanged}
-                                  onItemDeleted={props.onItemDeleted}
-                                  onItemAdded={props.onItemAdded}
-                                  onEdited={props.onEdited}
-                                  onToggleSelected={props.onToggleSelected}
-                        />)}
-                </ul>
-            </div>
-            <div id="display_lines">
+            <ul type={"none"}>
+                {props.lineList.map((data, index) =>
+                    <LineData position={index}
+                              length={dataLength}
+                              disableChecks={props.disableChecks}
+                              hideChecks={props.hideChecks}
+                              selected={props.selectedLines.includes(data.key)}
+                              anySelected={props.selectedLines.length > 0}
+                              line={data}
+                              key={data.key}
+                              text={data.text}
+                              clicked={data.clicked}
+                              checked={data.checked}
+                              priority={data.priority}
+                              onItemChanged={props.onItemChanged}
+                              onItemDeleted={props.onItemDeleted}
+                              onItemAdded={props.onItemAdded}
+                              onEdited={props.onEdited}
+                              onToggleSelected={props.onToggleSelected}
+                    />)}
 
-                {/*uses displayCheck to determine if we need to add only one line or fill the window with lines*/}
-                {displayCheck && props.lineList.map((data) => <img className={"lineImage"} alt=""/>)}
-                {!displayCheck && <Fragment>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                    <img className={"lineImage"} alt=""/>
-                </Fragment>}
-            </div>
+            </ul>
+            {/*<div id="display_lines">*/}
+
+            {/*    /!*uses displayCheck to determine if we need to add only one line or fill the window with lines*!/*/}
+            {/*    {displayCheck && props.lineList.map((data) => <img className={"lineImage"} alt=""/>)}*/}
+            {/*    {!displayCheck && <Fragment>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*        <img className={"lineImage"} alt=""/>*/}
+            {/*    </Fragment>}*/}
+            {/*</div>*/}
 
             {/*displays our trash/"Delete" button*/}
             {props.showDeleteButton && <div><button className={"priority"}
