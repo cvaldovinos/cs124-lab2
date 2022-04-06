@@ -189,18 +189,20 @@ function App() {
         <div id="container" onClick={() => {
             handleLineEdited(-1)
         }}>
-            <div id="button-div">
+            <div id={"button-div"}>
                 <button className="back-button">&larr;</button>
+
             </div>
+
             {showSortButton && <button className="sort-button"
                         onClick={() => setSortOptions(true)}>
-                    <div id={"sortArrow"}>&darr;</div>
-                    {(sort === "textAsc") && <div id={"sortText"}>A Z</div>}
-                    {(sort === "textDesc") && <div id={"sortText"}>Z A</div>}
-                    {(sort === "creationAsc") && <div id={"sortDate"}><div id={"date1"}>JAN</div><div id={"date2"}>DEC</div></div>}
-                    {(sort === "creationDesc") && <div id={"sortDate"}><div id={"date1"}>DEC</div><div id={"date2"}>JAN</div></div>}
-                    {(sort === "priorityAsc") && <div id={"sortText"}>1 3</div>}
-                    {(sort === "priorityDesc") && <div id={"sortText"}>3 1</div>}
+
+                    {(sort === "textAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>A Z</div></div>}
+                    {(sort === "textDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>Z A</div></div>}
+                    {(sort === "creationAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>JAN</div><div id={"date2"}>DEC</div></div></div>}
+                    {(sort === "creationDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>DEC</div><div id={"date2"}>JAN</div></div></div>}
+                    {(sort === "priorityAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>1 3</div></div>}
+                    {(sort === "priorityDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>3 1</div></div>}
                 </button>}
             <div id="title"><h2> My List</h2></div>
             <div id={"lineList"}>

@@ -1,10 +1,15 @@
 ul {
-    position: absolute;
-    top: -20px;
+    /*position: absolute;*/
+    margin:0;
+    padding: 0;
+    /*top: -20px;*/
     left: 5px;
-    list-style: none;
+    list-style: none inside;
+    /*overflow: hidden;*/
     z-index: 4;
-    width:100%;
+    width:100vw;
+    border-bottom: cornflowerblue;
+    border-width: 2px;
 }
 
 #data_list {
@@ -25,38 +30,48 @@ ul {
     z-index: 1;
     grid-column: 1/span 2;
     grid-row: 2/span 1;
+    width: 100%;
+    height: 100%;
 }
 
 #eyeButton{
     background-color: aliceblue;
     width: 50px;
     height: 50px;
-    top: 580px;
-    left: 300px;
+    top: 99%;
+    left:99%;
     border-style: solid;
     border-radius: 100px;
     font-size: 25px;
     position: fixed;
+    margin-left: -50px;
+    margin-top: -50px;
     z-index: 5;
+}
+
+#lower-left-buttons{
+    height:auto;
+    width: auto;
 }
 
 .trashButton {
     background-color: aliceblue;
     width: 50px;
     height: 50px;
-    top: 580px;
+    top: 92%;
     left: 10px;
     border-style: solid;
     border-radius: 100px;
     font-size: 25px;
     position: fixed;
+    /*margin-top: -50px;*/
     z-index: 5;
 }
 .priority {
     background-color: aliceblue;
     width: 50px;
     height: 50px;
-    top: 520px;
+    top: 83%;
     left: 10px;
     border-style: solid;
     border-radius: 100px;
@@ -64,7 +79,6 @@ ul {
     position: fixed;
     z-index: 5;
 }
-
 
 .open {
     content:url("https://cdn.pixabay.com/photo/2017/06/09/18/06/eye-2387853_960_720.png");
@@ -74,10 +88,15 @@ ul {
     content:url("eyeClosed.png");
 }
 
-.lineImage {
-    margin-top: -5px;
-    margin-left: -120px;
-    width: 640px;
-    height:22px;
-    content: url("noteLine.png");
-}
+/*.lineImage {*/
+/*    margin-top: -5px;*/
+/*    margin-bottom: 0;*/
+/*    !*margin-left: -220px;*!*/
+/*    width: 100%;*/
+/*    !*max-width: 100%;*!*/
+/*    height: 3vmin;*/
+/*    !*content: url("noteLine.png");*!*/
+/*    z-index: 1;*/
+/*    !*border: thin solid cornflowerblue;*!*/
+/*    !*background-image: url("noteLine.png");*!*/
+/*}*/

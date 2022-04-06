@@ -68,7 +68,7 @@ function LineData(props) {
                     {!props.checked && <input type={"checkbox"}
                                              className={checkClasses.join(" ")}
                                              onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
-                    <input type={"text"}
+                    <div id={"textboxDiv"}><input type={"text"}
                            className={textClasses.join(" ")}
                            onClick={(e) => clickTextWrapper(e, props.line.key)}
                            onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
@@ -80,7 +80,7 @@ function LineData(props) {
                                props.onItemChanged(props.line.key, e.key, props.text);
                            }}}
                            value={props.text}
-                           id={props.line.key}/>
+                           id={props.line.key}/></div>
                 </li>
             </div>}
     </Fragment>)

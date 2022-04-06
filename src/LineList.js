@@ -78,6 +78,7 @@ function LineList(props) {
             {/*</div>*/}
 
             {/*displays our trash/"Delete" button*/}
+            <div id={"lower-left-buttons"}>
             {props.showDeleteButton && <div><button className={"priority"}
                                                     onClick={props.onPriority}>
                                                 &#128290;
@@ -96,6 +97,7 @@ function LineList(props) {
                         <img id="eye" className={hideClass} alt={""}/>
                     </div>
                 </button>}
+            </div>
         </Fragment>
     )
 }
