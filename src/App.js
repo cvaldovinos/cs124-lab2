@@ -18,7 +18,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const collectionName = "cs124-lab3-fe950";
+const collectionName = "cs124-lab3-fe950"; // collection for each list passed in from App
 
 function App() {
 
