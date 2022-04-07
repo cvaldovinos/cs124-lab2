@@ -297,3 +297,51 @@ H2 {
 .sort-button-display{
   height: 35px;
 }
+
+.line{
+  /* position: absolute; */
+  margin-left: -39px;
+  /*margin-right: px;*/
+  width: 100%;
+  padding-left: 39px;
+  /* height: 20px; */
+  background: lightgoldenrodyellow;
+  border-top: solid cornflowerblue;
+  border-width: 2px;
+}
+
+.textboxes {
+  border-style: none;
+  font-size: 18px;
+  /*margin: 0px 0px 0px 20px;*/
+  width: 99%;
+  /*width: 100%;*/
+  height: auto;
+  font-family: "Trebuchet MS";
+  border-style: none;
+
+}
+
+#textboxDiv {
+  position: relative;
+  /*display-in;*/
+  height:20px;
+  width: auto;
+  padding-left: 80px;
+  margin: 0 0 0 0px;
+  top: -10px;
+
+}
+
+#button-div2{
+  padding: 7px;
+}
+
+#line-button{
+  z-index: 5;
+  background-color: aliceblue;
+  font-size: 30px;
+  border-style: solid;
+  border-radius: 100px;
+  font-size: 25px;
+}

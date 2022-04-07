@@ -15,6 +15,12 @@ function LineList(props) {
         hideClass = "closed";
     }
 
+    function clickTextWrapper(e, text) {
+        e.stopPropagation();
+        props.onTapEdited(text);
+    }
+
+
     return(
 
         <Fragment>
