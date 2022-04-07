@@ -4,8 +4,6 @@ import {Fragment} from "react";
 
 function LineList(props) {
     let dataLength = props.lineList.length;
-    let windowLength = 29; // number of lines that typically fit on our Moto G4 page
-    let displayCheck = dataLength > windowLength;
     let hideClass = "";
 
     // updates the image on the hide button
@@ -44,7 +42,20 @@ function LineList(props) {
                               onEdited={props.onEdited}
                               onToggleSelected={props.onToggleSelected}
                     />)}
-
+                    <li>
+                        <div id={"textboxDiv"}><input type={"text"}
+                                                      onClick={(e) => clickTextWrapper(e, props.tap.text)}
+                                                      onChange={(e) => props.onTapChanged(e.target.value)}
+                                                      onKeyDown={(e) =>
+                                                      {if (e.key === 'Enter') {
+                                                          props.onTapChanged(e.key, props.tap.text);
+                                                          props.onTapEdited(props.tap.text);
+                                                      }}
+                                                      // } if (e.key === 'Backspace') {
+                                                      //     props.onItemChanged(props.line.key, e.key, props.text);
+                                                      }
+                                                      value={props.tap.text}/></div>
+                    </li>
             </ul>
             {/*<div id="display_lines">*/}
 
