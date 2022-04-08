@@ -24,25 +24,28 @@ function App() {
     const [title,setTitle] = useState("");
     let currentView= "listview";
 
-   function handleListView(text) {
+   function handleListView(text, newId) {
        setTitle(text);
+       setListId(newId);
        setListView(!listView);
    }
 
-   function handleListId(newId) {
-       setListId(newId);
-   }
+   // function handleListId(newId) {
+   //     setListId(newId);
+   // }
 
    // handleListView();
 
    if(listView){
         return (<HomeView onListView={handleListView}
+                          // onListId={handleListId}
                           db={db}
                           collection={collectionName}/>)
    } else{
         return (<ListView
             onListView={handleListView}
             title={title}
+            listId={listId}
             db={db}
             collection={collectionName}/>)
    }

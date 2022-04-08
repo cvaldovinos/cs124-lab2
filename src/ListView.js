@@ -34,12 +34,12 @@ function ListView(props) {
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
-    const qCreationAsc = query(collection(props.db, props.collection));
-    const qCreationDesc = query(collection(props.db, props.collection), orderBy("created", "desc"));
-    const qTextAsc = query(collection(props.db, props.collection), orderBy("select_visible", "desc"), orderBy("text", "asc"));
-    const qTextDesc = query(collection(props.db, props.collection), orderBy("select_visible", "desc"), orderBy("text", "desc"));
-    const qPriorityAsc = query(collection(props.db, props.collection), orderBy("select_visible", "desc"), orderBy("priority", "asc"));
-    const qPriorityDesc = query(collection(props.db, props.collection), orderBy("priority", "desc"));
+    const qCreationAsc = query(collection(props.db, props.collection, props.listId, props.listId));
+    const qCreationDesc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("created", "desc"));
+    const qTextAsc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("select_visible", "desc"), orderBy("text", "asc"));
+    const qTextDesc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("select_visible", "desc"), orderBy("text", "desc"));
+    const qPriorityAsc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("select_visible", "desc"), orderBy("priority", "asc"));
+    const qPriorityDesc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("priority", "desc"));
 
     function collectionSelector() {
         if (sort === "creationDesc") {
@@ -157,7 +157,7 @@ function ListView(props) {
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
         if (["text", "check_visible", "select_visible", "checked", "priority", "created"].includes(field)) {
-            updateDoc(doc(props.db, props.collection, itemID),
+            updateDoc(doc(props.db, props.collection, props.listId, props.listId, itemID),
                 {
                     [field]: newValue,
                 }).then(() => {})
@@ -184,13 +184,13 @@ function ListView(props) {
 
     // deletes data from the list by filtering out selected keys
     function handleDelete() {
-        selected.forEach(id => deleteDoc(doc(props.db, props.collection, id)));
+        selected.forEach(id => deleteDoc(doc(props.db, props.collection, props.listId, props.listId, id)));
         setSelected([]); // no selected items remain, so update that
         setShowWarning(false);
     }
 
     function handlePrioritySet(priority) {
-        selected.forEach(id => updateDoc(doc(props.db, props.collection, id),{priority:priority}))
+        selected.forEach(id => updateDoc(doc(props.db, props.collection, props.listId, props.listId, id),{priority:priority}))
         setShowPriorities(false);
     }
 
@@ -218,15 +218,15 @@ function ListView(props) {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
-        deleteDoc(doc(props.db, props.collection, itemID)).then(() => {});
+        deleteDoc(doc(props.db, props.collection, props.listId, props.listId, itemID)).then(() => {});
     }
 
     // adds an item by generating an id and using the passing in text
     function handleItemAdded(textValue) {
-        const listId = generateUniqueID();
-        setDoc(doc(props.db, props.collection, listId),
+        const lineId = generateUniqueID();
+        setDoc(doc(props.db, props.collection, props.listId, props.listId, lineId),
             {
-                key: listId,
+                key: lineId,
                 text: textValue,
                 checked: false,
                 created: 0,

@@ -26,64 +26,46 @@ function HomeView(props) {
     let [lists,loading,error] = useCollectionData(collection(props.db, props.collection));
 
     function handleListAdded(listName) {
-        console.log("clicked");
-        // let collId = generateUniqueID()
-        // let subColl = collection(props.db, collId)
-        // setDoc(subColl, {
-        //     name: listName,
-        //     id: collId
-        // })
-        let collId = generateUniqueID();
-        setDoc(doc(props.db, props.collection, collId),
+        let listId = generateUniqueID();
+        setDoc(doc(props.db, props.collection, listId),
             {
-                key: collId,
+                key: listId,
                 name: listName
             }).then(() => {})
-        props.db.collection(props.collection).doc(collId).set({
-            password: "nothing"
-        })
+    }
+
+    function handleListDeleted(listId) {
+        deleteDoc(doc(props.db, props.collection, listId)).then(() => {});
+    }
+
+    if (loading) {
+        return <div>Loading...
+        </div>;
     }
 
     console.log("TEST")
-    return (<Fragment>
-        <div id="contained">
-            <div id="titled">
-                <h1 className={"header"}> Notes </h1>
-            </div>
-            {/*<button onClick={(e) => props.onListView("Yo")}>Yo</button>*/}
-            <div id="bottom-part">
-                <div class="notes" id="note1" onClick={(e) => props.onListView("Yo")}>
-                    To Do
+    return (<div id="contained">
+                <div id="titled">
+                    <h1 className={"header"}> Notes </h1>
                 </div>
-                <div class="notes" id="note2" onClick={(e) => handleListAdded("something")}>
-                    Life Goals and Hobbies
+                {/*<button onClick={(e) => props.onListView("Yo")}>Yo</button>*/}
+                <div id="bottom-part">
+                    {lists?.map((data) => <ListBox id = {data.key}
+                                                   name = {data.name}
+                                                   onListView = {props.onListView}
+                                                   onListDelete = {handleListDeleted}
+                    />)}
                 </div>
-                <div class="notes" id="note3">
-                    Hopes, Dreams, and Precious Memories
-                </div>
-                <div class="notes" id="note4">
-                    Social Security Number
-                </div>
-                <div class="notes" id="note5">
-                    Passwords
-                </div>
-                <div class="notes" id="note6">
-                    Contacts
-                </div>
-                <div class="notes" id="note7">
-                    Untitled Note
-                </div>
-            </div>
-            </div>
-        <div>
-            <button id="addnotebutton"><div>+</div></button>
-            <button id="settings">
+
                 <div>
-                    <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
+                    <button id="addnotebutton" onClick={(e) => handleListAdded(generateUniqueID())}><div>+</div></button>
+                    <button id="settings">
+                        <div>
+                            <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
+                        </div>
+                    </button>
                 </div>
-            </button>
-        </div>
-    </Fragment>)
+            </div>)
 }
 
 export default HomeView;
