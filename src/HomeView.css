@@ -8,8 +8,9 @@
 }
 
 #titled {
+    height: 100%;
     background:lightsteelblue;
-    grid-row: 1/span 1;
+    /*grid-row: 1/span 1;*/
     border-color: black;
     border-bottom-style: solid;
 }
@@ -72,8 +73,8 @@
 #addnotebutton {
     position: fixed;
     font-size: 25px;
-    left: 310px;
-    top: 590px;
+    left: 80%;
+    top: 90%;
     width: 50px;
     height: 50px;
     display: flex;

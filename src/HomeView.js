@@ -1,5 +1,5 @@
 import './HomeView.css'
-
+import ListBox from "./ListBox";
 import {initializeApp} from "firebase/app";
 import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc, serverTimestamp, orderBy} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
@@ -24,6 +24,9 @@ import {useCollectionData} from "react-firebase-hooks/firestore";
 
 function HomeView(props) {
     let [lists,loading,error] = useCollectionData(collection(props.db, props.collection));
+    if (error) {
+        console.log("ERROR: List data failed to load from Firestore")
+    }
 
     function handleListAdded(listName) {
         let listId = generateUniqueID();
