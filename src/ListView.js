@@ -71,7 +71,7 @@ function ListView(props) {
 
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
-        showSortButton = list.length > 2;
+        showSortButton = list.length > 1;
         // document.getElementById('tempTapLine').value="Tap to Add Note"
         //
         // console.log("list: ", list);
@@ -119,6 +119,9 @@ function ListView(props) {
 
     function handleLineEdited(lineID) {
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
+        if (lineID===-2) {
+            document.getElementById('tempTapLine').value=""
+        }
         if (edited === -2 && document.getElementById('tempTapLine').value!=="Tap to Add Note") {
             if (document.getElementById('tempTapLine').value === "") {
                 document.getElementById('tempTapLine').value="Tap to Add Note";
@@ -128,34 +131,27 @@ function ListView(props) {
                 document.getElementById('tempTapLine').value="Tap to Add Note";
             }
         }
-        console.log("PLEASE", lineID)
-        console.log("PLEASE2", edited)
-        if (lineID === -2 && edited !== -2) {
-            document.getElementById('tempTapLine').value=""
-        }
         setEdited(lineID) // update edited line state
-        console.log("lineID: ",lineID)
-        console.log("edited0: ",edited)
     }
 
 
 
-    console.log(edited)
-    function handleTapEdited(newValue) {
-        if (edited === -2 && tapLine.text !== "Tap to Add Note") {
-            if (tapLine.text === "") {
-                handleTapChanged(newValue);
-            } else {
-                // display check and select box for added note, create new tap line
-                handleItemAdded(newValue);
-                setTapLine({
-                    text: "Tap to Add Note"
-                })
-            }
-        }
-        console.log("here")
-        setEdited(-2);
-    }
+
+    // function handleTapEdited(newValue) {
+    //     if (edited === -2 && tapLine.text !== "Tap to Add Note") {
+    //         if (tapLine.text === "") {
+    //             handleTapChanged(newValue);
+    //         } else {
+    //             // display check and select box for added note, create new tap line
+    //             handleItemAdded(newValue);
+    //             setTapLine({
+    //                 text: "Tap to Add Note"
+    //             })
+    //         }
+    //     }
+    //     console.log("here")
+    //     setEdited(-2);
+    // }
 
     function handleTapChanged(key, newValue) {
         setTapLine({
@@ -180,7 +176,7 @@ function ListView(props) {
         }
         // deletes line if backspace is pressed while line is empty
         if (field === 'Backspace') {
-            if (newValue === "" && itemID !== list[list.length - 1].key) {
+            if (newValue === "") {
                 handleItemDeleted(itemID);
                 if (selected.includes(itemID)) {
                     handleToggleSelectedLines(itemID);
@@ -279,63 +275,45 @@ function ListView(props) {
    // }
 
 
-    let onTapLine = true;
-    function tapLineClick() {
-        setEdited(-2)
-        console.log("edited1: ", edited)
-        console.log("ontap???: ", tapLineActive)
-        if (onTapLine === false){
-            document.getElementById('tempTapLine').value=","
-            onTapLine=true;
-            setTapLineActive(!tapLineActive);
-            console.log("onTapLine")
-        }
 
+    function tapLineClick() {
+        handleLineEdited(-2)
     }
 
     function tapLineType(e) {
         setEdited(-2)
-        console.log("edited2: ", edited)
         if (e.key=== 'Enter') {
             handleItemAdded2(document.getElementById('tempTapLine').value)
             document.getElementById('tempTapLine').value="Tap to Add Note"
-            onTapLine=false;
-            console.log("offTapLine1")
+            document.activeElement.blur();
         }
     }
 
-    function offTapLine() {
-        if (onTapLine){
-            console.log("im here")
-            if(document.activeElement.id !== "temptapLine")
-                document.getElementById('tempTapLine').value="Tap to Add Note"
-            onTapLine=false
-            console.log("onTapLine2")
-        }
-    }
+    // function offTapLine() {
+    //     if (onTapLine){
+    //         console.log("im here")
+    //         if(document.activeElement.id !== "temptapLine")
+    //             document.getElementById('tempTapLine').value="Tap to Add Note"
+    //         onTapLine=false
+    //         console.log("onTapLine2")
+    //     }
+    // }
 
 
 
 
     return (
-        <div id="container"
-             onClick={() => {
-            handleLineEdited(-1)
-        }}
-        >
+        <div id="container" onClick={() => {handleLineEdited(-1)}}>
             <div id={"button-div"}>
                 <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
-                <input id={"tempTapLine"} className={"tempTapClass"} type={"text"}
+                <input id={"tempTapLine"}
+                       className={"tempTapClass"}
+                       type={"text"}
                        onClick={() => tapLineClick()}
                        onKeyDown={(e) => tapLineType(e)}
                        defaultValue={"Tap to Add Note"}
                 />
-                {/*<script type="text/javascript">*/}
-                {/*    document.getElementById('tempTapLine').value={"Tap to Add Note"}*/}
-                {/*</script>*/}
             </div>
-
-
             {showSortButton && <button className="sort-button"
                         onClick={() => setSortOptions(true)}>
 
@@ -364,7 +342,6 @@ function ListView(props) {
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
                           onTapChanged={handleTapChanged}
-                          onTapEdited={handleTapEdited}
                 />
             </div>
             {/*<div className={"line"}><div id={"textboxDiv"}><input type={"text"}className={"textboxes"}/></div></div>*/}

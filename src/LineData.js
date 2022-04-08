@@ -14,9 +14,6 @@ function LineData(props) {
     const hideLine = props.hideChecks && props.line.checked;
 
     // display of lines is altered by pushing classes based on the values of the line fields
-    if (props.position === props.length - 1 && props.disableChecks === false) {
-        textClasses.push("italics ");
-    }
     if (props.line.checked) {
         textClasses.push("checked ");
     }

@@ -15,7 +15,7 @@ function LineList(props) {
 
     function clickTextWrapper(e, text) {
         e.stopPropagation();
-        props.onTapEdited(text);
+        // props.onTapEdited(text);
     }
 
 
@@ -23,9 +23,8 @@ function LineList(props) {
 
         <Fragment>
             <ul type={"none"}>
-                {props.lineList.map((data, index) =>
-                    <LineData position={index}
-                              length={dataLength}
+                {props.lineList.map((data) =>
+                    <LineData length={dataLength}
                               disableChecks={props.disableChecks}
                               hideChecks={props.hideChecks}
                               selected={props.selectedLines.includes(data.key)}
