@@ -346,8 +346,24 @@ H2 {
   font-size: 25px;
 }
 
-#tempTapLine{
+.activeTapLine{
   position: relative;
+  background: red;
   top: 500px;
-  left: 100px
+  left: 100px;
+}
+
+.tempTapClass{
+  position: relative;
+  background: blue;
+  top: 500px;
+  left: 100px;
+}
+
+.tempTapClass:hover{
+  background: red;
+}
+
+.tempTapClass:focus{
+  background: red;
 }

@@ -30,6 +30,7 @@ function ListView(props) {
     const [sort, setSort] = useState("creationAsc");
     const [sortOptions, setSortOptions] = useState(false);
     const [tapLine, setTapLine] = useState(tapData)
+    const [tapLineActive, setTapLineActive] = useState(false);
 
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
@@ -64,12 +65,14 @@ function ListView(props) {
 
     let showHideButton = false;
     let showSortButton = false;
+
     // let createTapLine = false;
 
 
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
         showSortButton = list.length > 2;
+        // document.getElementById('tempTapLine').value="Tap to Add Note"
         //
         // console.log("list: ", list);
         // console.log("test")
@@ -92,41 +95,50 @@ function ListView(props) {
     }
 
 
-    // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
+    // // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
+    // function oldhandleLineEdited(lineID) {
+    //     // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
+    //     if (edited === list[list.length - 1].key && list[list.length - 1].text !== "Tap to Add Note") {
+    //         if (list[list.length - 1].text === "") {
+    //             handleItemChanged(list[list.length - 1].key, "text", "Tap to Add Note");
+    //         } else {
+    //             // display check and select box for added note, create new tap line
+    //             handleItemChanged(list[list.length - 1].key, "check_visible", true);
+    //             handleItemChanged(list[list.length - 1].key, "select_visible", true);
+    //             handleItemChanged(list[list.length - 1].key, "priority", 0);
+    //             handleItemChanged(list[list.length - 1].key, "created", serverTimestamp());
+    //             handleItemAdded("Tap to Add Note");
+    //         }
+    //     }
+    //     if (lineID === list[list.length - 1].key && edited !== lineID) {
+    //         handleItemChanged(lineID, "text", "")
+    //     }
+    //
+    //     setEdited(lineID) // update edited line state
+    // }
+
     function handleLineEdited(lineID) {
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
-        if (edited === list[list.length - 1].key && list[list.length - 1].text !== "Tap to Add Note") {
-            if (list[list.length - 1].text === "") {
-                handleItemChanged(list[list.length - 1].key, "text", "Tap to Add Note");
+        if (edited === -2 && document.getElementById('tempTapLine').value!=="Tap to Add Note") {
+            if (document.getElementById('tempTapLine').value === "") {
+                document.getElementById('tempTapLine').value="Tap to Add Note";
             } else {
                 // display check and select box for added note, create new tap line
-                handleItemChanged(list[list.length - 1].key, "check_visible", true);
-                handleItemChanged(list[list.length - 1].key, "select_visible", true);
-                handleItemChanged(list[list.length - 1].key, "priority", 0);
-                handleItemChanged(list[list.length - 1].key, "created", serverTimestamp());
-                handleItemAdded("Tap to Add Note");
+                handleItemAdded2(document.getElementById('tempTapLine').value);
+                document.getElementById('tempTapLine').value="Tap to Add Note";
             }
         }
-        if (lineID === list[list.length - 1].key && edited !== lineID) {
-            handleItemChanged(lineID, "text", "")
+        console.log("PLEASE", lineID)
+        console.log("PLEASE2", edited)
+        if (lineID === -2 && edited !== -2) {
+            document.getElementById('tempTapLine').value=""
         }
-
         setEdited(lineID) // update edited line state
+        console.log("lineID: ",lineID)
+        console.log("edited0: ",edited)
     }
 
-    function yo() {
-        // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
-        if (ontapline === false && (document.getElementById('line-button').value) !== "Tap to Add Note") {
-            if (document.getElementById('line-button').value === "") {
-                document.getElementById('line-button').value = "Tap to Add Note"
-            }
-        }
-        // if (lineID === list[list.length - 1].key && edited !== lineID) {
-        //     handleItemChanged(lineID, "text", "")
-        // }
-        //
-        // setEdited(lineID) // update edited line state
-    }
+
 
     console.log(edited)
     function handleTapEdited(newValue) {
@@ -259,19 +271,68 @@ function ListView(props) {
 
     // this line is being displayed twice, one is italicized
 
-    let ontapline=false;
+
+
+   // if ('tempTapLine' === document.activeElement.id) {
+   //          console.log("hooray");
+   //          // document.activeElement.blur();
+   // }
+
+
+    let onTapLine = true;
+    function tapLineClick() {
+        setEdited(-2)
+        console.log("edited1: ", edited)
+        console.log("ontap???: ", tapLineActive)
+        if (onTapLine === false){
+            document.getElementById('tempTapLine').value=","
+            onTapLine=true;
+            setTapLineActive(!tapLineActive);
+            console.log("onTapLine")
+        }
+
+    }
+
+    function tapLineType(e) {
+        setEdited(-2)
+        console.log("edited2: ", edited)
+        if (e.key=== 'Enter') {
+            handleItemAdded2(document.getElementById('tempTapLine').value)
+            document.getElementById('tempTapLine').value="Tap to Add Note"
+            onTapLine=false;
+            console.log("offTapLine1")
+        }
+    }
+
+    function offTapLine() {
+        if (onTapLine){
+            console.log("im here")
+            if(document.activeElement.id !== "temptapLine")
+                document.getElementById('tempTapLine').value="Tap to Add Note"
+            onTapLine=false
+            console.log("onTapLine2")
+        }
+    }
+
+
 
 
     return (
-        <div id="container" onClick={() => {
+        <div id="container"
+             onClick={() => {
             handleLineEdited(-1)
-        }}>
+        }}
+        >
             <div id={"button-div"}>
                 <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
-                <input id={"tempTapLine"} type={"text"} onKeyDown={(e) => {if (e.key=== 'Enter') {
-                    handleItemAdded2(document.getElementById('tempTapLine').value)
-                    document.getElementById('tempTapLine').value = "Tap to Add Note"
-                }}}/>
+                <input id={"tempTapLine"} className={"tempTapClass"} type={"text"}
+                       onClick={() => tapLineClick()}
+                       onKeyDown={(e) => tapLineType(e)}
+                       defaultValue={"Tap to Add Note"}
+                />
+                {/*<script type="text/javascript">*/}
+                {/*    document.getElementById('tempTapLine').value={"Tap to Add Note"}*/}
+                {/*</script>*/}
             </div>
 
 
