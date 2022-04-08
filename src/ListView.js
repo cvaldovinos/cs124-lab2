@@ -277,7 +277,8 @@ function ListView(props) {
 
 
     function tapLineClick() {
-        handleLineEdited(-2)
+        setEdited(-2)
+        // handleLineEdited(-2)
     }
 
     function tapLineType(e) {
@@ -306,13 +307,16 @@ function ListView(props) {
         <div id="container" onClick={() => {handleLineEdited(-1)}}>
             <div id={"button-div"}>
                 <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
-                <input id={"tempTapLine"}
+                <div id={"tapLine"}>
+                    <input id={"tempTapLine"}
                        className={"tempTapClass"}
                        type={"text"}
-                       onClick={() => tapLineClick()}
+                       // onClick={() => tapLineClick()}
                        onKeyDown={(e) => tapLineType(e)}
                        defaultValue={"Tap to Add Note"}
-                />
+                    />
+                    <div class={document.activeElement.id==='tempTapLine' ? "activeText": "inactiveText"}>Tap to Add Note</div>
+                </div>
             </div>
             {showSortButton && <button className="sort-button"
                         onClick={() => setSortOptions(true)}>
