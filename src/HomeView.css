@@ -85,3 +85,44 @@
     background-color: aliceblue;
     border-style: solid;
 }
+
+
+#back{
+    position: absolute;
+    top: 0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background: gray;
+    opacity: 50%;
+    z-index: 6;
+}
+
+#warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    z-index: 7;
+    background: aliceblue;
+    padding: 20px;
+    margin-top: -100px;
+    margin-left: -100px;
+    height: 200px;
+    width: 200px;
+    font-family: "Trebuchet MS";
+    border: solid black;
+    border: solid gray;
+}
+
+#priorityMessage {
+    margin-bottom: 20px;
+}
+
+#warningButtons {
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

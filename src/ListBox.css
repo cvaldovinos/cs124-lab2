@@ -1,7 +1,22 @@
 
 .settings {
     position: relative;
-    top: 20px;
+    border-radius: 10px;
+    border-color: black;
+    top: -20px;
+    z-index: 2;
     width: 20px;
     height: 20px;
+}
+
+.listbox {
+    z-index: 1;
+}
+
+.options {
+    background-color: aliceblue;
+    border: solid;
+    border-color: black;
+    padding: 5px;
+
 }
