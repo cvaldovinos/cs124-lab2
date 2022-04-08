@@ -237,15 +237,28 @@ function ListView(props) {
             }).then(() => {})
     }
 
+    function handleItemAdded2(textValue) {
+        const lineId = generateUniqueID();
+        setDoc(doc(props.db, props.collection, props.listId, props.listId, lineId),
+            {
+                key: lineId,
+                text: textValue,
+                checked: false,
+                created: 0,
+                priority: 0,
+                check_visible: true,
+                text_visible: true,
+                select_visible: true
+            }).then(() => {})
+    }
+
     if (loading) {
         return <div id={"loadingScreen"}>Loading...
         </div>;
     }
 
     // this line is being displayed twice, one is italicized
-    if (list.length === 0){
-        handleItemAdded("Tap to Add Note");
-    }
+
     let ontapline=false;
 
 
@@ -255,25 +268,12 @@ function ListView(props) {
         }}>
             <div id={"button-div"}>
                 <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
+                <input id={"tempTapLine"} type={"text"} onKeyDown={(e) => {if (e.key=== 'Enter') {
+                    handleItemAdded2(document.getElementById('tempTapLine').value)
+                    document.getElementById('tempTapLine').value = "Tap to Add Note"
+                }}}/>
+            </div>
 
-                <div id={"button-div2"}>
-                    <input type={"text"}
-                           id="line-button"
-                           onClick={() => {yo()}}
-                           onKeyDown={(e) => {if (e.key === 'Enter') {
-                               handleItemAdded(document.getElementById('line-button').value)
-                               document.getElementById('line-button').value = "Tap to Add Note";
-                               console.log("edited: ", edited);
-                           }}}/>
-                </div>
-            </div>
-            <div id={"button-div2"}>
-                <input type={"text"}
-                       id="line-button"
-                       onKeyDown={(e) => {if (e.key === 'Enter') {
-                                handleItemAdded(document.getElementById('line-button').value)
-                                }}}/>
-            </div>
 
             {showSortButton && <button className="sort-button"
                         onClick={() => setSortOptions(true)}>

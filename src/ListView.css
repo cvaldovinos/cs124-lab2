@@ -345,3 +345,9 @@ H2 {
   border-radius: 100px;
   font-size: 25px;
 }
+
+#tempTapLine{
+  position: relative;
+  top: 500px;
+  left: 100px
+}
