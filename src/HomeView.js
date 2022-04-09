@@ -30,7 +30,6 @@ function HomeView(props) {
     const [showDelete, setShowDelete] = useState(false)
     const [changeThis, setChangeThis] = useState("")
     const [showRename, setShowRename] = useState(false)
-    const [rename, setRename] = useState("")
 
     let [lists,loading,error] = useCollectionData(collection(props.db, props.collection));
     if (error) {
@@ -67,14 +66,16 @@ function HomeView(props) {
             }).then(() => {})
     }
 
-    function handleDeleteToggle(listId) {
-        setChangeThis(listId);
+    function handleDeleteToggle() {
         setShowDelete(!showDelete);
     }
 
-    function handleRenameToggle(listId) {
-        setChangeThis(listId)
+    function handleRenameToggle() {
         setShowRename(!showRename)
+    }
+    
+    function handleChangeThisUpdate(listId) {
+        setChangeThis(listId)
     }
 
     if (loading) {
@@ -87,13 +88,20 @@ function HomeView(props) {
                     <h1 className={"header"}> Notes </h1>
                 </div>
                 {/*<button onClick={(e) => props.onListView("Yo")}>Yo</button>*/}
-                <div id="bottom-part">
-                    {lists?.map((data) => <ListBox id = {data.key}
-                                                   name = {data.name}
-                                                   onListView = {props.onListView}
-                                                   onDeleteToggle = {handleDeleteToggle}
-                                                   onRenameToggle = {handleRenameToggle}
-                    />)}
+                <div id={"bottom-part"}>
+                    <div id="bottom-flex">
+                        {lists?.map((data) =>
+                            <ListBox id = {data.key}
+                                     name = {data.name}
+                                     onListView = {props.onListView}
+                                     changeThis = {changeThis}
+                                     showDelete = {showDelete}
+                                     showRename = {showRename}
+                                     onDeleteToggle = {handleDeleteToggle}
+                                     onRenameToggle = {handleRenameToggle}
+                                     onChangeThisUpdate = {handleChangeThisUpdate}
+                        />)}
+                    </div>
                 </div>
 
                 <div>
@@ -138,7 +146,10 @@ function HomeView(props) {
             </div>}
         {showRename && <div>
             <div>
-                <div id={"back"} onClick={() => setShowRename(false)}/>
+                <div id={"back"} onClick={() => {
+                    setShowRename(false);
+                    setChangeThis("");
+                }}/>
                 <div id={"warning"}>
                     <div id={"nameMessage"}> Rename the selected note and press 'Enter' to confirm.</div>
                     <input type={"text"}

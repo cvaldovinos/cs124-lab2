@@ -4,23 +4,35 @@ import {Fragment, useState} from "react";
 
 function ListBox(props) {
 
-    const [settings, setSettings] = useState(false)
+
+    // setSettings(false);
 
     return (
         <div>
 
         {/*  fix tabbing order here  */}
-        <div className="notes">
-            <div className={"listbox"} onClick={(e) => props.onListView(props.name, props.id)}>
-                {props.name}
+            <div className={"notes"}>
+                <button className={"listbox"} onClick={(e) => props.onListView(props.name, props.id)}>
+                    {props.name}
+                </button>
+                <button className="settings" onClick={(e) => {
+                    if (props.changeThis===props.id) {
+                        props.onChangeThisUpdate("");
+                    } else{
+                        props.onChangeThisUpdate(props.id);
+                    }
+                }}/>
             </div>
-            <button className="settings" onClick={(e) => setSettings(!settings)}></button>
-        </div>
-            {settings && <div>
-                <div className={"options"} onClick={(e) => props.onDeleteToggle(props.id)}>Delete</div>
-                <div className={"options"} onClick={(e) => props.onRenameToggle(props.id)}>Rename</div>
-            </div>}
-        </div>
+            {((props.changeThis === props.id) && !props.showDelete && !props.showRename) &&
+                <div>
+                    <div className={"options"}
+                         onClick={(e) => props.onDeleteToggle()}
+                    >Delete</div>
+                    <div className={"options"}
+                         onClick={(e) => props.onRenameToggle()}>Rename</div>
+                </div>
+            }
+        </Fragment>
     )
 }
 

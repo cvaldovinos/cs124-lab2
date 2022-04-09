@@ -35,13 +35,14 @@ function ListView(props) {
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
-    const qCreationAsc = query(collection(props.db, props.collection, props.listId, props.listId));
-    const qCreationDesc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("created", "desc"));
-    const qTextAsc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("select_visible", "desc"), orderBy("text", "asc"));
-    const qTextDesc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("select_visible", "desc"), orderBy("text", "desc"));
-    const qPriorityAsc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("select_visible", "desc"), orderBy("priority", "asc"));
-    const qPriorityDesc = query(collection(props.db, props.collection, props.listId, props.listId), orderBy("priority", "desc"));
+    const qCreationAsc = query(collection(props.db, props.collection, props.listId, "Notes"));
+    const qCreationDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("created", "desc"));
+    const qTextAsc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("text", "asc"));
+    const qTextDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("text", "desc"));
+    const qPriorityAsc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "asc"));
+    const qPriorityDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "desc"));
 
+    console.log(edited)
     function collectionSelector() {
         if (sort === "creationDesc") {
             return (qCreationDesc)
@@ -165,7 +166,7 @@ function ListView(props) {
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
         if (["text", "check_visible", "select_visible", "checked", "priority", "created"].includes(field)) {
-            updateDoc(doc(props.db, props.collection, props.listId, props.listId, itemID),
+            updateDoc(doc(props.db, props.collection, props.listId, "Notes", itemID),
                 {
                     [field]: newValue,
                 }).then(() => {})
@@ -192,13 +193,13 @@ function ListView(props) {
 
     // deletes data from the list by filtering out selected keys
     function handleDelete() {
-        selected.forEach(id => deleteDoc(doc(props.db, props.collection, props.listId, props.listId, id)));
+        selected.forEach(id => deleteDoc(doc(props.db, props.collection, props.listId, "Notes", id)));
         setSelected([]); // no selected items remain, so update that
         setShowWarning(false);
     }
 
     function handlePrioritySet(priority) {
-        selected.forEach(id => updateDoc(doc(props.db, props.collection, props.listId, props.listId, id),{priority:priority}))
+        selected.forEach(id => updateDoc(doc(props.db, props.collection, props.listId, "Notes", id),{priority:priority}))
         setShowPriorities(false);
     }
 
@@ -226,13 +227,13 @@ function ListView(props) {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
-        deleteDoc(doc(props.db, props.collection, props.listId, props.listId, itemID)).then(() => {});
+        deleteDoc(doc(props.db, props.collection, props.listId, "Notes", itemID)).then(() => {});
     }
 
     // adds an item by generating an id and using the passing in text
     function handleItemAdded(textValue) {
         const lineId = generateUniqueID();
-        setDoc(doc(props.db, props.collection, props.listId, props.listId, lineId),
+        setDoc(doc(props.db, props.collection, props.listId, "Notes", lineId),
             {
                 key: lineId,
                 text: textValue,
@@ -247,7 +248,7 @@ function ListView(props) {
 
     function handleItemAdded2(textValue) {
         const lineId = generateUniqueID();
-        setDoc(doc(props.db, props.collection, props.listId, props.listId, lineId),
+        setDoc(doc(props.db, props.collection, props.listId, "Notes", lineId),
             {
                 key: lineId,
                 text: textValue,
@@ -318,18 +319,20 @@ function ListView(props) {
                     <div class={document.activeElement.id==='tempTapLine' ? "activeText": "inactiveText"}>Tap to Add Note</div>
                 </div>
             </div>
-            {showSortButton && <button className="sort-button"
-                        onClick={() => setSortOptions(true)}>
+            <div id={"tapLine"}>
+                <input id={"tempTapLine"}
+                       className={"tempTapClass"}
+                       type={"text"}
+                       autoComplete={"off"}
+                       onClick={() => tapLineClick()}
+                       onKeyDown={(e) => tapLineType(e)}
+                       defaultValue={""}
+                />
+                <div className={document.activeElement.id==='tempTapLine' ? "activeText": "inactiveText"}>Tap to Add Note</div>
+            </div>
 
-                    {(sort === "textAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>A Z</div></div>}
-                    {(sort === "textDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>Z A</div></div>}
-                    {(sort === "creationAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>JAN</div><div id={"date2"}>DEC</div></div></div>}
-                    {(sort === "creationDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>DEC</div><div id={"date2"}>JAN</div></div></div>}
-                    {(sort === "priorityAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>1 3</div></div>}
-                    {(sort === "priorityDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>3 1</div></div>}
-                </button>}
-            <div id="title"><h2>{props.title}</h2></div>
-            <div id={"lineList"}>
+            <div id="title" ><h2 onClick={() => {handleLineEdited(-1)}}>{props.title}</h2></div>
+            <div id={"lineList"} onClick={() => {handleLineEdited(-1)}}>
                 <LineList lineList={list}
                           tap={tapLine}
                           selectedLines={selected}
@@ -379,10 +382,8 @@ function ListView(props) {
 
                         </div>
                     </div>
-                </div>
             </div>}
-            {sortOptions && <div>
-                <div>
+            {sortOptions && <div className={"popup"}>
                     <div id={"back"} onClick={() => setSortOptions(false)}/>
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Choose a sorting option.</div>
@@ -395,7 +396,6 @@ function ListView(props) {
                             <div id={"priorityAscButton"} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</div>
                         </div>
                     </div>
-                </div>
             </div>}
        </div>
     );
