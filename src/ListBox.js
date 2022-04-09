@@ -8,7 +8,7 @@ function ListBox(props) {
     // setSettings(false);
 
     return (
-        <div>
+        <Fragment>
 
         {/*  fix tabbing order here  */}
             <div className={"notes"}>

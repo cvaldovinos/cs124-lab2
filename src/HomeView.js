@@ -25,8 +25,6 @@ import {useCollectionData} from "react-firebase-hooks/firestore";
 
 function HomeView(props) {
     const [showName, setShowName] = useState(false)
-    const [name, setName] = useState("");
-
     const [showDelete, setShowDelete] = useState(false)
     const [changeThis, setChangeThis] = useState("")
     const [showRename, setShowRename] = useState(false)
@@ -39,7 +37,7 @@ function HomeView(props) {
     function handleListAdded(listName) {
         console.log("add")
         let listId = generateUniqueID();
-        setName("")
+        // setName("")
         setShowName(false)
         setDoc(doc(props.db, props.collection, listId),
             {
@@ -57,7 +55,7 @@ function HomeView(props) {
     }
 
     function handleListRenamed(listId, newName) {
-        setRename("")
+        // setRename("")
         setChangeThis("")
         setShowRename(!showRename)
         updateDoc(doc(props.db, props.collection, listId),
@@ -114,7 +112,10 @@ function HomeView(props) {
                 </div>
         {showDelete && <div>
             <div>
-                <div id={"back"} onClick={() => setShowDelete(false)}/>
+                <div id={"back"} onClick={() => {
+                    setShowDelete(false);
+                    setChangeThis("");
+                }}/>
                 <div id={"warning"}>
                     <div>
                         This list will be <span id={"deleteText"}>permanently deleted</span>.
@@ -134,10 +135,12 @@ function HomeView(props) {
                 <div id={"back"} onClick={() => setShowName(false)}/>
                 <div id={"warning"}>
                     <div id={"nameMessage"}> Name your note and press 'Enter' to confirm.</div>
-                    <input type={"text"}
-                           onChange ={(e) => {setName(e.target.value)}}
+                    <input id={"createNoteBox"}
+                           type={"text"}
+                           autoComplete={"off"}
+                           // onChange ={(e) => {setName(e.target.value)}}
                            onKeyDown={(e) => {if (e.key === 'Enter') {
-                                handleListAdded(name)
+                                handleListAdded(document.getElementById('createNoteBox').value)
                                 }
                            }}></input>
 
@@ -152,10 +155,12 @@ function HomeView(props) {
                 }}/>
                 <div id={"warning"}>
                     <div id={"nameMessage"}> Rename the selected note and press 'Enter' to confirm.</div>
-                    <input type={"text"}
-                           onChange ={(e) => {setRename(e.target.value)}}
+                    <input id={"renameNote"}
+                           type={"text"}
+                           autoComplete={"off"}
+                           // onChange ={(e) => {setRename(e.target.value)}}
                            onKeyDown={(e) => {if (e.key === 'Enter') {
-                               handleListRenamed(changeThis, rename)
+                               handleListRenamed(changeThis, document.getElementById('renameNote').value)
                            }
                            }}></input>
 

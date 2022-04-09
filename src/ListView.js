@@ -120,17 +120,9 @@ function ListView(props) {
 
     function handleLineEdited(lineID) {
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
-        if (lineID===-2) {
-            document.getElementById('tempTapLine').value=""
-        }
-        if (edited === -2 && document.getElementById('tempTapLine').value!=="Tap to Add Note") {
-            if (document.getElementById('tempTapLine').value === "") {
-                document.getElementById('tempTapLine').value="Tap to Add Note";
-            } else {
-                // display check and select box for added note, create new tap line
+        if (lineID !== -2 && document.getElementById('tempTapLine').value!=="") {
                 handleItemAdded2(document.getElementById('tempTapLine').value);
-                document.getElementById('tempTapLine').value="Tap to Add Note";
-            }
+            document.getElementById('tempTapLine').value=""
         }
         setEdited(lineID) // update edited line state
     }
@@ -154,14 +146,14 @@ function ListView(props) {
     //     setEdited(-2);
     // }
 
-    function handleTapChanged(key, newValue) {
-        setTapLine({
-            text: newValue
-        })
-        if (key === "Enter") {
-            document.activeElement.blur();
-        }
-    }
+    // function handleTapChanged(key, newValue) {
+    //     setTapLine({
+    //         text: newValue
+    //     })
+    //     if (key === "Enter") {
+    //         document.activeElement.blur();
+    //     }
+    // }
 
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
@@ -279,15 +271,15 @@ function ListView(props) {
 
     function tapLineClick() {
         setEdited(-2)
-        // handleLineEdited(-2)
     }
 
     function tapLineType(e) {
-        setEdited(-2)
+        // handleLineEdited(-2)
         if (e.key=== 'Enter') {
-            handleItemAdded2(document.getElementById('tempTapLine').value)
-            document.getElementById('tempTapLine').value="Tap to Add Note"
+            handleItemAdded2(document.getElementById('tempTapLine').value);
+            document.getElementById('tempTapLine').value="";
             document.activeElement.blur();
+            setEdited(-1);
         }
     }
 
@@ -305,18 +297,20 @@ function ListView(props) {
 
 
     return (
-        <div id="container" onClick={() => {handleLineEdited(-1)}}>
-            <div id={"button-div"}>
-                <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
-                <div id={"tapLine"}>
-                    <input id={"tempTapLine"}
-                       className={"tempTapClass"}
-                       type={"text"}
-                       // onClick={() => tapLineClick()}
-                       onKeyDown={(e) => tapLineType(e)}
-                       defaultValue={"Tap to Add Note"}
-                    />
-                    <div class={document.activeElement.id==='tempTapLine' ? "activeText": "inactiveText"}>Tap to Add Note</div>
+        <div id="container">
+            <div id={"top"} onClick={() => {handleLineEdited(-1)}}>
+                <div id={"button-div"}>
+                    <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
+                    {showSortButton && <button className="sort-button"
+                                               onClick={() => setSortOptions(true)}>
+
+                        {(sort === "textAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>A Z</div></div>}
+                        {(sort === "textDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>Z A</div></div>}
+                        {(sort === "creationAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>JAN</div><div id={"date2"}>DEC</div></div></div>}
+                        {(sort === "creationDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>DEC</div><div id={"date2"}>JAN</div></div></div>}
+                        {(sort === "priorityAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>1 3</div></div>}
+                        {(sort === "priorityDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>3 1</div></div>}
+                    </button>}
                 </div>
             </div>
             <div id={"tapLine"}>
@@ -348,12 +342,10 @@ function ListView(props) {
                           onPriority={handlePriority}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
-                          onTapChanged={handleTapChanged}
                 />
             </div>
             {/*<div className={"line"}><div id={"textboxDiv"}><input type={"text"}className={"textboxes"}/></div></div>*/}
-            {showWarning && <div>
-                <div>
+            {showWarning && <div className={"popup"}>
                     <div id={"back"} onClick={() => setShowWarning(false)}/>
                     <div id={"warning"}>
                         <div>
@@ -367,10 +359,8 @@ function ListView(props) {
 
                         </div>
                     </div>
-                </div>
-            </div>}
-            {showPriorities && <div>
-                <div>
+                </div>}
+            {showPriorities && <div className={"popup"}>
                     <div id={"back"} onClick={() => setShowPriorities(false)}/>
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Set priority value for selected items.</div>

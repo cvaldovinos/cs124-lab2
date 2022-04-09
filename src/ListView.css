@@ -349,7 +349,7 @@ H2 {
 
 
 .inactiveText {
-  position: absolute;
+  position: relative;
   z-index: 10;
   top: -100%;
   left: 10%;
@@ -380,7 +380,22 @@ H2 {
 
 #tapLine{
   position: relative;
-  top: 500px;
+  top: 600px;
   left: 100px;
-  width:200px;
+  width:150px;
+  height:20px;
+}
+
+#top {
+  position:fixed;
+  grid-row: 1/span 1;
+  grid-column: 1/span all;
+  width:100%;
+  height:64px;
+}
+
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
