@@ -100,3 +100,20 @@ ul {
 /*    !*border: thin solid cornflowerblue;*!*/
 /*    !*background-image: url("noteLine.png");*!*/
 /*}*/
+
+
+/*.inactiveText {*/
+/*    position: relative;*/
+/*    z-index: 10;*/
+/*    top: -100%;*/
+/*    left: 10%;*/
+/*    pointer-events:none;*/
+/*}*/
+
+/*.activeText{*/
+/*    position: absolute;*/
+/*    z-index: -10;*/
+/*    top:20px;*/
+/*    left: 5px;*/
+/*    pointer-events: none;*/
+/*}*/

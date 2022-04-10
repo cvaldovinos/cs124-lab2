@@ -84,7 +84,7 @@ li {
     padding-left: 39px;
     /* height: 20px; */
     background: lightgoldenrodyellow;
-    border-top: solid cornflowerblue;
+    border-bottom: solid cornflowerblue;
     border-width: 2px;
 }
 

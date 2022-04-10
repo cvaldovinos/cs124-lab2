@@ -55,6 +55,23 @@ function LineList(props) {
                     {/*                                  }*/}
                     {/*                                  value={props.tap.text}/></div>*/}
                     {/*</li>*/}
+                    {/*<div id={"tapLine"}>*/}
+                    {/*    <input id={"tempTapLine"}*/}
+                    {/*           className={"tempTapClass"}*/}
+                    {/*           type={"text"}*/}
+                    {/*           autoComplete={"off"}*/}
+                    {/*           onClick={() => {*/}
+                    {/*               // document.activeElement.id="random";*/}
+                    {/*               // document.activeElement.id="";*/}
+                    {/*               props.handleTapLineClick();*/}
+                    {/*               console.log("ID", document.activeElement.id);*/}
+                    {/*           }}*/}
+                    {/*           onKeyDown={(e) => props.handleTapLineType(e)}*/}
+                    {/*           defaultValue={""}*/}
+                    {/*    />*/}
+                    {/*    {console.log("ID", document.activeElement.id)}*/}
+                    {/*    <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText" : "activeText"}>Tap to Add Note</div>*/}
+                    {/*</div>*/}
             </ul>
             {/*<div id="display_lines">*/}
 

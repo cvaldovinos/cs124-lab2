@@ -312,17 +312,7 @@ function ListView(props) {
                         {(sort === "priorityDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>3 1</div></div>}
                     </button>}
                 </div>
-            </div>
-            <div id={"tapLine"}>
-                <input id={"tempTapLine"}
-                       className={"tempTapClass"}
-                       type={"text"}
-                       autoComplete={"off"}
-                       onClick={() => tapLineClick()}
-                       onKeyDown={(e) => tapLineType(e)}
-                       defaultValue={""}
-                />
-                <div className={document.activeElement.id==='tempTapLine' ? "activeText": "inactiveText"}>Tap to Add Note</div>
+
             </div>
 
             <div id="title" ><h2 onClick={() => {handleLineEdited(-1)}}>{props.title}</h2></div>
@@ -342,6 +332,8 @@ function ListView(props) {
                           onPriority={handlePriority}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
+                          // handleTapLineClick={tapLineClick}
+                          // handleTapLineType={tapLineType}
                 />
             </div>
             {/*<div className={"line"}><div id={"textboxDiv"}><input type={"text"}className={"textboxes"}/></div></div>*/}

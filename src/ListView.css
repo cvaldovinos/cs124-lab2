@@ -3,7 +3,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 64px 1fr;
-  grid-template-rows: 64px auto;
+  grid-template-rows: 64px auto 1fr;
   background: #fafad2;
   overflow: scroll;
   z-index: 0;
@@ -12,7 +12,19 @@
 H2 {
   font-family: Georgia;
   height: 28px;
-  margin: 20px 0px 0px;
+  margin: 0px 0px 0px;
+  position: relative;
+  right:0px;
+  padding-left: 10%;
+  padding-right: 10%;
+  align-self: stretch;
+  /*z-index: 101;*/
+  /*grid-row: 1/span 1;*/
+  /*grid-column: 2/span 1;*/
+  /*justify-content: space-between;*/
+
+  /*top: -20px;*/
+  /*left: 40%;*/
 }
 
 .back-button {
@@ -102,7 +114,7 @@ H2 {
   /*position: relative;*/
   margin-left: 0px;
   grid-column: 1/span 2;
-  grid-row: 2/span 2;
+  grid-row: 2/span 1;
 }
 
 #title {
@@ -116,6 +128,7 @@ H2 {
   padding-top: 13px;
   padding-bottom: 0;
   pointer-events: none;
+
 }
 
 #warning {
@@ -347,27 +360,41 @@ H2 {
 }
 
 
-
 .inactiveText {
   position: relative;
-  z-index: 10;
-  top: -100%;
-  left: 10%;
+  z-index: 100;
+  top: -10px;
+  /*padding-left: 10%;*/
+  width: auto;
   pointer-events:none;
+  font-family: "Trebuchet MS";
+  font-size: 18px;
 }
 
 .activeText{
-  position: absolute;
+  position: relative;
   z-index: -10;
-  top:0px;
-  left: 5px;
+  top: -100%;
+  left: 10%;
+  display: none;
+  color:lightgoldenrodyellow;
+  pointer-events:none;
 }
 
-.tempTapClass{
+#tempTapLine{
+  position: relative;
   z-index: 100;
-  width:100%;
-  height:100%;
-  /*background: blue;*/
+  width:99%;
+  height:20px;
+  top:10px;
+  margin: 0;
+  padding: 0;
+  background: lightgoldenrodyellow;
+  border-width: 0;
+  font-family: "Trebuchet MS";
+  font-size: 18px;
+  /*border: ;*/
+  /*border-bottom: solid cornflowerblue*/
 }
 
 .tempTapClass:hover{
@@ -379,23 +406,61 @@ H2 {
 }
 
 #tapLine{
-  position: relative;
-  top: 600px;
-  left: 100px;
-  width:150px;
-  height:20px;
+  grid-row: 3/span 1;
+  grid-column: 2/span all;
+  width:auto;
+  height:40px;
+  z-index: 102;
+  /*width: 99%;*/
+  border-bottom: solid cornflowerblue;
+  border-width: 2px;
+  margin: 0;
+  padding: 0 0 0 80px;
+
+
 }
 
 #top {
-  position:fixed;
+  position:relative;
   grid-row: 1/span 1;
   grid-column: 1/span all;
   width:100%;
   height:64px;
+  border-bottom: solid cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  border-width: 2px;
+  /*align-items: center;*/
+  /*justify-items: center;*/
+  /*align-content: center;*/
+  z-index: 100;
+  /*background: lightgoldenrodyellow;*/
 }
 
 .popup {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+#bottom {
+  grid-row: 3/span 1;
+  grid-column: 1/span all;
+  /*padding-left: 64px;*/
+}
+
+#endList {
+  grid-row: 3/span 1;
+  grid-column: 1/span 2;
+  list-style: none;
+  z-index: 2;
+}
+
+#endList li {
+  height: 40px;
+  margin: 0;
+}
+
+.empty {
+  padding: 0;
 }
