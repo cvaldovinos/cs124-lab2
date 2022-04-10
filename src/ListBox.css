@@ -14,7 +14,7 @@
 
 .listbox {
     z-index: 1;
-    width: 100%;
+    width: 90%;
     height:100%;
     padding: 30px 15px;
     border-style: solid;
@@ -27,6 +27,7 @@
     align-content: end;
     font-family: "Trebuchet MS";
     font-size: 15px;
+    /*position: absolute;*/
 }
 
 .options {
@@ -38,9 +39,14 @@
 }
 
 .notes {
+    /*width: auto;*/
+    /*height: 5%;*/
+    /*padding-right: 5px;*/
+    /*padding-bottom: 20px;*/
     width: auto;
-    height: 5%;
-    padding-right: 5px;
+    /* height: 5%; */
+    min-width: 33%;
+    /* padding-right: 5px; */
     padding-bottom: 20px;
 }
 
