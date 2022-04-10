@@ -387,6 +387,37 @@ function ListView(props) {
                         </div>
                     </div>
             </div>}
+            <ul id={"endList"}>
+                <li id={"tapLine"}>
+                    <input id={"tempTapLine"}
+                           className={"tempTapClass"}
+                           type={"text"}
+                           autoComplete={"off"}
+                           onClick={() => tapLineClick()}
+                           onKeyDown={(e) => tapLineType(e)}
+                           defaultValue={""}
+                    />
+                    <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText": "activeText"}>Tap to Add Note</div>
+                </li>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+
+            </ul>
+            <div id={"bottom"} onClick={() => {handleLineEdited(-1)}}></div>
        </div>
     );
 }
