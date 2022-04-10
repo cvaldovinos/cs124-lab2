@@ -29,6 +29,7 @@
     background-color: aliceblue;
     border: solid black;
     padding: 5px;
+    align-self: auto;
 
 }
 

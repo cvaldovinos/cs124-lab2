@@ -109,65 +109,66 @@ function HomeView(props) {
                             <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
                         </div>
                     </button>
-                </div>
-        {showDelete && <div>
-            <div>
-                <div id={"back"} onClick={() => {
-                    setShowDelete(false);
-                    setChangeThis("");
-                }}/>
-                <div id={"warning"}>
+                {showDelete && <div>
                     <div>
-                        This list will be <span id={"deleteText"}>permanently deleted</span>.
-                        Are you sure you want to do this?
+                        <div id={"back"} onClick={() => {
+                            setShowDelete(false);
+                            setChangeThis("");
+                        }}/>
+                        <div id={"warning"}>
+                            <div>
+                                This list will be <span id={"deleteText"}>permanently deleted</span>.
+                                Are you sure you want to do this?
+                            </div>
+                            <div id={"warningButtons"}>
+
+                                <div id={"no"} onClick={(e) => setShowDelete(false)}>No, Go Back</div>
+                                <div id={"yes"} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
+
+                            </div>
+                        </div>
                     </div>
-                    <div id={"warningButtons"}>
+                </div>}
+                {showName && <div>
+                    <div>
+                        <div id={"back"} onClick={() => setShowName(false)}/>
+                        <div id={"warning"}>
+                            <div id={"nameMessage"}> Name your note and press 'Enter' to confirm. <br/> (Max. 25 characters)</div>
+                            <input id={"createNoteBox"}
+                                   type={"text"}
+                                   maxLength={25}
+                                   autoComplete={"off"}
+                                   // onChange ={(e) => {setName(e.target.value)}}
+                                   onKeyDown={(e) => {if (e.key === 'Enter') {
+                                        handleListAdded(document.getElementById('createNoteBox').value)
+                                        }
+                                   }}></input>
 
-                        <div id={"no"} onClick={(e) => setShowDelete(false)}>No, Go Back</div>
-                        <div id={"yes"} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
+                            </div>
+                        </div>
+                    </div>}
+                {showRename && <div>
+                    <div>
+                        <div id={"back"} onClick={() => {
+                            setShowRename(false);
+                            setChangeThis("");
+                        }}/>
+                        <div id={"warning"}>
+                            <div id={"nameMessage"}> Rename the selected note and press 'Enter' to confirm. <br/> (Max. 25 characters)</div>
+                            <input id={"renameNote"}
+                                   type={"text"}
+                                   maxLength={25}
+                                   autoComplete={"off"}
+                                   // onChange ={(e) => {setRename(e.target.value)}}
+                                   onKeyDown={(e) => {if (e.key === 'Enter') {
+                                       handleListRenamed(changeThis, document.getElementById('renameNote').value)
+                                   }
+                                   }}></input>
 
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>}
-        {showName && <div>
-            <div>
-                <div id={"back"} onClick={() => setShowName(false)}/>
-                <div id={"warning"}>
-                    <div id={"nameMessage"}> Name your note and press 'Enter' to confirm.</div>
-                    <input id={"createNoteBox"}
-                           type={"text"}
-                           autoComplete={"off"}
-                           // onChange ={(e) => {setName(e.target.value)}}
-                           onKeyDown={(e) => {if (e.key === 'Enter') {
-                                handleListAdded(document.getElementById('createNoteBox').value)
-                                }
-                           }}></input>
-
-                    </div>
-                </div>
-            </div>}
-        {showRename && <div>
-            <div>
-                <div id={"back"} onClick={() => {
-                    setShowRename(false);
-                    setChangeThis("");
-                }}/>
-                <div id={"warning"}>
-                    <div id={"nameMessage"}> Rename the selected note and press 'Enter' to confirm.</div>
-                    <input id={"renameNote"}
-                           type={"text"}
-                           autoComplete={"off"}
-                           // onChange ={(e) => {setRename(e.target.value)}}
-                           onKeyDown={(e) => {if (e.key === 'Enter') {
-                               handleListRenamed(changeThis, document.getElementById('renameNote').value)
-                           }
-                           }}></input>
-
-                </div>
-            </div>
-        </div>}
-            </div>)
-}
+                </div>}
+        </div>)
+    }
 
 export default HomeView;
