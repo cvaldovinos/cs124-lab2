@@ -81,7 +81,7 @@ function HomeView(props) {
         </div>;
     }
 
-    return (<div id="contained">
+    return (<div id="homepage">
                 <div id="titled">
                     <h1 className={"header"}> Notes </h1>
                 </div>
@@ -101,10 +101,8 @@ function HomeView(props) {
                         />)}
                     </div>
                 </div>
-
-                <div>
-                    <button id="addnotebutton" onClick={(e) => setShowName(!showName)}><div>+</div></button>
-                    <button id="settings">
+                <button id="addnotebutton" onClick={(e) => setShowName(!showName)}><div>+</div></button>
+                <button id="settings">
                         <div>
                             <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
                         </div>
