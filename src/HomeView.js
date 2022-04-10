@@ -77,7 +77,7 @@ function HomeView(props) {
     }
 
     if (loading) {
-        return <div>Loading...
+        return <div className={"homeLoading"}>Loading...
         </div>;
     }
 
@@ -86,10 +86,14 @@ function HomeView(props) {
                     <h1 className={"header"}> Notes </h1>
                 </div>
                 {/*<button onClick={(e) => props.onListView("Yo")}>Yo</button>*/}
-                <div id={"bottom-part"}>
-                    <div id="bottom-flex">
+                <div id={"bottom-part"} onClick={() => {
+                    console.log("parentclicked")
+                }}>
+                    <div id="bottom-flex" >
+
                         {lists?.map((data) =>
-                            <ListBox id = {data.key}
+                            <ListBox key = {data.key}
+                                     id = {data.key}
                                      name = {data.name}
                                      onListView = {props.onListView}
                                      changeThis = {changeThis}
@@ -115,13 +119,16 @@ function HomeView(props) {
                         }}/>
                         <div id={"warning"}>
                             <div>
-                                This list will be <span id={"deleteText"}>permanently deleted</span>.
+                                This note will be <span id={"deleteText"}>permanently deleted</span>.
                                 Are you sure you want to do this?
                             </div>
                             <div id={"warningButtons"}>
 
-                                <div id={"no"} onClick={(e) => setShowDelete(false)}>No, Go Back</div>
-                                <div id={"yes"} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
+                                <div id={"no"} tabIndex={"0"} onClick={(e) => {
+                                    setShowDelete(false);
+                                    setChangeThis("");
+                                    }}>No, Go Back</div>
+                                <div id={"yes"} tabIndex={"0"} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
 
                             </div>
                         </div>

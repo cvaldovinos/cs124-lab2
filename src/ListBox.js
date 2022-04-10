@@ -28,10 +28,10 @@ function ListBox(props) {
 
                 {((props.changeThis === props.id) && !props.showDelete && !props.showRename) &&
                     <div id={"optionsBox"} >
-                        <div className={"options"} tabindex="0"
+                        <div className={"options"} tabIndex="0"
                              onClick={(e) => props.onDeleteToggle()}
                         >Delete</div>
-                        <div className={"options"} tabindex="0"
+                        <div className={"options"} tabIndex="0"
                              onClick={(e) => props.onRenameToggle()}>Rename</div>
                     </div>
                 }

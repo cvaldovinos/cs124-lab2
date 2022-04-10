@@ -112,11 +112,11 @@ function LineList(props) {
 
             {/*displays our trash/"Delete" button*/}
             <div id={"lower-left-buttons"}>
-            {props.showDeleteButton && <div><button className={"priority"}
+            {props.showDeleteButton && <div><button className={"priority"} tabIndex={props.warning ? -1 : 0}
                                                     onClick={props.onPriority}>
                                                 &#128290;
                                             </button>
-                                            <button className={"trashButton"}
+                                            <button className={"trashButton"} tabIndex={props.warning ? -1 : 0}
                                                     onClick={props.onTrash}>
                                                 &#128465;
                                             </button>
@@ -124,7 +124,7 @@ function LineList(props) {
 
             {/*displays our show/hide completed items button */}
             {props.showHideButton &&
-                <button id="eyeButton"
+                <button id="eyeButton" tabIndex={props.warning ? -1 : 0}
                         onClick={props.onHideToggle}>
                     <div>
                         <img id="eye" className={hideClass} alt={""}/>

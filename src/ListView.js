@@ -42,6 +42,7 @@ function ListView(props) {
     const qPriorityAsc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "asc"));
     const qPriorityDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "desc"));
 
+    console.log(selected)
     console.log(edited)
     function collectionSelector() {
         if (sort === "creationDesc") {
@@ -346,8 +347,8 @@ function ListView(props) {
                         </div>
                         <div id={"warningButtons"}>
 
-                            <div id={"no"} onClick={() => setShowWarning(false)}>No, Go Back</div>
-                            <div id={"yes"} onClick={handleDelete}>Yes, Delete</div>
+                            <div id={"no"} tabIndex={0} onClick={() => setShowWarning(false)}>No, Go Back</div>
+                            <div id={"yes"} tabIndex={0} onClick={handleDelete}>Yes, Delete</div>
 
                         </div>
                     </div>
@@ -357,10 +358,10 @@ function ListView(props) {
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Set priority value for selected items.</div>
                         <div id={"priorityButtons"}>
-                            <div id={"priorityZero"} onClick={() => handlePrioritySet(0)}>Remove Priority</div>
-                            <div id={"priorityOne"} onClick={() => handlePrioritySet(1)}>1</div>
-                            <div id={"priorityTwo"} onClick={() => handlePrioritySet(2)}>2</div>
-                            <div id={"priorityThree"} onClick={() => handlePrioritySet(3)}>3</div>
+                            <div id={"priorityZero"} tabIndex={0} onClick={() => handlePrioritySet(0)}>Remove Priority</div>
+                            <div id={"priorityOne"} tabIndex={0} onClick={() => handlePrioritySet(1)}>1</div>
+                            <div id={"priorityTwo"} tabIndex={0} onClick={() => handlePrioritySet(2)}>2</div>
+                            <div id={"priorityThree"} tabIndex={0} onClick={() => handlePrioritySet(3)}>3</div>
 
                         </div>
                     </div>
@@ -370,12 +371,12 @@ function ListView(props) {
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Choose a sorting option.</div>
                         <div id={"sortOptions"}>
-                            <div id={"creationAscButton"} onClick={() => changeSortOption("creationAsc")}> Oldest to Newest</div>
-                            <div id={"creationDescButton"} onClick={() => changeSortOption("creationDesc")}>Newest to Oldest</div>
-                            <div id={"textAscButton"} onClick={() => changeSortOption("textAsc")}>Alphabetical</div>
-                            <div id={"textDescButton"} onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical</div>
-                            <div id={"priorityDescButton"} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</div>
-                            <div id={"priorityAscButton"} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</div>
+                            <div id={"creationAscButton"} tabIndex={0} onClick={() => changeSortOption("creationAsc")}> Oldest to Newest</div>
+                            <div id={"creationDescButton"} tabIndex={0} onClick={() => changeSortOption("creationDesc")}>Newest to Oldest</div>
+                            <div id={"textAscButton"} tabIndex={0} onClick={() => changeSortOption("textAsc")}>Alphabetical</div>
+                            <div id={"textDescButton"} tabIndex={0} onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical</div>
+                            <div id={"priorityDescButton"} tabIndex={0} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</div>
+                            <div id={"priorityAscButton"} tabIndex={0} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</div>
                         </div>
                     </div>
             </div>}
