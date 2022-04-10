@@ -83,6 +83,11 @@ function HomeView(props) {
 
     return (<div id="homepage">
                 <div id="titled">
+                    <button id="settings">
+                        <div>
+                            <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
+                        </div>
+                    </button>
                     <h1 className={"header"}> Notes </h1>
                 </div>
                 {/*<button onClick={(e) => props.onListView("Yo")}>Yo</button>*/}
@@ -105,12 +110,8 @@ function HomeView(props) {
                         />)}
                     </div>
                 </div>
-                <button id="addnotebutton" onClick={(e) => setShowName(!showName)}><div>+</div></button>
-                <button id="settings">
-                        <div>
-                            <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
-                        </div>
-                    </button>
+                <button id="addnotebutton" onClick={(e) => {setShowName(!showName)}}><div>+</div></button>
+
                 {showDelete && <div>
                     <div>
                         <div id={"back"} onClick={() => {

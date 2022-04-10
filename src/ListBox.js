@@ -8,18 +8,16 @@ function ListBox(props) {
     // setSettings(false);
 
     return (
-        <Fragment>
-
+        <div>
         {/*  fix tabbing order here  */}
-            <div className={"notes"}>
-                <div id={"bluebox"}>
-                    <button className={"listbox"} onClick={(e) => props.onListView(props.name, props.id)}>
+            <div className={"notes"} >
+                <div id={"listbox"}>
+                    <button className={"bluebox"} onClick={(e) => {props.onListView(props.name, props.id)}}>
                     {props.name}
-
                     </button>
                     <button className="settings" onClick={(e) => {
                         if (props.changeThis===props.id) {
-                            props.onChangeThisUpdate("");
+                            props.onChangeThisUpdate("")
                         } else{
                             props.onChangeThisUpdate(props.id);
                         }
@@ -36,8 +34,7 @@ function ListBox(props) {
                     </div>
                 }
             </div>
-
-        </Fragment>
+        </div>
     )
 }
 

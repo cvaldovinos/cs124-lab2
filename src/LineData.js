@@ -53,31 +53,37 @@ function LineData(props) {
             {!hideLine && <div>
                 <li className={itemClasses.join(" ")}>
                     <button className={selectClasses.join(" ")}
+                            tabIndex={props.warning ? -1 : 0}
                             onClick={(e) => props.onToggleSelected(props.line.key)}>
                         {props.anySelected && !!props.priority &&
                             <span className={"selectButtonText"}>
                                 {props.priority}
                             </span>}
                     </button>
-                    {props.checked && <input type={"checkbox"}
-                           className={checkClasses.join(" ")}
-                           onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
+                    {props.checked && <input    type={"checkbox"}
+                                                tabIndex={props.warning ? -1 : 0}
+                                                className={checkClasses.join(" ")}
+                                                onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
                     {!props.checked && <input type={"checkbox"}
-                                             className={checkClasses.join(" ")}
+                                              tabIndex={props.warning ? -1 : 0}
+                                              className={checkClasses.join(" ")}
                                              onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
-                    <div id={"textboxDiv"}><input type={"text"}
-                           className={textClasses.join(" ")}
-                           onClick={(e) => clickTextWrapper(e, props.line.key)}
-                           onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
-                           onKeyDown={(e) =>
-                           {if (e.key === 'Enter') {
-                               props.onItemChanged(props.line.key, e.key, props.text);
-                               props.onEdited(props.line.key);
-                           } if (e.key === 'Backspace') {
-                               props.onItemChanged(props.line.key, e.key, props.text);
-                           }}}
-                           value={props.text}
-                           id={props.line.key}/></div>
+                    <div id={"textboxDiv"}>
+                        <input type={"text"}
+                               className={textClasses.join(" ")}
+                               onClick={(e) => clickTextWrapper(e, props.line.key)}
+                               tabIndex={props.warning ? -1 : 0}
+                               onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
+                               onKeyDown={(e) =>
+                                       {if (e.key === 'Enter') {
+                                           props.onItemChanged(props.line.key, e.key, props.text);
+                                           props.onEdited(props.line.key);
+                                       } if (e.key === 'Backspace') {
+                                           props.onItemChanged(props.line.key, e.key, props.text);
+                                       }}}
+                               value={props.text}
+                               id={props.line.key}/>
+                    </div>
                 </li>
             </div>}
     </Fragment>)

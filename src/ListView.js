@@ -270,9 +270,9 @@ function ListView(props) {
 
 
 
-    function tapLineClick() {
-        setEdited(-2)
-    }
+    // function tapLineClick() {
+    //
+    // }
 
     function tapLineType(e) {
         // handleLineEdited(-2)
@@ -301,8 +301,11 @@ function ListView(props) {
         <div id="container">
             <div id={"top"} onClick={() => {handleLineEdited(-1)}}>
                 <div id={"button-div"}>
-                    <button className="back-button" onClick={(e) => (props.onListView(""))}>&larr;</button>
+                    <button className="back-button"
+                            tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
+                            onClick={(e) => (props.onListView(""))}>&larr;</button>
                     {showSortButton && <button className="sort-button"
+                                               tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
                                                onClick={() => setSortOptions(true)}>
 
                         {(sort === "textAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>A Z</div></div>}
@@ -333,6 +336,7 @@ function ListView(props) {
                           onPriority={handlePriority}
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
+                          warning={(showWarning || showPriorities || sortOptions)}
                           // handleTapLineClick={tapLineClick}
                           // handleTapLineType={tapLineType}
                 />
@@ -386,12 +390,20 @@ function ListView(props) {
                            className={"tempTapClass"}
                            type={"text"}
                            autoComplete={"off"}
-                           onClick={() => tapLineClick()}
+                           tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
+                           onClick={() => setEdited(-2)}
+                           onChange={() => setEdited(-2)}
                            onKeyDown={(e) => tapLineType(e)}
                            defaultValue={""}
                     />
                     <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText": "activeText"}>Tap to Add Note</div>
                 </li>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
                 <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
                 <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
                 <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>

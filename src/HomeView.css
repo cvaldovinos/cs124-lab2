@@ -5,6 +5,8 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 150px auto;
+    background: white;
+    overflow: scroll;
 }
 
 #titled {
@@ -34,7 +36,7 @@
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    /*justify-content: around;*/
+    /*justify-content: space-around;*/
 
 }
 
@@ -49,7 +51,7 @@
 
     top: 20px;
     left: 20px;
-    position: absolute;
+    position: relative;
     font-size: 45px;
     width: 50px;
     height: 50px;

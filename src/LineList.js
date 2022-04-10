@@ -40,6 +40,7 @@ function LineList(props) {
                               onItemAdded={props.onItemAdded}
                               onEdited={props.onEdited}
                               onToggleSelected={props.onToggleSelected}
+                              warning={props.warning}
                     />)}
                     {/*<li>*/}
                     {/*    <div id={"textboxDiv"}><input type={"text"}*/}
@@ -126,7 +127,7 @@ function LineList(props) {
             {props.showHideButton &&
                 <button id="eyeButton" tabIndex={props.warning ? -1 : 0}
                         onClick={props.onHideToggle}>
-                    <div>
+                    <div id={"eyeImgDiv"}>
                         <img id="eye" className={hideClass} alt={""}/>
                     </div>
                 </button>}
