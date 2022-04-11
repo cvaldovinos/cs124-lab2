@@ -22,7 +22,6 @@ function App() {
     const [listId, setListId] = useState(0);
     const [listView, setListView] = useState(true);
     const [title,setTitle] = useState("");
-    let currentView= "listview";
 
    function handleListView(text, newId) {
        setTitle(text);
@@ -30,15 +29,8 @@ function App() {
        setListView(!listView);
    }
 
-   // function handleListId(newId) {
-   //     setListId(newId);
-   // }
-
-   // handleListView();
-
    if(listView){
         return (<HomeView onListView={handleListView}
-                          // onListId={handleListId}
                           db={db}
                           collection={collectionName}/>)
    } else{

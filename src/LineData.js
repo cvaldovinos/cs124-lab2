@@ -1,5 +1,5 @@
 import "./LineData.css";
-// import "./Lab1EmptyList.css";
+
 import {Fragment} from "react";
 
 function LineData(props) {

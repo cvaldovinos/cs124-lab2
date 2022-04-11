@@ -12,7 +12,6 @@ function LineList(props) {
         hideClass = "closed";
     }
 
-
     return(
 
         <Fragment>

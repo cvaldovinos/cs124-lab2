@@ -232,10 +232,8 @@ function ListView(props) {
                             Are you sure you want to delete these items?
                         </div>
                         <div id={"warningButtons"}>
-
-                            <div id={"no"} tabIndex={0} onClick={() => setShowWarning(false)}>No, Go Back</div>
-                            <div id={"yes"} tabIndex={0} onClick={handleDelete}>Yes, Delete</div>
-
+                            <button id={"no"} className={"warningOption"} tabIndex={0} onClick={() => setShowWarning(false)}>No, Go Back</button>
+                            <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={handleDelete}>Yes, Delete</button>
                         </div>
                     </div>
                 </div>}
@@ -244,10 +242,10 @@ function ListView(props) {
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Set priority value for selected items.</div>
                         <div id={"priorityButtons"}>
-                            <div id={"priorityZero"} tabIndex={0} onClick={() => handlePrioritySet(0)}>Remove Priority</div>
-                            <div id={"priorityOne"} tabIndex={0} onClick={() => handlePrioritySet(1)}>1</div>
-                            <div id={"priorityTwo"} tabIndex={0} onClick={() => handlePrioritySet(2)}>2</div>
-                            <div id={"priorityThree"} tabIndex={0} onClick={() => handlePrioritySet(3)}>3</div>
+                            <button id={"priorityZero"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(0)}>Remove Priority</button>
+                            <button id={"priorityOne"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(1)}>1</button>
+                            <button id={"priorityTwo"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(2)}>2</button>
+                            <button id={"priorityThree"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(3)}>3</button>
 
                         </div>
                     </div>
@@ -257,12 +255,12 @@ function ListView(props) {
                     <div id={"warning"}>
                         <div id={"priorityMessage"}> Choose a sorting option.</div>
                         <div id={"sortOptions"}>
-                            <div id={"creationAscButton"} tabIndex={0} onClick={() => changeSortOption("creationAsc")}> Oldest to Newest</div>
-                            <div id={"creationDescButton"} tabIndex={0} onClick={() => changeSortOption("creationDesc")}>Newest to Oldest</div>
-                            <div id={"textAscButton"} tabIndex={0} onClick={() => changeSortOption("textAsc")}>Alphabetical</div>
-                            <div id={"textDescButton"} tabIndex={0} onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical</div>
-                            <div id={"priorityDescButton"} tabIndex={0} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</div>
-                            <div id={"priorityAscButton"} tabIndex={0} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</div>
+                            <button id={"creationAscButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("creationAsc")}> Oldest to Newest</button>
+                            <button  id={"creationDescButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("creationDesc")}>Newest to Oldest</button>
+                            <button  id={"textAscButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("textAsc")}>Alphabetical</button>
+                            <button  id={"textDescButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical</button>
+                            <button  id={"priorityDescButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</button>
+                            <button  id={"priorityAscButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</button>
                         </div>
                     </div>
             </div>}

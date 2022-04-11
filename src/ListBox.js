@@ -5,8 +5,7 @@ import {Fragment} from "react";
 function ListBox(props) {
     return (
         <Fragment>
-        {/*  fix tabbing order here  */}
-            <div className={"notes"} aria-label={"note"}>
+            <div className={"notes"} tabIndex={props.popup ? -1 : 0} aria-label={"note"}>
                 <div id={"listbox"}>
                     <button className={"bluebox"} onClick={(e) => {props.onListView(props.name, props.id)}}>
                     {props.name}

@@ -13,7 +13,7 @@ What's exciting, however, is that our back button in the top left finally takes 
 
 <img src="Lab4ListView.png" width="732" height="603" alt="">
 
-Clicking the back button in any list takes you to a home screen. Here you can access all of your current notes, create new ones, 
+Clicking the back button in any list takes you to the home screen. Here you can access all of your current notes, create new ones, 
 and perform operations on them (such as deleting and renaming). Our styling on this home screen was inspired by the design we built all the way back in Lab 1.
 The settings button in the top left doesn't do anything yet, but when we add authentication and note sharing in Lab 5 we'll probably place some settings behind it.
 
@@ -36,7 +36,7 @@ When these options are toggled and the note is on the top or in the middle of th
 
 <img src="Lab4NoteOptions-Middle.png" width="732" height="603" alt="">
 
-Perhaps you want to delete this note with a 'List of Stolen Identities' (it's incriminating evidence, after all). To do that, you press the 'Delete' option and it brings up a popup asking you to confirm your choice.
+Perhaps you want to delete a note, such as our 'List of Stolen Identities' (it's incriminating evidence, after all). To do that, you press the 'Delete' option and it brings up a popup asking you to confirm your choice.
 
 <img src="Lab4DeleteNote.png" width="732" height="603" alt="">
 
@@ -65,7 +65,8 @@ As such, we made the line graphics an image and laid the list data on top of the
 
 # Alternative Designs
 
-
+On our home screen we considered having each note be a fixed size. To make more use of the screen space, however, we decided instead to have the boxes expand to fill a third of the horizontal space at max. This 
+means that we can have a maximum of three notes on each line on our home screen.
 
 # User Testing
 
@@ -78,4 +79,4 @@ it played a factor in our accessibility work as well. Revising our 'Tap to Add N
 
 # What We're Most Proud Of
 
-
+We're proud that we went through CSS hell and made it out alive. We also really liked returning to our home screen design from Lab 1 and making it functional!

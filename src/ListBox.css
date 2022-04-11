@@ -4,8 +4,6 @@
     border-radius: 10px;
     border-color: black;
     top: -20px;
-    /*padding-top: -20px;*/
-    /*right: 0%;*/
     z-index: 2;
     width: 20px;
     height: 20px;
@@ -24,13 +22,9 @@
     border-color: black;
     margin: 5px;
     line-height: 0%;
-    /*padding: 0px;*/
     align-content: end;
     font-family: "Trebuchet MS";
     font-size: 15px;
-    /*position: absolute;*/
-    /*max-width: 375px;*/
-    /*max-width: 300px;*/
 }
 
 .options {
@@ -38,32 +32,25 @@
     border: solid black;
     padding: 5px;
     align-self: auto;
-
+    font-family: "Trebuchet MS";
+    width:100%;
 }
 
 .notes {
     width: auto;
     height: 5%;
-    /*padding-right: 5px;*/
     padding-bottom: 20px;
     height: 5%;
     min-width: 33%;
-    /*flex-basis: 33%;*/
-    /*display: inline-block;*/
-    /*padding-right: 5px;*/
-    /*padding-bottom: 20px;*/
 }
 
 #optionsBox{
     position: relative;
-    /* align-self: flex-end; */
-    /* right: 100px; */
     width: 90%;
     right: -5px;
 }
 
 #listbox{
-    /*min-width: 33%;*/
     width: 100%;
     height: 70px;
 }
