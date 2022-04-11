@@ -1,12 +1,8 @@
 import './ListBox.css'
-import {Fragment, useState} from "react";
+import {Fragment} from "react";
 
 
 function ListBox(props) {
-
-
-    // setSettings(false);
-
     return (
         <Fragment>
         {/*  fix tabbing order here  */}
@@ -23,14 +19,16 @@ function ListBox(props) {
                         }
                     }}/>
                 </div>
-
                 {((props.changeThis === props.id) && !props.showDelete && !props.showRename) &&
                     <div id={"optionsBox"} >
-                        <div className={"options"} tabIndex="0"
-                             onClick={(e) => props.onDeleteToggle()}
-                        >Delete</div>
-                        <div className={"options"} tabIndex="0"
-                             onClick={(e) => props.onRenameToggle()}>Rename</div>
+                        <button className={"options"} tabIndex="0"
+                                onClick={(e) => props.onRenameToggle()}>
+                            Rename
+                        </button>
+                        <button className={"options"} tabIndex="0"
+                             onClick={(e) => props.onDeleteToggle()}>
+                            Delete
+                        </button>
                     </div>
                 }
             </div>

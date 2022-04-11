@@ -2,22 +2,9 @@ import './ListView.css';
 import LineList from './LineList.js';
 import {useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc, serverTimestamp, orderBy} from "firebase/firestore";
+import { collection, query, setDoc, doc, updateDoc, deleteDoc, orderBy} from "firebase/firestore";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
-    authDomain: "cs124-lab3-fe950.firebaseapp.com",
-    projectId: "cs124-lab3-fe950",
-    storageBucket: "cs124-lab3-fe950.appspot.com",
-    messagingSenderId: "331313494047",
-    appId: "1:331313494047:web:cab4818df13adc8c9cfd2a"
-};
-
-let tapData = {
-    text: "Tap to Add Note"
-}
 
 function ListView(props) {
 
@@ -29,9 +16,6 @@ function ListView(props) {
     const [showPriorities, setShowPriorities] = useState(false);
     const [sort, setSort] = useState("creationAsc");
     const [sortOptions, setSortOptions] = useState(false);
-    const [tapLine, setTapLine] = useState(tapData)
-    const [tapLineActive, setTapLineActive] = useState(false);
-
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
@@ -68,56 +52,11 @@ function ListView(props) {
     let showHideButton = false;
     let showSortButton = false;
 
-    // let createTapLine = false;
-
 
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
         showSortButton = list.length > 1;
-        // document.getElementById('tempTapLine').value="Tap to Add Note"
-        //
-        // console.log("list: ", list);
-        // console.log("test")
-        // let newList = list;
-        // if(createTapLine===false){
-        //     newList.push(
-        //         {key: generateUniqueID(),
-        //             text: "Tap to Add Note",
-        //             checked: false,
-        //             created: 0,
-        //             priority: -1,
-        //             check_visible: false,
-        //             text_visible: true,
-        //             select_visible: false}
-        //     )
-        //     createTapLine = true;
-        // }
-        //
-        // list = newList;
     }
-
-
-    // // update the edited state with the line key if we've currently clicked onto a line, -1 otherwise
-    // function oldhandleLineEdited(lineID) {
-    //     // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
-    //     if (edited === list[list.length - 1].key && list[list.length - 1].text !== "Tap to Add Note") {
-    //         if (list[list.length - 1].text === "") {
-    //             handleItemChanged(list[list.length - 1].key, "text", "Tap to Add Note");
-    //         } else {
-    //             // display check and select box for added note, create new tap line
-    //             handleItemChanged(list[list.length - 1].key, "check_visible", true);
-    //             handleItemChanged(list[list.length - 1].key, "select_visible", true);
-    //             handleItemChanged(list[list.length - 1].key, "priority", 0);
-    //             handleItemChanged(list[list.length - 1].key, "created", serverTimestamp());
-    //             handleItemAdded("Tap to Add Note");
-    //         }
-    //     }
-    //     if (lineID === list[list.length - 1].key && edited !== lineID) {
-    //         handleItemChanged(lineID, "text", "")
-    //     }
-    //
-    //     setEdited(lineID) // update edited line state
-    // }
 
     function handleLineEdited(lineID) {
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
@@ -127,34 +66,6 @@ function ListView(props) {
         }
         setEdited(lineID) // update edited line state
     }
-
-
-
-
-    // function handleTapEdited(newValue) {
-    //     if (edited === -2 && tapLine.text !== "Tap to Add Note") {
-    //         if (tapLine.text === "") {
-    //             handleTapChanged(newValue);
-    //         } else {
-    //             // display check and select box for added note, create new tap line
-    //             handleItemAdded(newValue);
-    //             setTapLine({
-    //                 text: "Tap to Add Note"
-    //             })
-    //         }
-    //     }
-    //     console.log("here")
-    //     setEdited(-2);
-    // }
-
-    // function handleTapChanged(key, newValue) {
-    //     setTapLine({
-    //         text: newValue
-    //     })
-    //     if (key === "Enter") {
-    //         document.activeElement.blur();
-    //     }
-    // }
 
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
@@ -259,20 +170,6 @@ function ListView(props) {
         </div>;
     }
 
-    // this line is being displayed twice, one is italicized
-
-
-
-   // if ('tempTapLine' === document.activeElement.id) {
-   //          console.log("hooray");
-   //          // document.activeElement.blur();
-   // }
-
-
-
-    // function tapLineClick() {
-    //
-    // }
 
     function tapLineType(e) {
         // handleLineEdited(-2)
@@ -284,19 +181,6 @@ function ListView(props) {
         }
     }
 
-    // function offTapLine() {
-    //     if (onTapLine){
-    //         console.log("im here")
-    //         if(document.activeElement.id !== "temptapLine")
-    //             document.getElementById('tempTapLine').value="Tap to Add Note"
-    //         onTapLine=false
-    //         console.log("onTapLine2")
-    //     }
-    // }
-
-
-
-
     return (
         <div id="container">
             <div id={"top"} onClick={() => {handleLineEdited(-1)}}>
@@ -305,6 +189,7 @@ function ListView(props) {
                             tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
                             onClick={(e) => (props.onListView(""))}>&larr;</button>
                     {showSortButton && <button className="sort-button"
+                                               aria-label={"sort"}
                                                tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
                                                onClick={() => setSortOptions(true)}>
 
@@ -319,10 +204,9 @@ function ListView(props) {
 
             </div>
 
-            <div id="title" ><h2 onClick={() => {handleLineEdited(-1)}}>{props.title}</h2></div>
+            <div id={"title"} ><h2 onClick={() => {handleLineEdited(-1)}}>{props.title}</h2></div>
             <div id={"lineList"} onClick={() => {handleLineEdited(-1)}}>
                 <LineList lineList={list}
-                          tap={tapLine}
                           selectedLines={selected}
                           hideChecks={hidden}
                           showDeleteButton={showDeleteButton}
@@ -337,8 +221,6 @@ function ListView(props) {
                           onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
                           warning={(showWarning || showPriorities || sortOptions)}
-                          // handleTapLineClick={tapLineClick}
-                          // handleTapLineType={tapLineType}
                 />
             </div>
             {/*<div className={"line"}><div id={"textboxDiv"}><input type={"text"}className={"textboxes"}/></div></div>*/}

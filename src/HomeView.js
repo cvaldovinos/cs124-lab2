@@ -1,26 +1,10 @@
 import './HomeView.css'
 import ListBox from "./ListBox";
-import {initializeApp} from "firebase/app";
-import { getFirestore, collection, query, setDoc, doc, updateDoc, deleteDoc, serverTimestamp, orderBy} from "firebase/firestore";
+import { collection, setDoc, doc, updateDoc, deleteDoc} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
-import {Fragment, useState} from "react";
+import {useState} from "react";
 
 import {useCollectionData} from "react-firebase-hooks/firestore";
-
-
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
-//     authDomain: "cs124-lab3-fe950.firebaseapp.com",
-//     projectId: "cs124-lab3-fe950",
-//     storageBucket: "cs124-lab3-fe950.appspot.com",
-//     messagingSenderId: "331313494047",
-//     appId: "1:331313494047:web:cab4818df13adc8c9cfd2a"
-// };
-//
-// const firebaseApp = initializeApp(firebaseConfig);
-// const db = getFirestore(firebaseApp);
-//
-
 
 
 function HomeView(props) {
@@ -83,11 +67,12 @@ function HomeView(props) {
 
     return (<div id="homepage">
                 <div id="titled">
-                    <button id="settings" aria-label={"settings"} role={"button"}>
+                    <button id="settings" aria-label={"settings"}>
                         <div>
                             <img    id={"cogwheel"}
                                     src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg"
-                                    tabIndex={-1}/>
+                                    tabIndex={-1}
+                                    alt={"cog"}/>
                         </div>
                     </button>
                     <h1 className={"header"}> Notes </h1>
@@ -112,8 +97,7 @@ function HomeView(props) {
                         />)}
                     </div>
                 </div>
-                <button id="addnotebutton" aria-label={"add note"} onClick={(e) => {setShowName(!showName)}}><div>+</div></button>
-
+                <button id="addnotebutton" aria-label={"add note"} onClick={(e) => setShowName(!showName)}><div>+</div></button>
                 {showDelete && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -149,9 +133,13 @@ function HomeView(props) {
                                    maxLength={25}
                                    autoComplete={"off"}
                                    // onChange ={(e) => {setName(e.target.value)}}
-                                   onKeyDown={(e) => {if (e.key === 'Enter') {
-                                        handleListAdded(document.getElementById('createNoteBox').value)
+                                   onKeyDown={(e) => {
+                                       if (e.key === 'Enter') {
+                                            handleListAdded(document.getElementById('createNoteBox').value)
                                         }
+                                       if (e.key === 'Escape') {
+                                           setShowName(false);
+                                       }
                                    }}></input>
 
                             </div>

@@ -369,6 +369,7 @@ H2 {
   pointer-events:none;
   font-family: "Trebuchet MS";
   font-size: 18px;
+  font-style: italic;
 }
 
 .activeText{
@@ -379,6 +380,7 @@ H2 {
   display: none;
   color:lightgoldenrodyellow;
   pointer-events:none;
+  font-style: italic;
 }
 
 #tempTapLine{
