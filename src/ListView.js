@@ -346,7 +346,7 @@ function ListView(props) {
                     <div id={"back"} onClick={() => setShowWarning(false)}/>
                     <div id={"warning"}>
                         <div>
-                            The selected items will be <span id={"deleteText"}>permanently deleted</span>.
+                            The selected items will be <font color={"red"}>permanently deleted</font>.
                             Are you sure you want to delete these items?
                         </div>
                         <div id={"warningButtons"}>
@@ -384,19 +384,20 @@ function ListView(props) {
                         </div>
                     </div>
             </div>}
-            <ul id={"endList"}>
-                <li id={"tapLine"}>
+            <ul id={"endList"} tabIndex={-1} aria-label={"Tap to Add Note Line"}>
+                <li id={"tapLine"} tabIndex={-1}>
                     <input id={"tempTapLine"}
                            className={"tempTapClass"}
                            type={"text"}
                            autoComplete={"off"}
+                           aria-label={"Type to Add Note line"}
                            tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
                            onClick={() => setEdited(-2)}
                            onChange={() => setEdited(-2)}
                            onKeyDown={(e) => tapLineType(e)}
                            defaultValue={""}
                     />
-                    <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText": "activeText"}>Tap to Add Note</div>
+                    <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText": "activeText"} tabIndex={-1}>Tap to Add Note</div>
                 </li>
                 <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
                 <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>

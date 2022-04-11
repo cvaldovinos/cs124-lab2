@@ -85,7 +85,9 @@ function HomeView(props) {
                 <div id="titled">
                     <button id="settings" aria-label={"settings"} role={"button"}>
                         <div>
-                            <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
+                            <img    id={"cogwheel"}
+                                    src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg"
+                                    tabIndex={-1}/>
                         </div>
                     </button>
                     <h1 className={"header"}> Notes </h1>
@@ -120,16 +122,16 @@ function HomeView(props) {
                         }}/>
                         <div id={"warning"}>
                             <div>
-                                This note will be <span id={"deleteText"}>permanently deleted</span>.
+                                This note will be <font color={"red"}>permanently deleted</font>.
                                 Are you sure you want to do this?
                             </div>
                             <div id={"warningButtons"}>
 
-                                <div id={"no"} tabIndex={"0"} onClick={(e) => {
+                                <div id={"no"} tabIndex={0} onClick={(e) => {
                                     setShowDelete(false);
                                     setChangeThis("");
                                     }}>No, Go Back</div>
-                                <div id={"yes"} tabIndex={"0"} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
+                                <div id={"yes"} tabIndex={0} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
 
                             </div>
                         </div>
@@ -139,8 +141,10 @@ function HomeView(props) {
                     <div>
                         <div id={"back"} onClick={() => setShowName(false)}/>
                         <div id={"warning"}>
-                            <div id={"nameMessage"}> Name your note and press 'Enter' to confirm. <br/> (Max. 25 characters)</div>
+                            <div id={"nameMessage"}> Name your note and press 'Enter' to confirm. </div>
+                            <div>(Max. 25 characters)</div>
                             <input id={"createNoteBox"}
+                                   className={"notebox"}
                                    type={"text"}
                                    maxLength={25}
                                    autoComplete={"off"}
@@ -160,8 +164,10 @@ function HomeView(props) {
                             setChangeThis("");
                         }}/>
                         <div id={"warning"}>
-                            <div id={"nameMessage"}> Rename the selected note and press 'Enter' to confirm. <br/> (Max. 25 characters)</div>
+                            <div id={"nameMessage"}> Rename the selected note and press 'Enter' to confirm.</div>
+                            <div>(Max. 25 characters)</div>
                             <input id={"renameNote"}
+                                   className={"notebox"}
                                    type={"text"}
                                    maxLength={25}
                                    autoComplete={"off"}

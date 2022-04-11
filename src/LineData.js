@@ -54,20 +54,24 @@ function LineData(props) {
                 <li className={itemClasses.join(" ")}>
                     <button className={selectClasses.join(" ")}
                             tabIndex={props.warning ? -1 : 0}
+                            role={"none"}
+                            aria-label={props.text + " line select, priority level " + props.priority}
                             onClick={(e) => props.onToggleSelected(props.line.key)}>
                         {props.anySelected && !!props.priority &&
                             <span className={"selectButtonText"}>
                                 {props.priority}
                             </span>}
                     </button>
-                    {props.checked && <input    type={"checkbox"}
-                                                tabIndex={props.warning ? -1 : 0}
-                                                className={checkClasses.join(" ")}
-                                                onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
+                    {props.checked && <input type={"checkbox"}
+                                             tabIndex={props.warning ? -1 : 0}
+                                             className={checkClasses.join(" ")}
+                                             aria-label={props.text}
+                                             onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
                     {!props.checked && <input type={"checkbox"}
                                               tabIndex={props.warning ? -1 : 0}
                                               className={checkClasses.join(" ")}
-                                             onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
+                                              aria-label={props.text}
+                                              onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
                     <div id={"textboxDiv"}>
                         <input type={"text"}
                                className={textClasses.join(" ")}
