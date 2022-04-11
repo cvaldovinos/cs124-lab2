@@ -12,7 +12,7 @@
 #titled {
     position: relative;
     /*height: 64px;*/
-    width: 100%;
+    width: 100vw;
     background:lightsteelblue;
     grid-row: 1/span 1;
     border-color: black;

@@ -8,7 +8,7 @@ function ListBox(props) {
     // setSettings(false);
 
     return (
-        <div>
+        <Fragment>
         {/*  fix tabbing order here  */}
             <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
@@ -34,7 +34,7 @@ function ListBox(props) {
                     </div>
                 }
             </div>
-        </div>
+        </Fragment>
     )
 }
 

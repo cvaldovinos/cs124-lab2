@@ -44,14 +44,14 @@
 .notes {
     width: auto;
     height: 5%;
-    padding-right: 5px;
+    /*padding-right: 5px;*/
     padding-bottom: 20px;
     height: 5%;
-    /*min-width: 33%;*/
+    min-width: 33%;
     /*flex-basis: 33%;*/
     /*display: inline-block;*/
-    padding-right: 5px;
-    padding-bottom: 20px;
+    /*padding-right: 5px;*/
+    /*padding-bottom: 20px;*/
 }
 
 #optionsBox{
@@ -63,7 +63,7 @@
 }
 
 #listbox{
-    min-width: 33%;
+    /*min-width: 33%;*/
     width: 100%;
     height: 70px;
 }
