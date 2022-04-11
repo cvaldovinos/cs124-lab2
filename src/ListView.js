@@ -301,7 +301,7 @@ function ListView(props) {
         <div id="container">
             <div id={"top"} onClick={() => {handleLineEdited(-1)}}>
                 <div id={"button-div"}>
-                    <button className="back-button"
+                    <button className="back-button" aria-label={"return to home"}
                             tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
                             onClick={(e) => (props.onListView(""))}>&larr;</button>
                     {showSortButton && <button className="sort-button"

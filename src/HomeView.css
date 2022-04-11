@@ -145,3 +145,7 @@
     font-size: larger;
     font-family: "Trebuchet MS";
 }
+
+.notebox {
+    margin-top: 20px;
+}

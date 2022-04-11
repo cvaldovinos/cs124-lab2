@@ -83,7 +83,7 @@ function HomeView(props) {
 
     return (<div id="homepage">
                 <div id="titled">
-                    <button id="settings">
+                    <button id="settings" aria-label={"settings"} role={"button"}>
                         <div>
                             <img src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg" width="30" height="30"/>
                         </div>
@@ -110,7 +110,7 @@ function HomeView(props) {
                         />)}
                     </div>
                 </div>
-                <button id="addnotebutton" onClick={(e) => {setShowName(!showName)}}><div>+</div></button>
+                <button id="addnotebutton" aria-label={"add note"} onClick={(e) => {setShowName(!showName)}}><div>+</div></button>
 
                 {showDelete && <div>
                     <div>
