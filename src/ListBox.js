@@ -5,9 +5,9 @@ import {Fragment} from "react";
 function ListBox(props) {
     return (
         <Fragment>
-            <div className={"notes"} tabIndex={props.popup ? -1 : 0} aria-label={"note"}>
+            <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
-                    <button className={"bluebox"} onClick={(e) => {props.onListView(props.name, props.id)}}>
+                    <button className={"bluebox"} tabIndex={props.popup ? -1 : 0} onClick={(e) => {props.onListView(props.name, props.id)}}>
                     {props.name}
                     </button>
                     <button className="settings" aria-label={"note options"} onClick={(e) => {

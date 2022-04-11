@@ -40,13 +40,13 @@ function LineList(props) {
             <div id={"lower-left-buttons"}>
             {props.showDeleteButton && <div><button className={"priority"}
                                                     aria-label={"set priority for selected lines"}
-                                                    tabIndex={props.warning ? -1 : 1}
+                                                    tabIndex={props.warning ? -1 : 0}
                                                     onClick={props.onPriority}>
                                                 &#128290;
                                             </button>
                                             <button className={"trashButton"}
                                                     aria-label={"delete selected lines"}
-                                                    tabIndex={props.warning ? -1 : 1}
+                                                    tabIndex={props.warning ? -1 : 0}
                                                     onClick={props.onTrash}>
                                                 &#128465;
                                             </button>
