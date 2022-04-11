@@ -137,9 +137,9 @@
 #warningButtons {
     position: relative;
     top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-around;*/
 }
 
 .homeLoading {
@@ -153,4 +153,15 @@
 
 .notebox {
     margin-top: 20px;
+}
+
+.warningOption {
+    margin-bottom: 5px;
+    background: white;
+    border: 2px solid gray;
+    font-family: "Trebuchet MS";
+    cursor: default;
+    border-radius: 5px;
+    width: 170px;
+    font-size: 14px;
 }

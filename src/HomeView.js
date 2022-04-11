@@ -65,7 +65,9 @@ function HomeView(props) {
 
     return (<div id="homepage">
                 <div id="titled">
-                    <button id="settings" aria-label={"settings"}>
+                    <button id="settings"
+                            tabIndex={(showName || showDelete || showRename) ? -1 : 0}
+                            aria-label={"settings"}>
                         <div>
                             <img    id={"cogwheel"}
                                     src="https://icon-library.com/images/white-gear-icon-png/white-gear-icon-png-7.jpg"
@@ -73,7 +75,7 @@ function HomeView(props) {
                                     alt={"cog"}/>
                         </div>
                     </button>
-                    <h1 className={"header"}> Notes </h1>
+                    <h1 tabIndex={(showName || showDelete || showRename) ? -1 : 0} className={"header"}> Notes </h1>
                 </div>
                 <div id={"bottom-part"} onClick={() => {
                     console.log("parentclicked")
@@ -91,10 +93,13 @@ function HomeView(props) {
                                      onDeleteToggle = {handleDeleteToggle}
                                      onRenameToggle = {handleRenameToggle}
                                      onChangeThisUpdate = {handleChangeThisUpdate}
+                                     popup={(showName || showDelete || showRename)}
                         />)}
                     </div>
                 </div>
-                <button id="addnotebutton" aria-label={"add note"} onClick={(e) => setShowName(!showName)}><div>+</div></button>
+                <button id="addnotebutton"
+                        tabIndex={(showName || showDelete || showRename) ? -1 : 0}
+                        aria-label={"add note"} onClick={(e) => setShowName(!showName)}><div>+</div></button>
                 {showDelete && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -135,6 +140,7 @@ function HomeView(props) {
                                         }
                                        if (e.key === 'Escape') {
                                            setShowName(false);
+                                           setChangeThis("");
                                        }
                                    }}></input>
 
@@ -157,6 +163,9 @@ function HomeView(props) {
                                    autoComplete={"off"}
                                    onKeyDown={(e) => {if (e.key === 'Enter') {
                                        handleListRenamed(changeThis, document.getElementById('renameNote').value)
+                                   }if (e.key === 'Escape') {
+                                       setShowRename(false);
+                                       setChangeThis("");
                                    }
                                    }}></input>
 
