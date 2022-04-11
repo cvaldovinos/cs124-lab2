@@ -21,7 +21,6 @@ function HomeView(props) {
     function handleListAdded(listName) {
         console.log("add")
         let listId = generateUniqueID();
-        // setName("")
         setShowName(false)
         setDoc(doc(props.db, props.collection, listId),
             {
@@ -39,7 +38,6 @@ function HomeView(props) {
     }
 
     function handleListRenamed(listId, newName) {
-        // setRename("")
         setChangeThis("")
         setShowRename(!showRename)
         updateDoc(doc(props.db, props.collection, listId),
@@ -77,7 +75,6 @@ function HomeView(props) {
                     </button>
                     <h1 className={"header"}> Notes </h1>
                 </div>
-                {/*<button onClick={(e) => props.onListView("Yo")}>Yo</button>*/}
                 <div id={"bottom-part"} onClick={() => {
                     console.log("parentclicked")
                 }}>
@@ -111,11 +108,11 @@ function HomeView(props) {
                             </div>
                             <div id={"warningButtons"}>
 
-                                <div id={"no"} tabIndex={0} onClick={(e) => {
+                                <button id={"no"} className={"warningOption"} tabIndex={0} onClick={(e) => {
                                     setShowDelete(false);
                                     setChangeThis("");
-                                    }}>No, Go Back</div>
-                                <div id={"yes"} tabIndex={0} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</div>
+                                    }}>No, Go Back</button>
+                                <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</button>
 
                             </div>
                         </div>
@@ -132,7 +129,6 @@ function HomeView(props) {
                                    type={"text"}
                                    maxLength={25}
                                    autoComplete={"off"}
-                                   // onChange ={(e) => {setName(e.target.value)}}
                                    onKeyDown={(e) => {
                                        if (e.key === 'Enter') {
                                             handleListAdded(document.getElementById('createNoteBox').value)
@@ -159,7 +155,6 @@ function HomeView(props) {
                                    type={"text"}
                                    maxLength={25}
                                    autoComplete={"off"}
-                                   // onChange ={(e) => {setRename(e.target.value)}}
                                    onKeyDown={(e) => {if (e.key === 'Enter') {
                                        handleListRenamed(changeThis, document.getElementById('renameNote').value)
                                    }
