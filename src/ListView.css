@@ -10,11 +10,11 @@
 }
 
 H2 {
-  font-family: Georgia;
+  font-family: "Georgia", serif;
   height: 28px;
-  margin: 0px 0px 0px;
+  margin: 0;
   position: relative;
-  right:0px;
+  right:0;
   padding-left: 10%;
   padding-right: 10%;
   align-self: stretch;
@@ -25,7 +25,6 @@ H2 {
   background-color: aliceblue;
   width: 50px;
   height: 50px;
-  font-size: 30px;
   border-style: solid;
   border-radius: 100px;
   font-size: 25px;
@@ -36,22 +35,14 @@ H2 {
   background-color: aliceblue;
   width: 50px;
   height: 40px;
-  /*font-size: 15px;*/
   border-style: solid;
   border-radius: 100px;
-  /*font-size: 25px;*/
   position: absolute;
   grid-row: 1/span 1;
   grid-column: 2/span 1;
   top: 18px;
   left:99%;
-
-  /*margin-top: 20px;*/
   margin-left: -50px;
-
-
-  /*top: 17px;*/
-  /*left: 240px;*/
 }
 
 #sortArrow{
@@ -69,7 +60,7 @@ H2 {
   position: relative;
   left: 13px;
   top: -35px;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 #sortDate{
@@ -79,7 +70,7 @@ H2 {
   position: relative;
   left: 7px;
   top: -35px;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -104,8 +95,7 @@ H2 {
 
 
 #lineList {
-  /*position: relative;*/
-  margin-left: 0px;
+  margin-left: 0;
   grid-column: 1/span 2;
   grid-row: 2/span 1;
 }

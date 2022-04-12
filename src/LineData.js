@@ -52,7 +52,6 @@ function LineData(props) {
                 <li className={itemClasses.join(" ")}>
                     <button className={selectClasses.join(" ")}
                             tabIndex={props.warning ? -1 : 0}
-                            role={"none"}
                             aria-label={props.text + " line select, priority level " + props.priority}
                             onClick={() => props.onToggleSelected(props.line.key)}>
                         {props.anySelected && !!props.priority &&

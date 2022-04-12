@@ -98,6 +98,7 @@ function HomeView(props) {
                     </div>
                 </div>
                 <button id="addnotebutton"
+                        className={"circleButton"}
                         tabIndex={(showName || showDelete || showRename) ? -1 : 0}
                         aria-label={"add note"} onClick={() => setShowName(!showName)}><div>+</div></button>
                 {showDelete && <div>
@@ -166,7 +167,7 @@ function HomeView(props) {
                                        setShowRename(false);
                                        setChangeThis("");
                                    }
-                                   }}></input>
+                                   }}/>
 
                         </div>
                     </div>

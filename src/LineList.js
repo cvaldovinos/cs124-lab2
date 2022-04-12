@@ -55,6 +55,7 @@ function LineList(props) {
             {/*displays our show/hide completed items button */}
             {props.showHideButton &&
                 <button id="eyeButton" tabIndex={props.warning ? -1 : 0}
+                        className={"circleButton"}
                         aria-label={props.hideChecks ? "show completed tasks" : "hide completed tasks"}
                         onClick={props.onHideToggle}>
                     <div id={"eyeImgDiv"}>
