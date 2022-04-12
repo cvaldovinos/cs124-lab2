@@ -99,7 +99,7 @@ function HomeView(props) {
                 </div>
                 <button id="addnotebutton"
                         tabIndex={(showName || showDelete || showRename) ? -1 : 0}
-                        aria-label={"add note"} onClick={(e) => setShowName(!showName)}><div>+</div></button>
+                        aria-label={"add note"} onClick={() => setShowName(!showName)}><div>+</div></button>
                 {showDelete && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -113,11 +113,11 @@ function HomeView(props) {
                             </div>
                             <div id={"warningButtons"}>
 
-                                <button id={"no"} className={"warningOption"} tabIndex={0} onClick={(e) => {
+                                <button id={"no"} className={"warningOption"} tabIndex={0} onClick={() => {
                                     setShowDelete(false);
                                     setChangeThis("");
                                     }}>No, Go Back</button>
-                                <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={(e) => handleListDeleted(changeThis)}>Yes, Delete</button>
+                                <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={() => handleListDeleted(changeThis)}>Yes, Delete</button>
 
                             </div>
                         </div>
@@ -142,8 +142,7 @@ function HomeView(props) {
                                            setShowName(false);
                                            setChangeThis("");
                                        }
-                                   }}></input>
-
+                                   }}/>
                             </div>
                         </div>
                     </div>}

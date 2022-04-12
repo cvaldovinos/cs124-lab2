@@ -28,8 +28,7 @@
     text-align: center;
     position: relative;
     top: -35px;
-    /* padding-left: 100px; */
-    font-family: Georgia;
+    font-family: "Georgia", serif;
     font-size: 80px;
 }
 
@@ -70,23 +69,7 @@
     color: darkgray;
 }
 
-/*#addnotebutton {*/
-/*    position: fixed;*/
-/*    font-size: 25px;*/
-/*    left: 90%;*/
-/*    top: 90%;*/
-/*    width: 50px;*/
-/*    height: 50px;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    padding: 20px;*/
-/*    border-radius: 25px;*/
-/*    background-color: aliceblue;*/
-/*    border-style: solid;*/
-/*}*/
-
-#addnotebutton{
+.circleButton{
     background-color: aliceblue;
     width: 50px;
     height: 50px;
@@ -104,8 +87,8 @@
 
 #back{
     position: absolute;
-    top: 0px;
-    left:0px;
+    top: 0;
+    left:0;
     width:100%;
     height:100%;
     background: gray;
@@ -125,8 +108,7 @@
     margin-left: -100px;
     height: 200px;
     width: 200px;
-    font-family: "Trebuchet MS";
-    border: solid black;
+    font-family: "Trebuchet MS", sans-serif;
     border: solid gray;
 }
 
@@ -137,9 +119,6 @@
 #warningButtons {
     position: relative;
     top: 30px;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: space-around;*/
 }
 
 .homeLoading {
@@ -148,7 +127,7 @@
     text-align: center;
     padding-top: 280px;
     font-size: larger;
-    font-family: "Trebuchet MS";
+    font-family: "Trebuchet MS", sans-serif;
 }
 
 .notebox {
@@ -159,7 +138,7 @@
     margin-bottom: 5px;
     background: white;
     border: 2px solid gray;
-    font-family: "Trebuchet MS";
+    font-family: "Trebuchet MS", sans-serif;
     cursor: default;
     border-radius: 5px;
     width: 170px;

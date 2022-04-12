@@ -8,7 +8,6 @@ function LineData(props) {
     const textClasses = ["textboxes "];
     const selectClasses = ["select-button "];
     const itemClasses = [];
-    const divClasses = [];
 
     // hides line if hide button is clicked and item is completed
     const hideLine = props.hideChecks && props.line.checked;
@@ -32,7 +31,6 @@ function LineData(props) {
     if (props.selected) {
         textClasses.push("selected ");
         itemClasses.push("selected ");
-        divClasses.push("yo ");
     } else {
         textClasses.push("normal ");
     }
@@ -56,7 +54,7 @@ function LineData(props) {
                             tabIndex={props.warning ? -1 : 0}
                             role={"none"}
                             aria-label={props.text + " line select, priority level " + props.priority}
-                            onClick={(e) => props.onToggleSelected(props.line.key)}>
+                            onClick={() => props.onToggleSelected(props.line.key)}>
                         {props.anySelected && !!props.priority &&
                             <span className={"selectButtonText"}>
                                 {props.priority}

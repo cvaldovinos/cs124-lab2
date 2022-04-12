@@ -279,31 +279,31 @@ function ListView(props) {
                     />
                     <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText": "activeText"} tabIndex={-1}>Tap to Add Note</div>
                 </li>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={(e) => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
 
             </ul>
-            <div id={"bottom"} onClick={() => {handleLineEdited(-1)}}></div>
+            <div id={"bottom"} onClick={() => { handleLineEdited(-1)} }/>
        </div>
     );
 }

@@ -3,7 +3,7 @@ import LineData from './LineData.js';
 import {Fragment} from "react";
 
 function LineList(props) {
-    let hideClass = "";
+    let hideClass;
 
     // updates the image on the hide button
     if (props.hideChecks) {

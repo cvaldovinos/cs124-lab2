@@ -7,10 +7,10 @@ function ListBox(props) {
         <Fragment>
             <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
-                    <button className={"bluebox"} tabIndex={props.popup ? -1 : 0} onClick={(e) => {props.onListView(props.name, props.id)}}>
+                    <button className={"bluebox"} tabIndex={props.popup ? -1 : 0} onClick={() => {props.onListView(props.name, props.id)}}>
                     {props.name}
                     </button>
-                    <button className="settings" aria-label={"note options"} onClick={(e) => {
+                    <button className="settings" aria-label={"note options"} onClick={() => {
                         if (props.changeThis===props.id) {
                             props.onChangeThisUpdate("")
                         } else{
@@ -21,11 +21,11 @@ function ListBox(props) {
                 {((props.changeThis === props.id) && !props.showDelete && !props.showRename) &&
                     <div id={"optionsBox"} >
                         <button className={"options"} tabIndex="0"
-                                onClick={(e) => props.onRenameToggle()}>
+                                onClick={() => props.onRenameToggle()}>
                             Rename
                         </button>
                         <button className={"options"} tabIndex="0"
-                             onClick={(e) => props.onDeleteToggle()}>
+                             onClick={() => props.onDeleteToggle()}>
                             Delete
                         </button>
                     </div>
