@@ -186,11 +186,11 @@ function ListView(props) {
             <div id={"top"} onClick={() => {handleLineEdited(-1)}}>
                 <div id={"button-div"}>
                     <button className="back-button" aria-label={"return to home"}
-                            tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
+                            tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 1}
                             onClick={(e) => (props.onListView(""))}>&larr;</button>
                     {showSortButton && <button className="sort-button"
                                                aria-label={"sort"}
-                                               tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
+                                               tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 2}
                                                onClick={() => setSortOptions(true)}>
 
                         {(sort === "textAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>A Z</div></div>}
@@ -271,7 +271,7 @@ function ListView(props) {
                            type={"text"}
                            autoComplete={"off"}
                            aria-label={"Type to Add Note line"}
-                           tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 0}
+                           tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 3}
                            onClick={() => setEdited(-2)}
                            onChange={() => setEdited(-2)}
                            onKeyDown={(e) => tapLineType(e)}
