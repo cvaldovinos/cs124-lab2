@@ -54,6 +54,11 @@ With the rename done, the list and all of the data within it stays, but it has b
 
 <img src="Lab4NoteRenamed.png" width="732" height="603" alt="">
 
+# Link To Accessibility Videos
+
+Finally, check out our videos showcasing keyboard controls and screen-reader compatibility here:
+
+https://drive.google.com/drive/folders/1aIgwLQDjErsbSfict-rjo8wyWqu0rPyo
 
 # Design Decisions
 
