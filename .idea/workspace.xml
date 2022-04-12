@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="189ddd18-9984-481b-80a5-1eec2fb1837e" name="Changes" comment="Fixed warnings">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomeView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HomeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LineData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LineList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListBox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.js" afterDir="false" />
+    </list>
+    <list id="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" name="Changes by Workx" comment="">
+      <change beforePath="$PROJECT_DIR$/src/HomeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LineData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LineList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LineList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/ListView.css">
+      <ranges>
+        <range start1="12" end1="13" start2="12" end2="13" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="14" end1="15" start2="14" end2="15" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="16" end1="17" start2="16" end2="17" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="20" end1="27" start2="20" end2="20" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="34" end1="35" start2="27" end2="27" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="45" end1="46" start2="37" end2="37" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="48" end1="49" start2="39" end2="39" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="54" end1="56" start2="44" end2="44" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="57" end1="61" start2="45" end2="45" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="78" end1="79" start2="62" end2="63" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="88" end1="89" start2="72" end2="73" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="113" end1="115" start2="97" end2="98" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="133" end1="163" start2="116" end2="131" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="166" end1="168" start2="134" end2="136" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/ListView.js">
+      <ranges>
+        <range start1="189" end1="190" start2="189" end2="190" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="281" end1="303" start2="281" end2="303" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="305" end1="306" start2="305" end2="306" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/LineData.js">
+      <ranges>
+        <range start1="10" end1="11" start2="10" end2="10" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="34" end1="35" start2="33" end2="33" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="56" end1="57" start2="54" end2="54" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="58" end1="59" start2="55" end2="56" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/HomeView.js">
+      <ranges>
+        <range start1="100" end1="100" start2="100" end2="101" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+        <range start1="101" end1="102" start2="102" end2="103" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="115" end1="116" start2="116" end2="117" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="119" end1="120" start2="120" end2="121" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="144" end1="146" start2="145" end2="146" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="169" end1="170" start2="169" end2="170" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/LineList.js">
+      <ranges>
+        <range start1="5" end1="6" start2="5" end2="6" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
+        <range start1="57" end1="57" start2="57" end2="58" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
+      </ranges>
+    </file>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="277audCgC1OGu9W1IgxSnxeB9rz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/design" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/design" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/design" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="189ddd18-9984-481b-80a5-1eec2fb1837e" name="Changes" comment="" />
+      <created>1648673801601</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648673801601</updated>
+      <workItem from="1648673802996" duration="19461000" />
+      <workItem from="1649275096573" duration="36449000" />
+      <workItem from="1649543221384" duration="4918000" />
+      <workItem from="1649563669294" duration="33147000" />
+      <workItem from="1649731258657" duration="1363000" />
+    </task>
+    <task id="LOCAL-00001" summary="working towards making the window resizable">
+      <created>1649211752018</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649211752018</updated>
+    </task>
+    <task id="LOCAL-00002" summary="working towards making the window resizable">
+      <created>1649226014736</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649226014736</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Mostly done with responsive design">
+      <created>1649280685478</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649280685478</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Mostly done with responsive design">
+      <created>1649280700432</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649280700432</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Worked on changing tap line, adding multiple list support">
+      <created>1649310375106</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649310375106</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Worked on tap line and multiple lists">
+      <created>1649310397575</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649310397575</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Firestore basically done, doing more React and CSS work">
+      <created>1649385936105</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649385936105</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Firestore basically done, doing React and CSS stuff now">
+      <created>1649385963780</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649385963780</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Worked on tap line, getting lists home screen up and running">
+      <created>1649390681471</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649390681471</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Did tap line, work on home screen">
+      <created>1649390699340</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649390699340</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Tap line functional, worked on home page">
+      <created>1649482412249</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649482412249</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Tap line functional, worked on home page">
+      <created>1649482423676</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649482423676</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Working on styling">
+      <created>1649559388454</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1649559388454</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Working on styling">
+      <created>1649559398901</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649559398901</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Finished tap line, lots of CSS and responsive work">
+      <created>1649572486068</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649572486068</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Finished tap line, lots of CSS and responsive work">
+      <created>1649572500712</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1649572500712</updated>
+    </task>
+    <task id="LOCAL-00017" summary="LOTS of styling work, checked contrast">
+      <created>1649628721029</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649628721029</updated>
+    </task>
+    <task id="LOCAL-00018" summary="LOTS of styling work, checked contrast">
+      <created>1649628735036</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1649628735036</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Did screen reader stuff, more CSS work (because of course)">
+      <created>1649647998229</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1649647998229</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Did screen reader stuff, more CSS work (because of course)">
+      <created>1649648012880</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649648012880</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Worked on design document">
+      <created>1649706944751</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1649706944751</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Finishing touches on everything">
+      <created>1649720326773</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649720326773</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Finishing touches on everything">
+      <created>1649720341828</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1649720341828</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Finishing touches on everything">
+      <created>1649720353260</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1649720353260</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Tabbing things">
+      <created>1649721208998</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1649721208998</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fixing tabbing the list">
+      <created>1649721808227</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1649721808227</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Final details added to design doc">
+      <created>1649728647189</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1649728647189</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Added App.css">
+      <created>1649729058947</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1649729058947</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added App.css">
+      <created>1649729137607</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1649729137607</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Node modules is back">
+      <created>1649730137181</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1649730137181</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Node modules is back">
+      <created>1649731443931</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1649731443931</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Node modules is back">
+      <created>1649731785224</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1649731785224</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="working towards making the window resizable" />
+    <MESSAGE value="Mostly done with responsive design" />
+    <MESSAGE value="Worked on changing tap line, adding multiple list support" />
+    <MESSAGE value="Worked on tap line and multiple lists" />
+    <MESSAGE value="Firestore basically done, doing more React and CSS work" />
+    <MESSAGE value="Firestore basically done, doing React and CSS stuff now" />
+    <MESSAGE value="Worked on tap line, getting lists home screen up and running" />
+    <MESSAGE value="Did tap line, work on home screen" />
+    <MESSAGE value="Tap line functional, worked on home page" />
+    <MESSAGE value="Working on styling" />
+    <MESSAGE value="Finished tap line, lots of CSS and responsive work" />
+    <MESSAGE value="LOTS of styling work, checked contrast" />
+    <MESSAGE value="Did screen reader stuff, more CSS work (because of course)" />
+    <MESSAGE value="Worked on design document" />
+    <MESSAGE value="Finishing touches on everything" />
+    <MESSAGE value="Tabbing things" />
+    <MESSAGE value="Fixing tabbing the list" />
+    <MESSAGE value="Final details added to design doc" />
+    <MESSAGE value="Added App.css" />
+    <MESSAGE value="Node modules is back" />
+    <MESSAGE value="Fixed warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed warnings" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+</project>

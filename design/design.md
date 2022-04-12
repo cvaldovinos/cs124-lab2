@@ -2,94 +2,86 @@
 
 ### [Link to Design Document for Lab 2](designlab2.md)
 
+### [Link to Design Document for Lab 3](designlab3.md)
+
 # New Changes to our Design
 
-When you add two or more items to the list, you'll notice a new button in the top right corner of the screen. This is 
-the sort button! We'll talk about its functionality later.
+Because we've added responsive design in this lab, all of these example screen grabs will be in of a different screen size than before.
 
-<img src="listWithSortButton.png" width="360" height="640" alt="">
+We'll start on our list screen. There aren't many changes to be found here, except that we changed the size of each note line to make them easier to read. 
+What's exciting, however, is that our back button in the top left finally takes you somewhere!
 
-Selecting a line using the selection buttons on the far left reveals another new option: setting priority! It is done 
-using the circular button with numbers on it right above the trash can.
+<img src="Lab4ListView.png" width="732" height="603" alt="">
 
-<img src="selectRevealsPriority.png" width="360" height="640" alt="">
+Clicking the back button in any list takes you to the home screen. Here you can access all of your current notes, create new ones, 
+and perform operations on them (such as deleting and renaming). Our styling on this home screen was inspired by the design we built all the way back in Lab 1.
+The settings button in the top left doesn't do anything yet, but when we add authentication and note sharing in Lab 5 we'll probably place some settings behind it.
 
-Hitting the priority button brings up a menu that lets you choose the priority level for all selected items. You can 
-choose a number between 1 and 3, or decide to remove all existing priorities on your selected lines.
 
-<img src="priorityMenu.png" width="360" height="640" alt="">
+<img src="Lab4HomeView.png" width="732" height="603" alt="">
 
-With the priority button, you are able to assign priority levels to individual lines by selecting them one at a time. You can also give the same priority to multiple lines by selecting them all and setting priority en masse. This is very useful for sorting 
-the data in the list! Speaking of which...
+You can add a new note by clicking the '+' button in the bottom right of the screen. This brings up a popup that lets you enter your desired title for the note. Hitting Enter on your keyboard confirms the note and adds it to the list.
 
-<img src="prioritizedItems.png" width="360" height="640" alt="">
+<img src="Lab4AddNote.png" width="732" height="603" alt="">
 
-Hitting the sort button brings up a menu which gives you six different choices for sorting the list. We will go through 
-each one now.
+As you can see, we've added a new note titled 'Knock-Knock Jokes'. With this note created, you can click on it and it will automatically take you to a list that is ready for you to add content to. Everything is ready to go for the user!
 
-<img src="sortMenu.png" width="360" height="640" alt="">
+<img src="Lab4NoteAdded.png" width="732" height="603" alt="">
 
-Sorting from oldest to newest is our default way of arranging the list data, hence why the ordering of the data as well as the image in the sort button has
-not changed.
+Each note comes with an options button in its bottom left corner. Pressing it brings up all the operations you can do on that note. Right now we only support deleting and renaming, but Lab 5 will bring about a 'Share' option as well.
 
-<img src="oldestToNewest.png" width="360" height="640" alt="">
+<img src="Lab4NoteOptions.png" width="732" height="603" alt="">
 
-On the other hand, sorting from newest to oldest places new list elements at the top of the screen. The 'Tap to Add 
-Note' line stays at the bottom, however. Note how the image in the sort button has changed due to the new sort type!
+When these options are toggled and the note is on the top or in the middle of the list, it pushes the list down rather than displaying the options over other notes.
 
-<img src="newestToOldest.png" width="360" height="640" alt="">
+<img src="Lab4NoteOptions-Middle.png" width="732" height="603" alt="">
 
-This is what sorting the list alphabetically looks like (technically we're sorting the list lexicographically, but we 
-figured that would be too confusing to put in the menu for average users).
+Perhaps you want to delete a note, such as our 'List of Stolen Identities' (it's incriminating evidence, after all). To do that, you press the 'Delete' option and it brings up a popup asking you to confirm your choice.
 
-<img src="alphabetical.png" width="360" height="640" alt="">
+<img src="Lab4DeleteNote.png" width="732" height="603" alt="">
 
-We can also sort the list in reverse alphabetical order!
+Once you delete a note, that note along with its list data is gone forever, so make sure you're 100% sure you want to delete it!
 
-<img src="reverseAlphabetical.png" width="360" height="640" alt="">
+<img src="Lab4NoteDeleted.png" width="732" height="603" alt="">
 
-With priority sorting, now our priority values come into play. When sorting from low to high, the unprioritized elements 
-come first, then the prioritized elements in ascending order, and lastly the 'Tap to Add Note' line stays on the bottom.
+We just read over our list of knock-knock jokes and they're all pretty rough. So let's give this note a new name that better reflects what we've put inside of it!
+To do this, you press the note options button again and choose the 'Rename' option that pops up. This brings up yet another popup 
+that asks for the note's new name. Typing in a new name and hitting Enter completes the renaming process.
 
-<img src="priorityLowToHigh.png" width="360" height="640" alt="">
+<img src="Lab4RenameNote.png" width="732" height="603" alt="">
 
-Priority sorting from high to low sorts our list elements the opposite way.
+With the rename done, the list and all of the data within it stays, but it has been given a more appropriate name.
 
-<img src="priorityHighToLow.png" width="360" height="640" alt="">
+<img src="Lab4NoteRenamed.png" width="732" height="603" alt="">
 
+# Link To Accessibility Videos
+
+Finally, check out our videos showcasing keyboard controls and screen-reader compatibility here:
+
+https://drive.google.com/drive/folders/1aIgwLQDjErsbSfict-rjo8wyWqu0rPyo
 
 # Design Decisions
 
-Placing the priority values within the select buttons was an obvious choice for us, as the insides of the buttons were 
-unused space on the screen that was pretty valuable, as it sits close to the actual lines of text. We only have it 
-show up when one or more lines are selected because we wanted to reduce visual clutter in our design.
+Once again, we revised how we handled each line in our lists (making them yellow with blue borders). In Lab 1, we did this by styling each li with the proper colors and spacings. When we had to make our design functional in Lab 2,
+storing data locally made it too hard to bind the line graphics to each element in the list, as we would have to change the data while preserving all the slots in the list.
+As such, we made the line graphics an image and laid the list data on top of them. With Lab 4, handling each line's text and graphics separately was too difficult to handle responsively, so we returned to styling each li. It took a lot of CSS work, but we pulled it off!
 
-Another important decision we made was having the sort button display the current sorting method being used. We 
-considered (but did not implement to test) placing a colored box around the current sort type in the sort menu, but by 
-indicating sort method in the button itself, it saves the user from clicking into the menu to check.
+
 
 # Alternative Designs
 
-We considered having the sort button be in the top right at all times, but we decided that sorting the list (and by 
-consequence the sort button) would serve no purpose when 0 or 1 elements were in the list, so we decided to have it show 
-only when 2 or more elements are present. We were concerned that this showing up all of a sudden would be jarring, but 
-in motion our design works fine.
+On our home screen we considered having each note be a fixed size. To make more use of the screen space, however, we decided instead to have the boxes expand to fill a third of the horizontal space at max. This 
+means that we can have a maximum of three notes on each line on our home screen.
 
 # User Testing
 
-None for this lab! But we really should for Lab 4, as we're going to be making some pretty big changes (support for 
-multiple lists, keyboard navigation, screen readers, etc.).
+We did not do any user testing.
 
 # Challenges
 
-We struggled with a lot of the Firestore stuff, especially implementing queries and indexes. When we initialize our list 
-with 0 items, we automatically add a document to Firestore via setDoc.  However, this adds two documents to the 
-database, which we were unable to trace, so we determined that this was likely due to the amount of time it takes to 
-render the database. Therefore, we have to manually delete one of these documents by going into the Firestore database. 
-This is not an issue that can be detected in the current state of our design however when we want to initialize a new 
-list in future labs, this will be an issue as we cannot manually edit the Firestore database each time we create a new 
-list.
+We struggled a lot with styling our notes app. We definitely paid a price for all our previous decisions that weren't the cleanest but 'just worked'. Sorting this out was especially important for our responsive design, but 
+it played a factor in our accessibility work as well. Revising our 'Tap to Add Note' line was difficult as well. Previously that line was actually a data element that would live in the data list, be dealt with in Firestore, etc. but Prof. Rhodes suggested that we handle it locally instead. It was a bit of a pain to wrangle (in both functionality and styling) but we got it done.
 
 # What We're Most Proud Of
 
-We're proud of how we've kept our visual design unified, even with our list app having so many functions now!
+We're proud that we went through CSS hell and made it out alive. We also really liked returning to our home screen design from Lab 1 and making it functional!

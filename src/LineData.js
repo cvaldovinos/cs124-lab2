@@ -1,5 +1,5 @@
 import "./LineData.css";
-// import "./Lab1EmptyList.css";
+
 import {Fragment} from "react";
 
 function LineData(props) {
@@ -8,15 +8,11 @@ function LineData(props) {
     const textClasses = ["textboxes "];
     const selectClasses = ["select-button "];
     const itemClasses = [];
-    const divClasses = [];
 
     // hides line if hide button is clicked and item is completed
     const hideLine = props.hideChecks && props.line.checked;
 
     // display of lines is altered by pushing classes based on the values of the line fields
-    if (props.position === props.length - 1 && props.disableChecks === false) {
-        textClasses.push("italics ");
-    }
     if (props.line.checked) {
         textClasses.push("checked ");
     }
@@ -35,7 +31,6 @@ function LineData(props) {
     if (props.selected) {
         textClasses.push("selected ");
         itemClasses.push("selected ");
-        divClasses.push("yo ");
     } else {
         textClasses.push("normal ");
     }
@@ -49,37 +44,47 @@ function LineData(props) {
     // updates the value of a checkbox when we click on it
     function changeCheckWrapper(e, key) {
         props.onEdited(-1);
-
-        if (props.line.checked) {
-            props.onItemChanged(key,"checked",!e.target.value);
-        } else {
-            props.onItemChanged(key,"checked",e.target.value);
-        }
+        props.onItemChanged(key,"checked", props.line.checked ? !props.line.checked : {} )
     }
 
     return (<Fragment>
             {!hideLine && <div>
                 <li className={itemClasses.join(" ")}>
-                    <button className={selectClasses.join(" ")} onClick={(e) => props.onToggleSelected(props.line.key)}>{props.anySelected && !!props.priority&&<span className={"selectButtonText"}>{props.priority}</span>}</button>
+                    <button className={selectClasses.join(" ")}
+                            tabIndex={props.warning ? -1 : 0}
+                            aria-label={props.text + " line select, priority level " + props.priority}
+                            onClick={() => props.onToggleSelected(props.line.key)}>
+                        {props.anySelected && !!props.priority &&
+                            <span className={"selectButtonText"}>
+                                {props.priority}
+                            </span>}
+                    </button>
                     {props.checked && <input type={"checkbox"}
-                           className={checkClasses.join(" ")}
-                           onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
-                    {!props.checked && <input type={"checkbox"}
+                                             tabIndex={props.warning ? -1 : 0}
                                              className={checkClasses.join(" ")}
-                                             onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
-                    <input type={"text"}
-                           className={textClasses.join(" ")}
-                           onClick={(e) => clickTextWrapper(e, props.line.key)}
-                           onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
-                           onKeyDown={(e) =>
-                           {if (e.key === 'Enter') {
-                               props.onItemChanged(props.line.key, e.key, props.text);
-                               props.onEdited(props.line.key);
-                           } if (e.key === 'Backspace') {
-                               props.onItemChanged(props.line.key, e.key, props.text);
-                           }}}
-                           value={props.text}
-                           id={props.line.key}/>
+                                             aria-label={props.text}
+                                             onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
+                    {!props.checked && <input type={"checkbox"}
+                                              tabIndex={props.warning ? -1 : 0}
+                                              className={checkClasses.join(" ")}
+                                              aria-label={props.text}
+                                              onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
+                    <div id={"textboxDiv"}>
+                        <input type={"text"}
+                               className={textClasses.join(" ")}
+                               onClick={(e) => clickTextWrapper(e, props.line.key)}
+                               tabIndex={props.warning ? -1 : 0}
+                               onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
+                               onKeyDown={(e) =>
+                                       {if (e.key === 'Enter') {
+                                           props.onItemChanged(props.line.key, e.key, props.text);
+                                           props.onEdited(props.line.key);
+                                       } if (e.key === 'Backspace') {
+                                           props.onItemChanged(props.line.key, e.key, props.text);
+                                       }}}
+                               value={props.text}
+                               id={props.line.key}/>
+                    </div>
                 </li>
             </div>}
     </Fragment>)
