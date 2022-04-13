@@ -1,8 +1,12 @@
 import ListView from "./ListView";
 import HomeView from "./HomeView";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 import {useState} from 'react';
 import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {getAuth, signOut} from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
@@ -17,10 +21,33 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 let collectionName = "cs124-lab3-fe950"; // collection for each list passed in from ListView
 
-
 function App() {
+    const auth = getAuth();
+    const [user, loading, error] = useAuthState(auth)
+    if (loading) {
+        return (
+            <text> Loading... </text>
+        )
+    }
+    if (user) {
+        return (
+            <div>
+                <SignedInApp user={user} auth={auth}></SignedInApp>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <SignIn auth={auth}></SignIn>
+                <SignUp auth={auth}></SignUp>
+            </div>
+        )
+    }
+}
+
+function SignedInApp(props) {
     const [listId, setListId] = useState(0);
-    const [listView, setListView] = useState(true);
+    const [listView, setListView] = useState(false);
     const [title,setTitle] = useState("");
 
    function handleListView(text, newId) {
@@ -29,16 +56,19 @@ function App() {
        setListView(!listView);
    }
 
-   if(listView){
+   if(!listView){
         return (<HomeView onListView={handleListView}
                           db={db}
+                          user={props.user}
+                          auth={props.auth}
                           collection={collectionName}/>)
-   } else{
+   } else {
         return (<ListView
             onListView={handleListView}
             title={title}
             listId={listId}
             db={db}
+            user={props.user}
             collection={collectionName}/>)
    }
 }

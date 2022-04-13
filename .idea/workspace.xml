@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="189ddd18-9984-481b-80a5-1eec2fb1837e" name="Changes" comment="Fixed warnings">
+    <list default="true" id="9cefdb26-b867-413e-a81f-26ed11b8dedb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/SignIn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SignUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HomeView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HomeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LineData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LineList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.js" afterDir="false" />
     </list>
-    <list id="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" name="Changes by Workx" comment="">
-      <change beforePath="$PROJECT_DIR$/src/HomeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HomeView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LineData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LineList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LineList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LineList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListView.js" afterDir="false" />
-    </list>
+    <list id="f6e84953-0582-44f9-a7bf-74a90f6db0ae" name="Changes by Workx" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,12 +17,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lab4" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="UPDATE_TYPE" value="REBASE" />
@@ -44,57 +39,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ListView.css">
-      <ranges>
-        <range start1="12" end1="13" start2="12" end2="13" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="14" end1="15" start2="14" end2="15" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="16" end1="17" start2="16" end2="17" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="20" end1="27" start2="20" end2="20" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="34" end1="35" start2="27" end2="27" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="45" end1="46" start2="37" end2="37" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="48" end1="49" start2="39" end2="39" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="54" end1="56" start2="44" end2="44" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="57" end1="61" start2="45" end2="45" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="78" end1="79" start2="62" end2="63" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="88" end1="89" start2="72" end2="73" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="113" end1="115" start2="97" end2="98" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="133" end1="163" start2="116" end2="131" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="166" end1="168" start2="134" end2="136" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ListView.js">
-      <ranges>
-        <range start1="189" end1="190" start2="189" end2="190" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="281" end1="303" start2="281" end2="303" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="305" end1="306" start2="305" end2="306" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/LineData.js">
-      <ranges>
-        <range start1="10" end1="11" start2="10" end2="10" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="34" end1="35" start2="33" end2="33" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="56" end1="57" start2="54" end2="54" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="58" end1="59" start2="55" end2="56" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/HomeView.js">
-      <ranges>
-        <range start1="100" end1="100" start2="100" end2="101" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-        <range start1="101" end1="102" start2="102" end2="103" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="115" end1="116" start2="116" end2="117" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="119" end1="120" start2="120" end2="121" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="144" end1="146" start2="145" end2="146" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="169" end1="170" start2="169" end2="170" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/LineList.js">
-      <ranges>
-        <range start1="5" end1="6" start2="5" end2="6" changelist="189ddd18-9984-481b-80a5-1eec2fb1837e" />
-        <range start1="57" end1="57" start2="57" end2="58" changelist="dcbf06f0-c470-44a9-bd61-31a5be1e3c5e" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

@@ -3,6 +3,7 @@ import ListBox from "./ListBox";
 import { collection, setDoc, doc, updateDoc, deleteDoc} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useState} from "react";
+import {signOut} from "firebase/auth";
 
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
@@ -76,6 +77,8 @@ function HomeView(props) {
                         </div>
                     </button>
                     <h1 tabIndex={(showName || showDelete || showRename) ? -1 : 0} className={"header"}> Notes </h1>
+                    <text> {props.user.email} </text>
+                    <button onClick={() => signOut(props.auth) }>Sign Out</button>
                 </div>
                 <div id={"bottom-part"} onClick={() => {
                     console.log("parentclicked")
