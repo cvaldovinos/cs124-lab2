@@ -144,3 +144,15 @@
     width: 170px;
     font-size: 14px;
 }
+
+#logOut {
+    width: 100px;
+    height: 50px;
+    top: 10%;
+    left:90%;
+    font-size: 16px;
+    position: fixed;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 5;
+}

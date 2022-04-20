@@ -24,10 +24,21 @@ let collectionName = "cs124-lab3-fe950"; // collection for each list passed in f
 
 function App() {
     const auth = getAuth();
-    const [user, loading, error] = useAuthState(auth)
+    const [user, loading, error] = useAuthState(auth);
+    const [showUserField, setShowUserField] = useState("");
+
+    function handleShowUserField(value) {
+        if (value === showUserField){
+            setShowUserField("")
+        } else{
+            setShowUserField(value);
+        }
+
+    }
+
     if (loading) {
         return (
-            <text> Loading... </text>
+            <div id={"loading"}> Loading... </div>
         )
     }
     if (user) {

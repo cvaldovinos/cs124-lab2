@@ -26,8 +26,6 @@ function ListView(props) {
     const qPriorityAsc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "asc"));
     const qPriorityDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "desc"));
 
-    console.log(selected)
-    console.log(edited)
     function collectionSelector() {
         if (sort === "creationDesc") {
             return (qCreationDesc)

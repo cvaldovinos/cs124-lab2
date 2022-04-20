@@ -5,13 +5,20 @@ function SignUp(props) {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(props.auth)
     const [email, setEmail] = useState("");
     const [passw, setPassword] = useState("");
+    const [signUp, setSignUp] = useState(false);
     return (
         <div>
-            <div>
-                <input id="email" type={"text"} onChange={(e) => setEmail(e.target.value)}></input>
-                <input id="password" type={"password"} onChange={(e) => setPassword(e.target.value)}></input>
-                <button onClick={() => {createUserWithEmailAndPassword(email, passw).catch(error => console.log(error))}}>Sign Up</button>
-            </div>
+            <button id={"signUp"} onClick={() => {props.handleShowUserField("signUp")}}>Sign Up</button>
+            {props.showUserField === "signUp" &&
+                <div>
+                    <input id="email" type={"text"} onChange={(e) => setEmail(e.target.value)}></input>
+                    <input id="password" type={"password"} onChange={(e) => setPassword(e.target.value)}></input>
+                    <button onClick={() => {
+                        createUserWithEmailAndPassword(email, passw).catch(error => console.log(error))
+                    }}>Sign Up
+                    </button>
+                </div>
+            }
         </div>
     )
 }

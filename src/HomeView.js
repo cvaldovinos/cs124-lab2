@@ -20,7 +20,6 @@ function HomeView(props) {
     }
 
     function handleListAdded(listName) {
-        console.log("add")
         let listId = generateUniqueID();
         setShowName(false)
         setDoc(doc(props.db, props.collection, listId),
@@ -32,7 +31,6 @@ function HomeView(props) {
 
 
     function handleListDeleted(listId) {
-        console.log("delete")
         setChangeThis("");
         setShowDelete(!showDelete)
         deleteDoc(doc(props.db, props.collection, listId)).then(() => {});
@@ -77,12 +75,12 @@ function HomeView(props) {
                         </div>
                     </button>
                     <h1 tabIndex={(showName || showDelete || showRename) ? -1 : 0} className={"header"}> Notes </h1>
-                    <text> {props.user.email} </text>
-                    <button onClick={() => signOut(props.auth) }>Sign Out</button>
+                    <div id={"logOut"}>
+                        <span> {props.user.email} </span>
+                        <button onClick={() => signOut(props.auth) }>Log Out</button>
+                    </div>
                 </div>
-                <div id={"bottom-part"} onClick={() => {
-                    console.log("parentclicked")
-                }}>
+                <div id={"bottom-part"}>
                     <div id="bottom-flex" >
 
                         {lists?.map((data) =>
