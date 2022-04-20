@@ -28,6 +28,10 @@ function ListBox(props) {
                              onClick={() => props.onDeleteToggle()}>
                             Delete
                         </button>
+                        <button className={"options"} tabIndex="0"
+                                >
+                            Share
+                        </button>
                     </div>
                 }
             </div>

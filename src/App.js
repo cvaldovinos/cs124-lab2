@@ -7,6 +7,7 @@ import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {getAuth, signOut} from "firebase/auth";
+import './App.css';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
@@ -37,9 +38,11 @@ function App() {
         )
     } else {
         return (
-            <div>
-                <SignIn auth={auth}></SignIn>
-                <SignUp auth={auth}></SignUp>
+            <div id={"signInPage"}>
+                <h1>Make your password your socail security number</h1>
+                <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignIn>
+                <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignUp>
+                <p>© Christian and Chris. Do not steal this. We will sue you on Judge Judy</p>
             </div>
         )
     }
