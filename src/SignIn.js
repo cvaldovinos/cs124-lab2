@@ -14,11 +14,17 @@ function SignIn(props) {
         <div>
             <button id={"signIn"} onClick={() => {props.handleShowUserField("signIn")}}>Sign In</button>
             {props.showUserField === "signIn" && <div id={"popup"}>
-                <input id="email" type={"text"} onChange={(e) => setEmail(e.target.value)}></input>
-                <input id="password" type={"password"} onChange={(e) => setPassword(e.target.value)}></input>
-                <button onClick={() => signInWithEmailAndPassword(email, passw)}>Log In</button>
-                <button onClick={() => sendPasswordResetEmail(email)}>Forgot password?</button>
-                <button onClick={() => signInWithGoogle() }> <img id={"googleLogo"} src={"https://aws1.discourse-cdn.com/auth0/optimized/3X/8/a/8a06490f525c8f65d4260204bc3bc7b0e1fb0ba7_2_500x500.png"}/> Log In With Google</button>
+                <div>
+                    <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmail(e.target.value)}></input>
+                    <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPassword(e.target.value)}></input>
+                    <button onClick={() => signInWithEmailAndPassword(email, passw)}>Log in</button>
+                </div>
+                <div>
+                    <button id={"forgotPass"} onClick={() => sendPasswordResetEmail(email)}>Forgot password?</button>
+                </div>
+                <div>
+                    <button onClick={() => signInWithGoogle() }> <img id={"googleLogo"} src={"https://aws1.discourse-cdn.com/auth0/optimized/3X/8/a/8a06490f525c8f65d4260204bc3bc7b0e1fb0ba7_2_500x500.png"}/> Log In With Google</button>
+                </div>
             </div>
             }
         </div>

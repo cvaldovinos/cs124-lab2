@@ -19,13 +19,17 @@ function HomeView(props) {
         console.log("ERROR: List data failed to load from Firestore")
     }
 
+
     function handleListAdded(listName) {
         let listId = generateUniqueID();
         setShowName(false)
         setDoc(doc(props.db, props.collection, listId),
             {
                 key: listId,
-                name: listName
+                name: listName,
+                owner: props.user.email,
+                canView: [],
+                canEdit: []
             }).then(() => {})
     }
 

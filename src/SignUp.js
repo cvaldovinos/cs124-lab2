@@ -11,8 +11,8 @@ function SignUp(props) {
             <button id={"signUp"} onClick={() => {props.handleShowUserField("signUp")}}>Sign Up</button>
             {props.showUserField === "signUp" &&
                 <div>
-                    <input id="email" type={"text"} onChange={(e) => setEmail(e.target.value)}></input>
-                    <input id="password" type={"password"} onChange={(e) => setPassword(e.target.value)}></input>
+                    <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmail(e.target.value)}></input>
+                    <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPassword(e.target.value)}></input>
                     <button onClick={() => {
                         createUserWithEmailAndPassword(email, passw).catch(error => console.log(error))
                     }}>Sign Up
