@@ -1,6 +1,6 @@
 import {useSignInWithEmailAndPassword, useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
 import {useState} from 'react';
-
+import './SignUp.css'
 function SignUp(props) {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(props.auth)
     const [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ function SignUp(props) {
     const [signUp, setSignUp] = useState(false);
     return (
         <div>
-            <button id={"signUp"} onClick={() => {props.handleShowUserField("signUp")}}>Sign Up</button>
+            {props.showUserField !== "signUp" && <button id={"signUp"} onClick={() => {props.handleShowUserField("signUp")}}>Sign Up</button>}
             {props.showUserField === "signUp" &&
                 <div>
                     <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmail(e.target.value)}></input>

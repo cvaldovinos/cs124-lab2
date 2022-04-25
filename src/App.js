@@ -50,10 +50,14 @@ function App() {
     } else {
         return (
             <div id={"signInPage"}>
-                <h1>Make your password your socail security number</h1>
-                <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignIn>
-                <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignUp>
-                <p>© Christian and Chris. Do not steal this. We will sue you on Judge Judy</p>
+                <div id={"signInBox"}>
+                    <h1>Make your password your socail security number</h1>
+                    <div id={"buttons"}>
+                        <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignIn>
+                        <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignUp>
+                    </div>
+                    <p>© Christian and Chris. Do not steal this. We will sue you on Judge Judy</p>
+                </div>
             </div>
         )
     }

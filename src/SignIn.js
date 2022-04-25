@@ -1,5 +1,5 @@
 import {useSignInWithEmailAndPassword, useSignInWithGoogle, useSendPasswordResetEmail} from "react-firebase-hooks/auth";
-import {useState} from 'react';
+import {Fragment, useState} from 'react';
 import './SignIn.css'
 
 function SignIn(props) {
@@ -11,8 +11,11 @@ function SignIn(props) {
     const [passw, setPassword] = useState("");
 
     return (
-        <div>
-            <button id={"signIn"} onClick={() => {props.handleShowUserField("signIn")}}>Sign In</button>
+        <Fragment>
+            <div>
+                {props.showUserField !== "signIn" && <button id={"signIn"} onClick={() => {props.handleShowUserField("signIn")}}>Sign In</button>}
+            </div>
+            <div>
             {props.showUserField === "signIn" && <div id={"popup"}>
                 <div>
                     <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmail(e.target.value)}></input>
@@ -27,7 +30,8 @@ function SignIn(props) {
                 </div>
             </div>
             }
-        </div>
+            </div>
+        </Fragment>
     )
 
 }

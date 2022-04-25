@@ -1,8 +1,23 @@
 #signInPage {
     background-color: lightsteelblue;
+    /*position: fixed;*/
     width: 100vw;
     height: 100vh;
+    /*top: 50vh;*/
     font-family: "Georgia", serif;
+    /*line-height: 50%;*/
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#signInBox {
+    /*position: fixed;*/
+    /*top: 50vh;*/
+    /*left: 50vw;*/
+
+    /*width: 300px;*/
+
 }
 
 h1 {
@@ -20,4 +35,12 @@ h1 {
 
 button {
     font-family: "Trebuchet MS", sans-serif;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
 }

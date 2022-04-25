@@ -5,3 +5,9 @@
 #popup {
 
 }
+
+#forgotPass{
+    background-color: lightsteelblue;
+    border: none;
+    color: red;
+}
