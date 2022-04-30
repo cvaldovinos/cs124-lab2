@@ -1,6 +1,6 @@
 import './HomeView.css'
 import ListBox from "./ListBox";
-import { collection, setDoc, doc, updateDoc, deleteDoc} from "firebase/firestore";
+import { collection, setDoc, doc, updateDoc, deleteDoc, query, where, arrayRemove} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useState} from "react";
 import {signOut} from "firebase/auth";
@@ -13,8 +13,11 @@ function HomeView(props) {
     const [showDelete, setShowDelete] = useState(false)
     const [changeThis, setChangeThis] = useState("")
     const [showRename, setShowRename] = useState(false)
+    const [showRemove, setShowRemove] = useState(false)
 
-    let [lists,loading,error] = useCollectionData(collection(props.db, props.collection));
+    const collectionRef = collection(props.db, props.collection);
+
+    let [lists,loading,error] = useCollectionData(query(collectionRef, where("canView", "array-contains", props.user.uid)));
     if (error) {
         console.log("ERROR: List data failed to load from Firestore")
     }
@@ -27,9 +30,9 @@ function HomeView(props) {
             {
                 key: listId,
                 name: listName,
-                owner: props.user.email,
-                canView: [],
-                canEdit: []
+                owner: props.user.uid,
+                canView: [props.user.uid],
+                canEdit: [props.user.uid]
             }).then(() => {})
     }
 
@@ -38,6 +41,15 @@ function HomeView(props) {
         setChangeThis("");
         setShowDelete(!showDelete)
         deleteDoc(doc(props.db, props.collection, listId)).then(() => {});
+    }
+
+    function handleListRemoved(listId) {
+        setChangeThis("");
+        setShowRemove(!showRemove)
+        updateDoc(doc(props.db, props.collection, listId),
+            {
+                canView: arrayRemove(props.user.uid)
+            }).then(() => {})
     }
 
     function handleListRenamed(listId, newName) {
@@ -51,6 +63,10 @@ function HomeView(props) {
 
     function handleDeleteToggle() {
         setShowDelete(!showDelete);
+    }
+
+    function handleRemoveToggle() {
+        setShowRemove(!showRemove);
     }
 
     function handleRenameToggle() {
@@ -92,6 +108,7 @@ function HomeView(props) {
                                      id = {data.key}
                                      name = {data.name}
                                      onListView = {props.onListView}
+                                     canEdit = {data.canEdit.includes(props.user.uid)}
                                      changeThis = {changeThis}
                                      showDelete = {showDelete}
                                      showRename = {showRename}
