@@ -22,7 +22,6 @@ function HomeView(props) {
         console.log("ERROR: List data failed to load from Firestore")
     }
 
-
     function handleListAdded(listName) {
         let listId = generateUniqueID();
         setShowName(false)
@@ -113,6 +112,7 @@ function HomeView(props) {
                                      showDelete = {showDelete}
                                      showRename = {showRename}
                                      onDeleteToggle = {handleDeleteToggle}
+                                     onRemoveToggle = {handleRemoveToggle}
                                      onRenameToggle = {handleRenameToggle}
                                      onChangeThisUpdate = {handleChangeThisUpdate}
                                      popup={(showName || showDelete || showRename)}
@@ -141,6 +141,29 @@ function HomeView(props) {
                                     setChangeThis("");
                                     }}>No, Go Back</button>
                                 <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={() => handleListDeleted(changeThis)}>Yes, Delete</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+                {showRemove && <div>
+                    <div>
+                        <div id={"back"} onClick={() => {
+                            setShowRemove(false);
+                            setChangeThis("");
+                        }}/>
+                        <div id={"warning"}>
+                            <div>
+                                This note will be <font color={"red"}>permanently removed</font> from your notes.
+                                Are you sure you want to do this?
+                            </div>
+                            <div id={"warningButtons"}>
+
+                                <button id={"no"} className={"warningOption"} tabIndex={0} onClick={() => {
+                                    setShowRemove(false);
+                                    setChangeThis("");
+                                }}>No, Go Back</button>
+                                <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={() => handleListRemoved(changeThis)}>Yes, Remove</button>
 
                             </div>
                         </div>

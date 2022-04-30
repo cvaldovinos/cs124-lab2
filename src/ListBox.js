@@ -24,10 +24,16 @@ function ListBox(props) {
                                 onClick={() => props.onRenameToggle()}>
                             Rename
                         </button>
+                        { (props.canEdit) &&
                         <button className={"options"} tabIndex="0"
                              onClick={() => props.onDeleteToggle()}>
                             Delete
-                        </button>
+                        </button>}
+                        {(!props.canEdit) &&
+                            <button className={"options"} tabIndex="0"
+                                    onClick={() => props.onRemoveToggle()}>
+                                Remove
+                            </button>}
                         <button className={"options"} tabIndex="0"
                                 >
                             Share
