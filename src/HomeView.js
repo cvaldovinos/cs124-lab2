@@ -48,7 +48,7 @@ function HomeView(props) {
         setShowRemove(!showRemove)
         updateDoc(doc(props.db, props.collection, listId),
             {
-                canView: arrayRemove(props.user.uid)
+                canView: arrayRemove(props.user.email)
             }).then(() => {})
     }
 
@@ -121,8 +121,8 @@ function HomeView(props) {
                                      id = {data.key}
                                      name = {data.name}
                                      onListView = {props.onListView}
-                                     isOwner = {data.owner === props.user.uid}
-                                     canEdit = {data.canEdit.includes(props.user.uid)}
+                                     isOwner = {data.owner === props.user.email}
+                                     canEdit = {data.canEdit.includes(props.user.email)}
                                      changeThis = {changeThis}
                                      showDelete = {showDelete}
                                      showRename = {showRename}
