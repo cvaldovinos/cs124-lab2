@@ -18,7 +18,7 @@ function HomeView(props) {
 
     const collectionRef = collection(props.db, props.collection);
 
-    let [lists,loading,error] = useCollectionData(query(collectionRef, where("canView", "array-contains", props.user.uid)));
+    let [lists,loading,error] = useCollectionData(query(collectionRef, where("canView", "array-contains", props.user.email)));
     if (error) {
         console.log("ERROR: List data failed to load from Firestore")
     }
@@ -30,9 +30,9 @@ function HomeView(props) {
             {
                 key: listId,
                 name: listName,
-                owner: props.user.uid,
-                canView: [props.user.uid],
-                canEdit: [props.user.uid]
+                owner: props.user.email,
+                canView: [props.user.email],
+                canEdit: [props.user.email]
             }).then(() => {})
     }
 
