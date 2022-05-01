@@ -14,6 +14,7 @@ function HomeView(props) {
     const [changeThis, setChangeThis] = useState("")
     const [showRename, setShowRename] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
+    const [showShare, setShowShare] = useState(false)
 
     const collectionRef = collection(props.db, props.collection);
 
@@ -60,6 +61,15 @@ function HomeView(props) {
             }).then(() => {})
     }
 
+    function handleListShared(listId, shareUser) {
+        setChangeThis("")
+        setShowShare(!showShare)
+        updateDoc(doc(props.db, props.collection, listId),
+            {
+                canEdit: arrayUnion(shareUser)
+            }).then(() => {})
+    }
+
     function handleDeleteToggle() {
         setShowDelete(!showDelete);
     }
@@ -69,7 +79,11 @@ function HomeView(props) {
     }
 
     function handleRenameToggle() {
-        setShowRename(!showRename)
+        setShowRename(!showRename);
+    }
+
+    function handleShareToggle() {
+        setShowShare(!showShare);
     }
     
     function handleChangeThisUpdate(listId) {
@@ -208,6 +222,31 @@ function HomeView(props) {
                                    autoComplete={"off"}
                                    onKeyDown={(e) => {if (e.key === 'Enter') {
                                        handleListRenamed(changeThis, document.getElementById('renameNote').value)
+                                   }if (e.key === 'Escape') {
+                                       setShowRename(false);
+                                       setChangeThis("");
+                                   }
+                                   }}/>
+
+                        </div>
+                    </div>
+                </div>}
+                {showShare && <div>
+                    <div>
+                        <div id={"back"} onClick={() => {
+                            setShowShare(false);
+                            setChangeThis("");
+                        }}/>
+                        <div id={"warning"}>
+                            <div id={"nameMessage"}> Share </div>
+                            <div>(Max. 25 characters)</div>
+                            <input id={"shareWithUser"}
+                                   className={"notebox"}
+                                   type={"text"}
+                                   maxLength={25}
+                                   autoComplete={"off"}
+                                   onKeyDown={(e) => {if (e.key === 'Enter') {
+                                       handleListShared(changeThis, document.getElementById('shareWithUser').value)
                                    }if (e.key === 'Escape') {
                                        setShowRename(false);
                                        setChangeThis("");

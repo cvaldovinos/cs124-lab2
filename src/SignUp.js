@@ -1,18 +1,18 @@
-import {useSignInWithEmailAndPassword, useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
+import {useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
 import {useState} from 'react';
 import './SignUp.css'
 function SignUp(props) {
-    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(props.auth)
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(props.auth)
     const [email, setEmail] = useState("");
     const [passw, setPassword] = useState("");
-    const [signUp, setSignUp] = useState(false);
+    // const [signUp, setSignUp] = useState(false);
     return (
         <div>
             {props.showUserField !== "signUp" && <button id={"signUp"} onClick={() => {props.handleShowUserField("signUp")}}>Sign Up</button>}
             {props.showUserField === "signUp" &&
                 <div>
-                    <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmail(e.target.value)}></input>
-                    <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPassword(e.target.value)}></input>
+                    <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmail(e.target.value)}/>
+                    <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPassword(e.target.value)}/>
                     <button onClick={() => {
                         createUserWithEmailAndPassword(email, passw).catch(error => console.log(error))
                     }}>Sign Up
