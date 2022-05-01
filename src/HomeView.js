@@ -1,6 +1,6 @@
 import './HomeView.css'
 import ListBox from "./ListBox";
-import { collection, setDoc, doc, updateDoc, deleteDoc, query, where, arrayRemove} from "firebase/firestore";
+import { collection, setDoc, doc, updateDoc, deleteDoc, query, where, arrayRemove, arrayUnion} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useState} from "react";
 import {signOut} from "firebase/auth";
@@ -121,6 +121,7 @@ function HomeView(props) {
                                      id = {data.key}
                                      name = {data.name}
                                      onListView = {props.onListView}
+                                     isOwner = {data.owner === props.user.uid}
                                      canEdit = {data.canEdit.includes(props.user.uid)}
                                      changeThis = {changeThis}
                                      showDelete = {showDelete}
@@ -128,6 +129,7 @@ function HomeView(props) {
                                      onDeleteToggle = {handleDeleteToggle}
                                      onRemoveToggle = {handleRemoveToggle}
                                      onRenameToggle = {handleRenameToggle}
+                                     onShareToggle = {handleShareToggle}
                                      onChangeThisUpdate = {handleChangeThisUpdate}
                                      popup={(showName || showDelete || showRename)}
                         />)}

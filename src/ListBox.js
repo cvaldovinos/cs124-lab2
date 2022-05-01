@@ -34,10 +34,11 @@ function ListBox(props) {
                                     onClick={() => props.onRemoveToggle()}>
                                 Remove
                             </button>}
-                        <button className={"options"} tabIndex="0"
-                                >
+                        {(props.isOwner) &&
+                            <button className={"options"} tabIndex="0"
+                                onClick={() => props.onShareToggle()}>
                             Share
-                        </button>
+                        </button>}
                     </div>
                 }
             </div>

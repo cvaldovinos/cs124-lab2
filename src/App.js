@@ -6,7 +6,7 @@ import {useState} from 'react';
 import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
 import {useAuthState} from 'react-firebase-hooks/auth';
-import {getAuth, signOut} from "firebase/auth";
+import {getAuth} from "firebase/auth";
 import './App.css';
 
 const firebaseConfig = {
@@ -36,6 +36,10 @@ function App() {
 
     }
 
+    if (error) {
+        console.log("ERROR: Page failed to load")
+    }
+
     if (loading) {
         return (
             <div id={"loading"}> Loading... </div>
@@ -44,7 +48,7 @@ function App() {
     if (user) {
         return (
             <div>
-                <SignedInApp user={user} auth={auth}></SignedInApp>
+                <SignedInApp user={user} auth={auth}/>
             </div>
         )
     } else {
@@ -53,8 +57,8 @@ function App() {
                 <div id={"signInBox"}>
                     <h1>Make your password your socail security number</h1>
                     <div id={"buttons"}>
-                        <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignIn>
-                        <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}></SignUp>
+                        <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
+                        <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
                     </div>
                     <p>© Christian and Chris. Do not steal this. We will sue you on Judge Judy</p>
                 </div>
