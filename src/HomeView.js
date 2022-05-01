@@ -1,5 +1,6 @@
 import './HomeView.css'
 import ListBox from "./ListBox";
+import SharedUsers from "./SharedUsers";
 import { collection, setDoc, doc, updateDoc, deleteDoc, query, where, arrayRemove, arrayUnion} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useState} from "react";
@@ -61,12 +62,19 @@ function HomeView(props) {
             }).then(() => {})
     }
 
-    function handleListShared(listId, shareUser) {
-        setChangeThis("")
-        setShowShare(!showShare)
+    function handleListShared(listId, shareUser, shareType) {
+        // setChangeThis("")
+        // setShowShare(!showShare)
+        if (shareType==="Editor") {
+            updateDoc(doc(props.db, props.collection, listId),
+                {
+                    canEdit: arrayUnion(shareUser)
+                }).then(() => {
+            })
+        }
         updateDoc(doc(props.db, props.collection, listId),
             {
-                canEdit: arrayUnion(shareUser)
+                canView: arrayUnion(shareUser)
             }).then(() => {})
     }
 
@@ -85,10 +93,11 @@ function HomeView(props) {
     function handleShareToggle() {
         setShowShare(!showShare);
     }
-    
+
     function handleChangeThisUpdate(listId) {
         setChangeThis(listId)
     }
+
 
     if (loading) {
         return <div className={"homeLoading"}>Loading...
@@ -245,10 +254,10 @@ function HomeView(props) {
                             <input id={"shareWithUser"}
                                    className={"notebox"}
                                    type={"text"}
-                                   maxLength={25}
                                    autoComplete={"off"}
                                    onKeyDown={(e) => {if (e.key === 'Enter') {
-                                       handleListShared(changeThis, document.getElementById('shareWithUser').value)
+                                       handleListShared(changeThis, document.getElementById('shareWithUser').value, "Editor");
+                                       document.getElementById("shareWithUser").value = "";
                                    }if (e.key === 'Escape') {
                                        setShowRename(false);
                                        setChangeThis("");
