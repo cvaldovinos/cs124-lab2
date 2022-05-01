@@ -263,6 +263,12 @@ function HomeView(props) {
                                        setChangeThis("");
                                    }
                                    }}/>
+                            {lists?.map((data) =>
+                                <SharedUsers changeThis={changeThis}
+                                             id={data.key}
+                                             canView={data.canView}
+                                             canEdit={data.canEdit}
+                                />)}
 
                         </div>
                     </div>
