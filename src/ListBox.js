@@ -37,8 +37,13 @@ function ListBox(props) {
                         {(props.isOwner) &&
                             <button className={"options"} tabIndex="0"
                                 onClick={() => props.onShareToggle()}>
-                            Share
+                                Share
                         </button>}
+                        {(!props.isOwner) &&
+                            <button className={"options"} tabIndex="0"
+                                    onClick={() => props.onShareToggle()}>
+                                Shared with
+                            </button>}
                     </div>
                 }
             </div>

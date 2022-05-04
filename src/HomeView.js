@@ -270,6 +270,7 @@ function HomeView(props) {
                                              owner={data.owner}
                                              isOwner = {data.owner === props.user.email}
                                              updateSharing = {handleUpdateSharing}
+                                             onListShared = {handleListShared}
                                              canView={data.canView}
                                              canEdit={data.canEdit}
                                              setShowRename = {setShowRename}
