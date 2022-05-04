@@ -1,3 +1,6 @@
+import './SharedUsers.css'
+import {Fragment} from "react";
+
 function SharedUsers(props){
     let filteredEdit = props.canEdit.filter((e) => (e !== props.owner));
     let filteredView = props.canView.filter((e) => (!props.canEdit.includes(e)))
