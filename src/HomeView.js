@@ -264,25 +264,6 @@ function HomeView(props) {
                             setChangeThis("");
                         }}/>
                         <div id={"warning"}>
-                            <div id={"nameMessage"}> Share </div>
-                            <input id={"shareWithUser"}
-                                   className={"notebox"}
-                                   type={"text"}
-                                   autoComplete={"off"}
-                                   onKeyDown={(e) => {if (e.key === 'Enter') {
-                                       handleListShared(changeThis,
-                                           document.getElementById('shareWithUser').value,
-                                           document.getElementById('permission').value);
-                                       document.getElementById("shareWithUser").value = "";
-                                   }if (e.key === 'Escape') {
-                                       setShowRename(false);
-                                       setChangeThis("");
-                                   }
-                                   }}/>
-                            <select id={"permission"}>
-                                <option>Editor</option>
-                                <option>Viewer</option>
-                            </select>
                             {lists?.map((data) =>
                                 <SharedUsers changeThis={changeThis}
                                              id={data.key}
@@ -291,6 +272,8 @@ function HomeView(props) {
                                              updateSharing = {handleUpdateSharing}
                                              canView={data.canView}
                                              canEdit={data.canEdit}
+                                             setShowRename = {setShowRename}
+                                             setChangeThis = {setChangeThis}
                                 />)}
 
                         </div>
