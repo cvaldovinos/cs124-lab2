@@ -76,7 +76,7 @@ function LineData(props) {
                                className={textClasses.join(" ")}
                                disabled={props.canOnlyView}
                                onClick={(e) => clickTextWrapper(e, props.line.key)}
-                               tabIndex={props.warning ? -1 : 0}
+                               tabIndex={(props.warning || props.canOnlyView) ? -1 : 0}
                                onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
                                onKeyDown={(e) =>
                                        {if (e.key === 'Enter') {

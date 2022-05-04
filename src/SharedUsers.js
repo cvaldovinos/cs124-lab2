@@ -7,25 +7,27 @@ function SharedUsers(props){
 
     return ( <Fragment >
         {(props.id === props.changeThis) && <div>
-            <div id={"nameMessage"}> {props.isOwner? "Share" : "Shared with"} </div>
-            <input id={"shareWithUser"}
-            className={"notebox"}
-            type={"text"}
-            autoComplete={"off"}
-            onKeyDown={(e) => {if (e.key === 'Enter') {
-            props.onListShared(props.changeThis,
-            document.getElementById('shareWithUser').value,
-            document.getElementById('permission').value);
-            document.getElementById("shareWithUser").value = "";
-        }if (e.key === 'Escape') {
-            props.setShowRename(false);
-            props.setChangeThis("");
-        }
-        }}/>
-            <select id={"permission"}>
-            <option>Editor</option>
-            <option>Viewer</option>
-            </select>
+            <div id={"nameMessage"}> {props.isOwner? "Share" : "Shared With"} </div>
+            {props.isOwner && <div>
+                <input id={"shareWithUser"}
+                className={"notebox"}
+                type={"text"}
+                autoComplete={"off"}
+                onKeyDown={(e) => {if (e.key === 'Enter') {
+                props.onListShared(props.changeThis,
+                document.getElementById('shareWithUser').value,
+                document.getElementById('permission').value);
+                document.getElementById("shareWithUser").value = "";
+            }if (e.key === 'Escape') {
+                props.setShowRename(false);
+                props.setChangeThis("");
+            }
+            }}/>
+                <select id={"permission"}>
+                <option>Editor</option>
+                <option>Viewer</option>
+                </select>
+            </div>}
             <div>Owned by: {props.owner}</div>
             <div id={"shareDiv"}>
         {((filteredEdit.length) > 0) && <div>

@@ -1,6 +1,6 @@
 import './ListView.css';
 import LineList from './LineList.js';
-import {useState} from 'react';
+import {Fragment, useState} from 'react';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import { collection, query, setDoc, doc, updateDoc, deleteDoc, orderBy} from "firebase/firestore";
 import {useCollectionData} from "react-firebase-hooks/firestore";
@@ -182,9 +182,11 @@ function ListView(props) {
         }
     }
 
-    return (
+    return (<Fragment>
         <div id="container">
-            <div id={"top"} onClick={() => {handleLineEdited(-1)}}>
+            <div id={"top"} onClick={() => {
+                handleLineEdited(-1)
+            }}>
                 <div id={"button-div"}>
                     <button className="back-button" aria-label={"return to home"}
                             tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 1}
@@ -194,19 +196,47 @@ function ListView(props) {
                                                tabIndex={(showWarning || showPriorities || sortOptions) ? -1 : 2}
                                                onClick={() => setSortOptions(true)}>
 
-                        {(sort === "textAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>A Z</div></div>}
-                        {(sort === "textDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>Z A</div></div>}
-                        {(sort === "creationAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>JAN</div><div id={"date2"}>DEC</div></div></div>}
-                        {(sort === "creationDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortDate"}><div id={"date1"}>DEC</div><div id={"date2"}>JAN</div></div></div>}
-                        {(sort === "priorityAsc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>1 3</div></div>}
-                        {(sort === "priorityDesc") && <div className={"sort-button-display"}><div id={"sortArrow"}>&darr;</div><div id={"sortText"}>3 1</div></div>}
+                        {(sort === "textAsc") && <div className={"sort-button-display"}>
+                            <div id={"sortArrow"}>&darr;</div>
+                            <div id={"sortText"}>A Z</div>
+                        </div>}
+                        {(sort === "textDesc") && <div className={"sort-button-display"}>
+                            <div id={"sortArrow"}>&darr;</div>
+                            <div id={"sortText"}>Z A</div>
+                        </div>}
+                        {(sort === "creationAsc") && <div className={"sort-button-display"}>
+                            <div id={"sortArrow"}>&darr;</div>
+                            <div id={"sortDate"}>
+                                <div id={"date1"}>JAN</div>
+                                <div id={"date2"}>DEC</div>
+                            </div>
+                        </div>}
+                        {(sort === "creationDesc") && <div className={"sort-button-display"}>
+                            <div id={"sortArrow"}>&darr;</div>
+                            <div id={"sortDate"}>
+                                <div id={"date1"}>DEC</div>
+                                <div id={"date2"}>JAN</div>
+                            </div>
+                        </div>}
+                        {(sort === "priorityAsc") && <div className={"sort-button-display"}>
+                            <div id={"sortArrow"}>&darr;</div>
+                            <div id={"sortText"}>1 3</div>
+                        </div>}
+                        {(sort === "priorityDesc") && <div className={"sort-button-display"}>
+                            <div id={"sortArrow"}>&darr;</div>
+                            <div id={"sortText"}>3 1</div>
+                        </div>}
                     </button>}
                 </div>
 
             </div>
 
-            <div id={"title"} ><h2 onClick={() => {handleLineEdited(-1)}}>{props.title}</h2></div>
-            <div id={"lineList"} onClick={() => {handleLineEdited(-1)}}>
+            <div id={"title"}><h2 onClick={() => {
+                handleLineEdited(-1)
+            }}>{props.title}</h2></div>
+            <div id={"lineList"} onClick={() => {
+                handleLineEdited(-1)
+            }}>
                 <LineList lineList={list}
                           canOnlyView={canOnlyView}
                           selectedLines={selected}
@@ -227,48 +257,72 @@ function ListView(props) {
             </div>
             {/*<div className={"line"}><div id={"textboxDiv"}><input type={"text"}className={"textboxes"}/></div></div>*/}
             {showWarning && <div className={"popup"}>
-                    <div id={"back"} onClick={() => setShowWarning(false)}/>
-                    <div id={"warning"}>
-                        <div>
-                            The selected items will be <font color={"red"}>permanently deleted</font>.
-                            Are you sure you want to delete these items?
-                        </div>
-                        <div id={"warningButtons"}>
-                            <button id={"no"} className={"warningOption"} tabIndex={0} onClick={() => setShowWarning(false)}>No, Go Back</button>
-                            <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={handleDelete}>Yes, Delete</button>
-                        </div>
+                <div id={"back"} onClick={() => setShowWarning(false)}/>
+                <div id={"warning"}>
+                    <div>
+                        The selected items will be <font color={"red"}>permanently deleted</font>.
+                        Are you sure you want to delete these items?
                     </div>
-                </div>}
+                    <div id={"warningButtons"}>
+                        <button id={"no"} className={"warningOption"} tabIndex={0}
+                                onClick={() => setShowWarning(false)}>No, Go Back
+                        </button>
+                        <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={handleDelete}>Yes, Delete
+                        </button>
+                    </div>
+                </div>
+            </div>}
             {showPriorities && <div className={"popup"}>
-                    <div id={"back"} onClick={() => setShowPriorities(false)}/>
-                    <div id={"warning"}>
-                        <div id={"priorityMessage"}> Set priority value for selected items.</div>
-                        <div id={"priorityButtons"}>
-                            <button id={"priorityZero"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(0)}>Remove Priority</button>
-                            <button id={"priorityOne"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(1)}>1</button>
-                            <button id={"priorityTwo"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(2)}>2</button>
-                            <button id={"priorityThree"} className={"warningOption"} tabIndex={0} onClick={() => handlePrioritySet(3)}>3</button>
+                <div id={"back"} onClick={() => setShowPriorities(false)}/>
+                <div id={"warning"}>
+                    <div id={"priorityMessage"}> Set priority value for selected items.</div>
+                    <div id={"priorityButtons"}>
+                        <button id={"priorityZero"} className={"warningOption"} tabIndex={0}
+                                onClick={() => handlePrioritySet(0)}>Remove Priority
+                        </button>
+                        <button id={"priorityOne"} className={"warningOption"} tabIndex={0}
+                                onClick={() => handlePrioritySet(1)}>1
+                        </button>
+                        <button id={"priorityTwo"} className={"warningOption"} tabIndex={0}
+                                onClick={() => handlePrioritySet(2)}>2
+                        </button>
+                        <button id={"priorityThree"} className={"warningOption"} tabIndex={0}
+                                onClick={() => handlePrioritySet(3)}>3
+                        </button>
 
-                        </div>
                     </div>
+                </div>
             </div>}
             {sortOptions && <div className={"popup"}>
-                    <div id={"back"} onClick={() => setSortOptions(false)}/>
-                    <div id={"warning"}>
-                        <div id={"priorityMessage"}> Choose a sorting option.</div>
-                        <div id={"sortOptions"}>
-                            <button id={"creationAscButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("creationAsc")}> Oldest to Newest</button>
-                            <button  id={"creationDescButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("creationDesc")}>Newest to Oldest</button>
-                            <button  id={"textAscButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("textAsc")}>Alphabetical</button>
-                            <button  id={"textDescButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical</button>
-                            <button  id={"priorityDescButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)</button>
-                            <button  id={"priorityAscButton"} className={"warningOption"} tabIndex={0} onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)</button>
-                        </div>
+                <div id={"back"} onClick={() => setSortOptions(false)}/>
+                <div id={"warning"}>
+                    <div id={"priorityMessage"}> Choose a sorting option.</div>
+                    <div id={"sortOptions"}>
+                        <button id={"creationAscButton"} className={"warningOption"} tabIndex={0}
+                                onClick={() => changeSortOption("creationAsc")}> Oldest to Newest
+                        </button>
+                        <button id={"creationDescButton"} className={"warningOption"} tabIndex={0}
+                                onClick={() => changeSortOption("creationDesc")}>Newest to Oldest
+                        </button>
+                        <button id={"textAscButton"} className={"warningOption"} tabIndex={0}
+                                onClick={() => changeSortOption("textAsc")}>Alphabetical
+                        </button>
+                        <button id={"textDescButton"} className={"warningOption"} tabIndex={0}
+                                onClick={() => changeSortOption("textDesc")}>Rev. Alphabetical
+                        </button>
+                        <button id={"priorityDescButton"} className={"warningOption"} tabIndex={0}
+                                onClick={() => changeSortOption("priorityAsc")}>Priority (Low to High)
+                        </button>
+                        <button id={"priorityAscButton"} className={"warningOption"} tabIndex={0}
+                                onClick={() => changeSortOption("priorityDesc")}>Priority (High to Low)
+                        </button>
                     </div>
+                </div>
             </div>}
             <ul id={"endList"} tabIndex={-1} aria-label={"Tap to Add Note Line"}>
                 <li id={"tapLine"} tabIndex={-1}>
                     <input id={"tempTapLine"}
+                           disabled={canOnlyView}
                            className={"tempTapClass"}
                            type={"text"}
                            autoComplete={"off"}
@@ -279,7 +333,9 @@ function ListView(props) {
                            onKeyDown={(e) => tapLineType(e)}
                            defaultValue={""}
                     />
-                    <div className={document.activeElement.id!=='tempTapLine' ? "inactiveText": "activeText"} tabIndex={-1}>Tap to Add Note</div>
+                    <div className={document.activeElement.id !== 'tempTapLine' ? "inactiveText" : "activeText"}
+                         tabIndex={-1}>Tap to Add Note
+                    </div>
                 </li>
                 <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
                 <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
@@ -305,9 +361,11 @@ function ListView(props) {
                 <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
 
             </ul>
-            <div id={"bottom"} onClick={() => { handleLineEdited(-1)} }/>
-       </div>
-    );
+            <div id={"bottom"} onClick={() => {
+                handleLineEdited(-1)
+            }}/>
+        </div>}
+    </Fragment>);
 }
 
 export default ListView;
