@@ -143,6 +143,8 @@ function HomeView(props) {
                             <ListBox key = {data.key}
                                      id = {data.key}
                                      name = {data.name}
+                                     canViewList = {data.canView}
+                                     canEditList = {data.canEdit}
                                      onListView = {props.onListView}
                                      isOwner = {data.owner === props.user.email}
                                      canEdit = {data.canEdit.includes(props.user.email)}

@@ -33,12 +33,13 @@ function LineList(props) {
                               onEdited={props.onEdited}
                               onToggleSelected={props.onToggleSelected}
                               warning={props.warning}
+                              canOnlyView = {props.canOnlyView}
                     />)}
             </ul>
 
             {/*displays our trash/"Delete" button*/}
             <div id={"lower-left-buttons"}>
-            {props.showDeleteButton && <div><button className={"priority"}
+            {props.showDeleteButton && !props.canOnlyView && <div><button className={"priority"}
                                                     aria-label={"set priority for selected lines"}
                                                     tabIndex={props.warning ? -1 : 0}
                                                     onClick={props.onPriority}>

@@ -71,10 +71,14 @@ function SignedInApp(props) {
     const [listId, setListId] = useState(0);
     const [listView, setListView] = useState(false);
     const [title,setTitle] = useState("");
+    const [canView, setCanView] = useState([]);
+    const [canEdit, setCanEdit] = useState([]);
 
-   function handleListView(text, newId) {
+   function handleListView(text, newId, canView, canEdit) {
        setTitle(text);
        setListId(newId);
+       setCanView(canView);
+       setCanEdit(canEdit);
        setListView(!listView);
    }
 
@@ -89,6 +93,8 @@ function SignedInApp(props) {
             onListView={handleListView}
             title={title}
             listId={listId}
+            canView={canView}
+            canEdit={canEdit}
             db={db}
             user={props.user}
             collection={collectionName}/>)

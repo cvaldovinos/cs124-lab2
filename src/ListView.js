@@ -50,6 +50,9 @@ function ListView(props) {
     let showHideButton = false;
     let showSortButton = false;
 
+    let canOnlyView = props.canView.includes(props.user.email) && !props.canEdit.includes(props.user.email);
+
+    console.log(canOnlyView)
 
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
@@ -205,6 +208,7 @@ function ListView(props) {
             <div id={"title"} ><h2 onClick={() => {handleLineEdited(-1)}}>{props.title}</h2></div>
             <div id={"lineList"} onClick={() => {handleLineEdited(-1)}}>
                 <LineList lineList={list}
+                          canOnlyView={canOnlyView}
                           selectedLines={selected}
                           hideChecks={hidden}
                           showDeleteButton={showDeleteButton}

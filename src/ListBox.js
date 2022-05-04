@@ -7,7 +7,9 @@ function ListBox(props) {
         <Fragment>
             <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
-                    <button className={"bluebox"} tabIndex={props.popup ? -1 : 0} onClick={() => {props.onListView(props.name, props.id)}}>
+                    <button className={"bluebox"}
+                            tabIndex={props.popup ? -1 : 0}
+                            onClick={() => {props.onListView(props.name, props.id, props.canViewList, props.canEditList)}}>
                     {props.name}
                     </button>
                     <button className="settings" aria-label={"note options"} onClick={() => {
