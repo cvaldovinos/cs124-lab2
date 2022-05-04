@@ -18,7 +18,7 @@ function ListBox(props) {
                         }
                     }}/>
                 </div>
-                {((props.changeThis === props.id) && !props.showDelete && !props.showRename) &&
+                {((props.changeThis === props.id) && !props.showDelete && !props.showRename && !props.showShare) &&
                     <div id={"optionsBox"} >
                         <button className={"options"} tabIndex="0"
                                 onClick={() => props.onRenameToggle()}>

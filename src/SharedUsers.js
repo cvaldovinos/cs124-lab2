@@ -1,18 +1,30 @@
 function SharedUsers(props){
-    return (<div key={props.id}>
-        {(props.id === props.changeThis) && <div key={props.id}>
-            <ul className={"shareList"}>
-                {props.canView.map((data) =>
-                    <li key={data}> {data} </li>)}
-            </ul>
-            <ul className={"shareList"}>
-                {props.canEdit.map((data) =>
-                    <li key={data}> {data} </li>
-                )}
-            </ul>
+    let filteredEdit = props.canEdit.filter((e) => (e !== props.owner));
+    let filteredView = props.canView.filter((e) => (!props.canEdit.includes(e)))
+
+    return (<Fragment >
+        {(props.id === props.changeThis) && <div>Owned by: {props.owner}</div>}
+        {(props.id === props.changeThis) && <div id={"shareDiv"}>
+            { ((filteredEdit.length) > 0) && <div>
+                <span className={"shareTitles"}> Editors </span>
+                <ul className={"shareList"}>
+                    {filteredEdit.map((data) =>
+                        <li className={"user"} key={data}> {data} {props.isOwner && <button onClick={() => props.updateSharing(props.id, data, 'Editor')} className={"editPerm"}>X</button>}</li>,
+
+                    )}
+                </ul>
+            </div>}
+            { ((filteredView.length) > 0) && <div>
+                <span className={"shareTitles"}> Viewers</span>
+                <ul className={"shareList"}>
+                    {filteredView.map((data) =>
+                        <li className={"user"} key={data}> {data} {props.isOwner && <button onClick={() => props.updateSharing(props.id, data, 'Viewer')}>X</button>}</li>
+                    )}
+                </ul>
+            </div> }
         </div>
         }
-    </div>)
+    </Fragment>)
 }
 
 

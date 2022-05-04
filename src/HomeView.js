@@ -78,6 +78,20 @@ function HomeView(props) {
             }).then(() => {})
     }
 
+    function handleUpdateSharing(listId, shareUser, shareType) {
+        if (shareType==="Editor") {
+            updateDoc(doc(props.db, props.collection, listId),
+                {
+                    canEdit: arrayRemove(shareUser)
+                }).then(() => {
+            })
+        }
+        updateDoc(doc(props.db, props.collection, listId),
+            {
+                canView: arrayRemove(shareUser)
+            }).then(() => {})
+    }
+
     function handleDeleteToggle() {
         setShowDelete(!showDelete);
     }
@@ -135,6 +149,7 @@ function HomeView(props) {
                                      changeThis = {changeThis}
                                      showDelete = {showDelete}
                                      showRename = {showRename}
+                                     showShare = {showShare}
                                      onDeleteToggle = {handleDeleteToggle}
                                      onRemoveToggle = {handleRemoveToggle}
                                      onRenameToggle = {handleRenameToggle}
@@ -250,22 +265,30 @@ function HomeView(props) {
                         }}/>
                         <div id={"warning"}>
                             <div id={"nameMessage"}> Share </div>
-                            <div>(Max. 25 characters)</div>
                             <input id={"shareWithUser"}
                                    className={"notebox"}
                                    type={"text"}
                                    autoComplete={"off"}
                                    onKeyDown={(e) => {if (e.key === 'Enter') {
-                                       handleListShared(changeThis, document.getElementById('shareWithUser').value, "Editor");
+                                       handleListShared(changeThis,
+                                           document.getElementById('shareWithUser').value,
+                                           document.getElementById('permission').value);
                                        document.getElementById("shareWithUser").value = "";
                                    }if (e.key === 'Escape') {
                                        setShowRename(false);
                                        setChangeThis("");
                                    }
                                    }}/>
+                            <select id={"permission"}>
+                                <option>Editor</option>
+                                <option>Viewer</option>
+                            </select>
                             {lists?.map((data) =>
                                 <SharedUsers changeThis={changeThis}
                                              id={data.key}
+                                             owner={data.owner}
+                                             isOwner = {data.owner === props.user.email}
+                                             updateSharing = {handleUpdateSharing}
                                              canView={data.canView}
                                              canEdit={data.canEdit}
                                 />)}

@@ -1,3 +1,24 @@
-#shared {
-    background-image: none;
+.user {
+     background: none;
+     border: none;
+}
+
+
+.shareList {
+     width: auto;
+     height: 60px;
+     overflow: auto;
+}
+
+.editPerm{
+     float: right;
+}
+
+.shareTitles {
+     color: blue;
+}
+
+#shareDiv {
+     display: flex;
+     flex-direction: row;
 }
