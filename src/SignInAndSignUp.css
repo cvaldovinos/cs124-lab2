@@ -61,6 +61,7 @@
 
 #buttonGrid {
     display: grid;
+    width: 100%;
     grid-template-columns: auto auto;
     grid-template-rows: auto 200px;
 }

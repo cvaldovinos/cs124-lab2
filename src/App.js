@@ -58,7 +58,7 @@ function App() {
                         {/*<SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>*/}
                         <SignInAndSignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
                     </div>
-                    <p id={"copyrightTag"}>Created by: Christian and Chris</p>
+                    <p id={"authors"}>Created by: Christian and Chris</p>
                 </div>
                 <img id={"notesPreview"} alt={"Notes app preview"}/>
             </div>
