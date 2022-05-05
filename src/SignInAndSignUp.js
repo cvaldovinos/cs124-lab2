@@ -36,14 +36,14 @@ function SignInAndSignUp(props) {
 
             <div id={"buttonInfo"}>
                 {props.showUserField === "signIn" && <div id={"popup"}>
-                    <div>
+                    <div className={"loginLine"}>
                         <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmailSignIn(e.target.value)}/>
                         <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignIn(e.target.value)}/>
                         <button className={"bigButtons"} onClick={() => signInWithEmailAndPassword(emailSignIn, passwSignIn)}>Log in</button>
                         {errorSignIn && (errorSignIn.code=== 'auth/invalid-email') && <p  className={"loginError"}>Invalid email</p>}
                         {errorSignIn && (errorSignIn.code === 'auth/wrong-password') && <p className={"loginError"}>Incorrect password</p>}
                     </div>
-                    <div>
+                    <div id={"forgotPassDiv"}>
                         <button id={"forgotPass"} onClick={() => setShowForgotPass(true)}>Forgot password?</button>
                     </div>
                     <div id={"googleButton"}>
@@ -75,7 +75,7 @@ function SignInAndSignUp(props) {
                 </div>}
         <div>
             {props.showUserField === "signUp" &&
-                <div>
+                <div className={"loginLine"}>
                     <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmailSignUp(e.target.value)}/>
                     <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignUp(e.target.value)}/>
                     <button  className={"bigButtons"} onClick={() => {

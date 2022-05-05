@@ -34,6 +34,9 @@
 .sharedBoxes {
      width: 50%;
 }
+.sharedBoxes2 {
+     width: 100%;
+}
 
 #removeButton{
      float:left;

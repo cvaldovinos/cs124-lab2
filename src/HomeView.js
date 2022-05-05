@@ -20,6 +20,7 @@ function HomeView(props) {
     const collectionRef = collection(props.db, props.collection);
 
     let [lists,loading,error] = useCollectionData(query(collectionRef, where("canView", "array-contains", props.user.email)));
+
     if (error) {
         console.log("ERROR: List data failed to load from Firestore")
     }
@@ -65,6 +66,8 @@ function HomeView(props) {
     function handleListShared(listId, shareUser, shareType) {
         // setChangeThis("")
         // setShowShare(!showShare)
+        console.log()
+
         if (shareType==="Editor") {
             updateDoc(doc(props.db, props.collection, listId),
                 {
@@ -121,7 +124,7 @@ function HomeView(props) {
     return (<div id="homepage">
                 <div id="titled">
                     <button id="settings"
-                            tabIndex={(showName || showDelete || showRename) ? -1 : 0}
+                            tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}
                             aria-label={"settings"}>
                         <div>
                             <img    id={"cogwheel"}
@@ -130,7 +133,8 @@ function HomeView(props) {
                                     alt={"cog"}/>
                         </div>
                     </button>
-                    <h1 tabIndex={(showName || showDelete || showRename) ? -1 : 0} className={"header"}> Notes </h1>
+                    <h1 tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}
+                        className={"header"}> Notes </h1>
                     <div id={"logOut"}>
                         <span> {props.user.email} </span>
                         <button tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}

@@ -23,32 +23,46 @@ function SharedUsers(props){
                 type={"text"}
                 autoComplete={"off"}
                 onKeyDown={(e) => {if (e.key === 'Enter') {
-                props.onListShared(props.changeThis,
-                document.getElementById('shareWithUser').value,
-                document.getElementById('permission').value);
-                document.getElementById("shareWithUser").value = "";
-            }if (e.key === 'Escape') {
+                    props.onListShared(props.changeThis,
+                    document.getElementById('shareWithUser').value,
+                    document.getElementById('permission').value);
+                    // console.log(validUsers)
+                    console.log("hello")
+                    if (successful === true) {
+                        document.getElementById("shareWithUser").value = "";
+                    } else{
+                        console.log("INVALID EMAIL")
+                    }
+                }if (e.key === 'Escape') {
                 props.setShowRename(false);
                 props.setChangeThis("");
-            }
-            }}/>
+                }}}/>
                 <select id={"permission"}>
-                <option>Editor</option>
-                <option>Viewer</option>
+                    <option>Editor</option>
+                    <option>Viewer</option>
                 </select>
-            </div>}
+            </div>
+            }
             <div>Owned by: {props.owner}</div>
             <div id={"shareDiv"}>
-        {((filteredEdit.length) > 0) && <div className={"sharedBoxes"}>
+        {((filteredEdit.length) > 0) && <div className={(filteredView.length) === 0 ? "sharedBoxes2" : "sharedBoxes"}>
             <span className={"shareTitles"}> Editors </span>
             <ul className={"shareList"}>
         {filteredEdit.map((data) =>
-            <li className={"user"} key={data}> {props.isOwner && <button id={"removeButton"} onClick={() => props.updateSharing(props.id, data, 'Editor')} className={"editPerm"}>X</button>} {data}</li>,
-
+            <li className={"user"} key={data}>
+                {props.isOwner &&
+                    <button id={"removeButton"}
+                            onClick={() => props.updateSharing(props.id, data, 'Editor')}
+                            className={"editPerm"}>
+                        X
+                    </button>
+                }
+                {data}
+            </li>,
             )}
             </ul>
             </div>}
-        {((filteredView.length) > 0) && <div className={"sharedBoxes"}>
+        {((filteredView.length) > 0) && <div className={(filteredEdit.length) === 0 ? "sharedBoxes2" : "sharedBoxes"}>
             <span className={"shareTitles"}> Viewers</span>
             <ul className={"shareList"}>
         {filteredView.map((data) =>

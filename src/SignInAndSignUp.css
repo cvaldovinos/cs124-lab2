@@ -33,6 +33,10 @@
     margin-left: 20px;
 }
 
+#forgotPassDiv{
+    text-align: center;
+}
+
 #forgotPass{
     background-color: lightsteelblue;
     border: none;
@@ -53,11 +57,11 @@
 }
 
 #email {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 #password {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 #buttonGrid {
