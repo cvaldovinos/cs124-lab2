@@ -148,6 +148,7 @@ function HomeView(props) {
                                      onListView = {props.onListView}
                                      isOwner = {data.owner === props.user.email}
                                      canEdit = {data.canEdit.includes(props.user.email)}
+                                     canView = {data.canView.includes(props.user.email)}
                                      changeThis = {changeThis}
                                      showDelete = {showDelete}
                                      showRename = {showRename}
@@ -197,7 +198,7 @@ function HomeView(props) {
                         <div id={"warning"}>
                             <div>
                                 This note will be <font color={"red"}>permanently removed</font> from your notes.
-                                Are you sure you want to do this?
+                                It will not be removed for other users. Are you sure you want to do this?
                             </div>
                             <div id={"warningButtons"}>
 

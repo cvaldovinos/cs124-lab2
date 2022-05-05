@@ -1,13 +1,12 @@
 import ListView from "./ListView";
 import HomeView from "./HomeView";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
 import {useState} from 'react';
 import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {getAuth} from "firebase/auth";
 import './App.css';
+import SignInAndSignUp from "./SignInAndSignUp";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDlfim9PmxloCfyskIlZd6xt2RxlWem-kw",
@@ -55,13 +54,14 @@ function App() {
         return (
             <div id={"signInPage"}>
                 <div id={"signInBox"}>
-                    <h1>Make your password your socail security number</h1>
+                    <h1>Welcome to our notes app!</h1>
                     <div id={"buttons"}>
                         <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
                         <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
                     </div>
-                    <p>© Christian and Chris. Do not steal this. We will sue you on Judge Judy</p>
+                    <p id={"copyrightTag"}>Created by: Christian and Chris</p>
                 </div>
+                <img id={"notesPreview"} alt={"Notes app preview"}/>
             </div>
         )
     }

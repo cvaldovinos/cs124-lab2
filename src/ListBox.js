@@ -8,6 +8,7 @@ function ListBox(props) {
             <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
                     <button className={"bluebox"}
+                            style={{ background: !props.canEdit && props.canView ? "rgb(230, 242, 255)" : "lightsteelblue"}}
                             tabIndex={props.popup ? -1 : 0}
                             onClick={() => {props.onListView(props.name, props.id, props.canViewList, props.canEditList)}}>
                     {props.name}
@@ -22,15 +23,14 @@ function ListBox(props) {
                 </div>
                 {((props.changeThis === props.id) && !props.showDelete && !props.showRename && !props.showShare) &&
                     <div id={"optionsBox"} >
-                        <button className={"options"} tabIndex="0"
+                        {props.canEdit && <div><button className={"options"} tabIndex="0"
                                 onClick={() => props.onRenameToggle()}>
                             Rename
                         </button>
-                        { (props.canEdit) &&
                         <button className={"options"} tabIndex="0"
                              onClick={() => props.onDeleteToggle()}>
                             Delete
-                        </button>}
+                        </button></div>}
                         {(!props.canEdit) &&
                             <button className={"options"} tabIndex="0"
                                     onClick={() => props.onRemoveToggle()}>

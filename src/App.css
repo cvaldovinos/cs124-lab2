@@ -8,7 +8,8 @@
     /*line-height: 50%;*/
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50vw 50vw
 }
 
 #signInBox {
@@ -17,6 +18,9 @@
     /*left: 50vw;*/
 
     /*width: 300px;*/
+    display: grid;
+    row-gap: 200px;
+    grid-column: 1;
 
 }
 
@@ -33,9 +37,7 @@ h1 {
     font-family: "Trebuchet MS", sans-serif;
 }
 
-button {
-    font-family: "Trebuchet MS", sans-serif;
-}
+
 
 #buttons {
     display: flex;
