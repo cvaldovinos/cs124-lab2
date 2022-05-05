@@ -32,7 +32,6 @@ function App() {
         } else{
             setShowUserField(value);
         }
-
     }
 
     if (error) {
@@ -56,8 +55,8 @@ function App() {
                 <div id={"signInBox"}>
                     <h1>Welcome to our notes app!</h1>
                     <div id={"buttons"}>
-                        <SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
-                        <SignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
+                        {/*<SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>*/}
+                        <SignInAndSignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
                     </div>
                     <p id={"copyrightTag"}>Created by: Christian and Chris</p>
                 </div>

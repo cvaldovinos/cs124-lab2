@@ -30,20 +30,20 @@ function SharedUsers(props){
             </div>}
             <div>Owned by: {props.owner}</div>
             <div id={"shareDiv"}>
-        {((filteredEdit.length) > 0) && <div>
+        {((filteredEdit.length) > 0) && <div className={"sharedBoxes"}>
             <span className={"shareTitles"}> Editors </span>
             <ul className={"shareList"}>
         {filteredEdit.map((data) =>
-            <li className={"user"} key={data}> {data} {props.isOwner && <button onClick={() => props.updateSharing(props.id, data, 'Editor')} className={"editPerm"}>X</button>}</li>,
+            <li className={"user"} key={data}> {props.isOwner && <button id={"removeButton"} onClick={() => props.updateSharing(props.id, data, 'Editor')} className={"editPerm"}>X</button>} {data}</li>,
 
             )}
             </ul>
             </div>}
-        {((filteredView.length) > 0) && <div>
+        {((filteredView.length) > 0) && <div className={"sharedBoxes"}>
             <span className={"shareTitles"}> Viewers</span>
             <ul className={"shareList"}>
         {filteredView.map((data) =>
-            <li className={"user"} key={data}> {data} {props.isOwner && <button onClick={() => props.updateSharing(props.id, data, 'Viewer')}>X</button>}</li>
+            <li className={"user"} key={data}> {props.isOwner && <button id={"removeButton"} onClick={() => props.updateSharing(props.id, data, 'Viewer')}>X</button>} {data}</li>
             )}
             </ul>
             </div>}

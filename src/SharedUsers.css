@@ -1,6 +1,14 @@
 .user {
      background: none;
-     border: none;
+     /*border: none;*/
+     display: block;
+     border-color: aliceblue;
+     /*flex-wrap: wrap;*/
+     /*align-self: stretch;*/
+     /*padding-left: 0;*/
+
+     white-space: nowrap;
+     /*overflow: auto;*/
 }
 
 
@@ -21,4 +29,12 @@
 #shareDiv {
      display: flex;
      flex-direction: row;
+}
+
+.sharedBoxes {
+     width: 50%;
+}
+
+#removeButton{
+     float:left;
 }
