@@ -1,9 +1,18 @@
 import './SharedUsers.css'
 import {Fragment} from "react";
+// import {orderBy, query, where} from "firebase/firestore";
+// import {useCollectionData} from "react-firebase-hooks/firestore";
 
 function SharedUsers(props){
     let filteredEdit = props.canEdit.filter((e) => (e !== props.owner));
     let filteredView = props.canView.filter((e) => (!props.canEdit.includes(e)))
+
+    // collection =
+    // let checkValidUser = query(props.collectionRef, where('id', '==', 'b97qjRbVqp7TaMiZFdTQ'));
+    // console.log(checkValidUser.where("emails", "array-contains", "ccouto@g.hmc.edu"))
+    // let [validUsers, loading, error] = useCollectionData(checkValidUser);
+    // console.log(validUsers)
+    let successful = false;
 
     return ( <Fragment >
         {(props.id === props.changeThis) && <div>

@@ -13,7 +13,7 @@ function ListBox(props) {
                             onClick={() => {props.onListView(props.name, props.id, props.canViewList, props.canEditList)}}>
                     {props.name}
                     </button>
-                    <button className="settings" aria-label={"note options"} onClick={() => {
+                    <button tabIndex={(props.showName || props.showDelete || props.showRename || props.showShare) ? -1 : 0} className="settings" aria-label={"note options"} onClick={() => {
                         if (props.changeThis===props.id) {
                             props.onChangeThisUpdate("")
                         } else{

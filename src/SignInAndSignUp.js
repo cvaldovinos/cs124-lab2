@@ -8,7 +8,7 @@ import {useState} from 'react';
 import './SignInAndSignUp.css'
 
 function SignInAndSignUp(props) {
-    // const [signIn, setSignIn] = useState(false);
+
     const [signInWithEmailAndPassword, userSignIn, loadingSignIn, errorSignIn] = useSignInWithEmailAndPassword(props.auth)
     const [signInWithGoogle] = useSignInWithGoogle(props.auth)
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(props.auth)
@@ -34,14 +34,6 @@ function SignInAndSignUp(props) {
                 >Sign Up</button>
             </div>
 
-
-            {/*<div className={"bigButtons"}>*/}
-            {/*    {props.showUserField !== "signUp" &&*/}
-            {/*        <button id={"signUpButton"} className={"bigButtons"}*/}
-            {/*                onClick={() => {props.handleShowUserField("signUp")}}*/}
-            {/*        >Sign Up</button>}*/}
-
-            {/*</div>*/}
             <div id={"buttonInfo"}>
                 {props.showUserField === "signIn" && <div id={"popup"}>
                     <div>
@@ -54,8 +46,8 @@ function SignInAndSignUp(props) {
                     <div>
                         <button id={"forgotPass"} onClick={() => setShowForgotPass(true)}>Forgot password?</button>
                     </div>
-                    <div>
-                        <button className={"bigButtons"} onClick={() => signInWithGoogle() }> <img id={"googleLogo"} alt={""} src={"https://aws1.discourse-cdn.com/auth0/optimized/3X/8/a/8a06490f525c8f65d4260204bc3bc7b0e1fb0ba7_2_500x500.png"}/> Log In With Google</button>
+                    <div id={"googleButton"}>
+                        <button className={"bigButtons"}  onClick={() => signInWithGoogle() }> <img id={"googleLogo"} alt={""} src={"https://aws1.discourse-cdn.com/auth0/optimized/3X/8/a/8a06490f525c8f65d4260204bc3bc7b0e1fb0ba7_2_500x500.png"}/> Log In With Google</button>
                     </div>
                 </div>
                 }
@@ -86,7 +78,7 @@ function SignInAndSignUp(props) {
                 <div>
                     <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmailSignUp(e.target.value)}/>
                     <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignUp(e.target.value)}/>
-                    <button id="signUpButton"  className={"bigButtons"} onClick={() => {
+                    <button  className={"bigButtons"} onClick={() => {
                         createUserWithEmailAndPassword(emailSignUp, passwSignUp).then()
                     }}>Register
                     </button>

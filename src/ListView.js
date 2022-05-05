@@ -52,8 +52,6 @@ function ListView(props) {
 
     let canOnlyView = props.canView.includes(props.user.email) && !props.canEdit.includes(props.user.email);
 
-    console.log(canOnlyView)
-
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
         showSortButton = list.length > 1;

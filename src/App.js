@@ -2,7 +2,7 @@ import ListView from "./ListView";
 import HomeView from "./HomeView";
 import {useState} from 'react';
 import {initializeApp} from "firebase/app";
-import {getFirestore} from "firebase/firestore";
+import {arrayUnion, doc, getFirestore, updateDoc} from "firebase/firestore";
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {getAuth} from "firebase/auth";
 import './App.css';
@@ -21,6 +21,8 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 let collectionName = "cs124-lab3-fe950"; // collection for each list passed in from ListView
 
+let userDocName = "b97qjRbVqp7TaMiZFdTQ"; // document id for list of registered user emails
+
 function App() {
     const auth = getAuth();
     const [user, loading, error] = useAuthState(auth);
@@ -34,6 +36,13 @@ function App() {
         }
     }
 
+    function handleUpdateUserDoc(userEmail) {
+        updateDoc(doc(db, collectionName, userDocName),
+            {
+                emails: arrayUnion(userEmail)
+            }).then(() => {})
+        }
+
     if (error) {
         console.log("ERROR: Page failed to load")
     }
@@ -44,6 +53,7 @@ function App() {
         )
     }
     if (user) {
+        handleUpdateUserDoc(user.email)
         return (
             <div>
                 <SignedInApp user={user} auth={auth}/>
@@ -56,7 +66,11 @@ function App() {
                     <h1>Welcome to our notes app!</h1>
                     <div id={"buttons"}>
                         {/*<SignIn auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>*/}
-                        <SignInAndSignUp auth={auth} showUserField={showUserField} handleShowUserField={handleShowUserField}/>
+                        <SignInAndSignUp
+                            auth={auth}
+                            showUserField={showUserField}
+                            handleShowUserField={handleShowUserField}
+                            handleUpdateUserDoc={handleUpdateUserDoc}/>
                     </div>
                     <p id={"authors"}>Created by: Christian and Chris</p>
                 </div>

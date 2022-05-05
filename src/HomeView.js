@@ -133,7 +133,8 @@ function HomeView(props) {
                     <h1 tabIndex={(showName || showDelete || showRename) ? -1 : 0} className={"header"}> Notes </h1>
                     <div id={"logOut"}>
                         <span> {props.user.email} </span>
-                        <button onClick={() => signOut(props.auth) }>Log Out</button>
+                        <button tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}
+                                onClick={() => signOut(props.auth)}>Log Out</button>
                     </div>
                 </div>
                 <div id={"bottom-part"}>
@@ -153,19 +154,22 @@ function HomeView(props) {
                                      showDelete = {showDelete}
                                      showRename = {showRename}
                                      showShare = {showShare}
+                                     showName = {showName}
                                      onDeleteToggle = {handleDeleteToggle}
                                      onRemoveToggle = {handleRemoveToggle}
                                      onRenameToggle = {handleRenameToggle}
                                      onShareToggle = {handleShareToggle}
                                      onChangeThisUpdate = {handleChangeThisUpdate}
-                                     popup={(showName || showDelete || showRename)}
+                                     popup={(showName || showDelete || showRename || showShare)}
                         />)}
                     </div>
                 </div>
                 <button id="addnotebutton"
                         className={"circleButton"}
-                        tabIndex={(showName || showDelete || showRename) ? -1 : 0}
-                        aria-label={"add note"} onClick={() => setShowName(!showName)}><div>+</div></button>
+                        tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}
+                        aria-label={"add note"} onClick={() => setShowName(!showName)}>
+                    <div>+</div>
+                </button>
                 {showDelete && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -272,6 +276,7 @@ function HomeView(props) {
                                              id={data.key}
                                              owner={data.owner}
                                              isOwner = {data.owner === props.user.email}
+                                             collectionRef={collectionRef}
                                              updateSharing = {handleUpdateSharing}
                                              onListShared = {handleListShared}
                                              canView={data.canView}

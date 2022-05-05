@@ -28,8 +28,9 @@
 #signUpButton{
     grid-row: 1;
     grid-column: 2;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 #forgotPass{
@@ -69,11 +70,20 @@
 #signInButton {
     grid-row: 1;
     grid-column: 1;
-    text-align: center;
-    padding-bottom: 20px;
+    text-align: right;
+
 }
 
 #buttonInfo {
     grid-row: 2;
     grid-column: 1/span 2;
+}
+
+#googleButton {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.loginLine {
+    text-align: center;
 }
