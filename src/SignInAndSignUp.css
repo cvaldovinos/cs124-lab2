@@ -91,3 +91,21 @@
 .loginLine {
     text-align: center;
 }
+
+#spacingDiv {
+    height: 19px;
+}
+
+#logInButton{
+    width: 107px;
+}
+
+#registerButton{
+    width: 107px;
+}
+
+@media screen and (max-height: 475px) {
+    #authors {
+        display: none;
+    }
+}

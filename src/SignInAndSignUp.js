@@ -43,9 +43,6 @@ function SignInAndSignUp(props) {
                     <div id={"forgotPassDiv"}>
                         <button id={"forgotPass"} onClick={() => setShowForgotPass(true)}>Forgot password?</button>
                     </div>
-                    <div id={"googleButton"}>
-                        <button className={"bigButtons"}  onClick={() => signInWithGoogle() }> <img id={"googleLogo"} alt={""} src={"https://aws1.discourse-cdn.com/auth0/optimized/3X/8/a/8a06490f525c8f65d4260204bc3bc7b0e1fb0ba7_2_500x500.png"}/> Log In With Google</button>
-                    </div>
                 </div>
                 }
                 {showForgotPass && <div>
@@ -83,6 +80,10 @@ function SignInAndSignUp(props) {
                 </div>
                 }
         </div>
+                {(props.showUserField === "signUp" || props.showUserField === "signIn") && <div id={"googleButton"}>
+
+                    <button className={"bigButtons"}  onClick={() => signInWithGoogle() }> <img id={"googleLogo"} alt={""} src={"https://aws1.discourse-cdn.com/auth0/optimized/3X/8/a/8a06490f525c8f65d4260204bc3bc7b0e1fb0ba7_2_500x500.png"}/> Log In With Google</button>
+                </div>}
             </div>
         </div>
     )

@@ -67,7 +67,7 @@ function App() {
         return (
             <div id={"signInPage"}>
                 <div id={"signInBox"}>
-                    <h1>Welcome to our notes app!</h1>
+                    <h1 id={"loginTitle"}>Welcome to our notes app!</h1>
                     <div id={"buttons"}>
                         <SignInAndSignUp
                             auth={auth}
