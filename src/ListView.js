@@ -69,10 +69,10 @@ function ListView(props) {
     // changes line data for textboxes, checkboxes, or special key presses
     function handleItemChanged(itemID, field, newValue) {
         if (["text", "check_visible", "select_visible", "checked", "priority", "created"].includes(field)) {
-            updateDoc(doc(props.db, props.collection, props.listId, "Notes", itemID),
+            void updateDoc(doc(props.db, props.collection, props.listId, "Notes", itemID),
                 {
                     [field]: newValue,
-                }).then(() => {})
+                })
         }
         // changes the active/"clicked on" element to body when enter is pressed
         if (field === 'Enter') {
@@ -151,7 +151,7 @@ function ListView(props) {
 
     function handleItemAdded2(textValue) {
         const lineId = generateUniqueID();
-        setDoc(doc(props.db, props.collection, props.listId, "Notes", lineId),
+        void setDoc(doc(props.db, props.collection, props.listId, "Notes", lineId),
             {
                 key: lineId,
                 text: textValue,
@@ -161,7 +161,7 @@ function ListView(props) {
                 check_visible: true,
                 text_visible: true,
                 select_visible: true
-            }).then(() => {})
+            })
     }
 
     if (loading) {
@@ -179,6 +179,15 @@ function ListView(props) {
             setEdited(-1);
         }
     }
+    // generates extra blank lines at the bottom of each list
+    function getExtraLines() {
+        let extraLines = [];
+        for (let i = 0; i < 21; i++) {
+            extraLines.push(<li className={"empty"} onClick={() => handleLineEdited(-1)}/>)
+        }
+        return extraLines
+    }
+
 
     return (<Fragment>
         <div id="container">

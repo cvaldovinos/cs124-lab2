@@ -38,39 +38,39 @@ function HomeView(props) {
     function handleListAdded(listName) {
         let listId = generateUniqueID();
         setShowName(false)
-        setDoc(doc(props.db, props.collection, listId),
+        void setDoc(doc(props.db, props.collection, listId),
             {
                 key: listId,
                 name: listName,
                 owner: props.user.email,
                 canView: [props.user.email],
                 canEdit: [props.user.email]
-            }).then(() => {})
+            })
     }
 
 
     function handleListDeleted(listId) {
         setChangeThis("");
         setShowDelete(!showDelete)
-        deleteDoc(doc(props.db, props.collection, listId)).then(() => {});
+        void deleteDoc(doc(props.db, props.collection, listId));
     }
 
     function handleListRemoved(listId) {
         setChangeThis("");
         setShowRemove(!showRemove)
-        updateDoc(doc(props.db, props.collection, listId),
+        void updateDoc(doc(props.db, props.collection, listId),
             {
                 canView: arrayRemove(props.user.email)
-            }).then(() => {})
+            })
     }
 
     function handleListRenamed(listId, newName) {
         setChangeThis("")
         setShowRename(!showRename)
-        updateDoc(doc(props.db, props.collection, listId),
+        void updateDoc(doc(props.db, props.collection, listId),
             {
                 name: newName,
-            }).then(() => {})
+            })
     }
 
     function handleListShared(listId, shareUser, shareType) {
@@ -85,19 +85,18 @@ function HomeView(props) {
                 }).then(() => {
             })
         }
-        updateDoc(doc(props.db, props.collection, listId),
+        void updateDoc(doc(props.db, props.collection, listId),
             {
                 canView: arrayUnion(shareUser)
-            }).then(() => {})
+            })
     }
 
     function handleUpdateSharing(listId, shareUser, shareType) {
         if (shareType==="Editor") {
-            updateDoc(doc(props.db, props.collection, listId),
+            void updateDoc(doc(props.db, props.collection, listId),
                 {
                     canEdit: arrayRemove(shareUser)
-                }).then(() => {
-            })
+                })
         }
         updateDoc(doc(props.db, props.collection, listId),
             {

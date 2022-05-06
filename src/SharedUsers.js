@@ -20,6 +20,7 @@ function SharedUsers(props){
             <div id={"nameMessage"}> {props.isOwner? "Share" : "Shared With"} </div>
             {props.isOwner && <div>
                 <input id={"shareWithUser"}
+                aria-label={"share with user"}
                 className={"notebox"}
                 type={"text"}
                 autoComplete={"off"}
@@ -50,7 +51,8 @@ function SharedUsers(props){
         {filteredEdit.map((data) =>
             <li className={"user"} key={data}>
                 {props.isOwner &&
-                    <button id={"removeButton"}
+                    <button aria-label={"remove user"}
+                            id={"removeButton"}
                             onClick={() => props.updateSharing(props.id, data, 'Editor')}
                             className={"editPerm"}>
                         X
