@@ -34,9 +34,9 @@ function SignInAndSignUp(props) {
             <div id={"buttonInfo"}>
                 {props.showUserField === "signIn" && <div id={"popup"}>
                     <div className={"loginLine"}>
-                        <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmailSignIn(e.target.value)}/>
-                        <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignIn(e.target.value)}/>
-                        <button className={"bigButtons"} onClick={() => signInWithEmailAndPassword(emailSignIn, passwSignIn)}>Log in</button>
+                        <input id={"email"} type={"text"} placeholder={"email"} onChange={(e) => setEmailSignIn(e.target.value)}/>
+                        <input id={"password"} type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignIn(e.target.value)}/>
+                        <button id={"logInButton"} className={"bigButtons"} onClick={() => signInWithEmailAndPassword(emailSignIn, passwSignIn)}>Log in</button>
                         {errorSignIn && (errorSignIn.code=== 'auth/invalid-email') && <p  className={"loginError"}>Invalid email</p>}
                         {errorSignIn && (errorSignIn.code === 'auth/wrong-password') && <p className={"loginError"}>Incorrect password</p>}
                     </div>
@@ -72,10 +72,12 @@ function SignInAndSignUp(props) {
                 <div className={"loginLine"}>
                     <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmailSignUp(e.target.value)}/>
                     <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignUp(e.target.value)}/>
-                    <button  className={"bigButtons"} onClick={() => {
+                    <button  id={"registerButton"}
+                             className={"bigButtons"} onClick={() => {
                         void createUserWithEmailAndPassword(emailSignUp, passwSignUp)
                     }}>Register
                     </button>
+                    <div id={"spacingDiv"}/>
                     {errorCreate && (errorCreate.code=== 'auth/invalid-email') && <p className={"loginError"}>Try another email</p>}
                 </div>
                 }

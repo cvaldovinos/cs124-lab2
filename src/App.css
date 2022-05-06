@@ -80,6 +80,12 @@ h1 {
     }
 }
 
+@media screen and (max-height: 475px) {
+    #loginTitle {
+        display: none;
+    }
+}
+
 #authors {
     text-align: center;
 }
