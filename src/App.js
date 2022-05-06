@@ -56,7 +56,7 @@ function App() {
         handleUpdateUserDoc(user.email)
         return (
             <div>
-                <SignedInApp user={user} auth={auth}/>
+                <SignedInApp user={user} auth={auth} handleUpdateUserDoc={handleUpdateUserDoc}/>
             </div>
         )
     } else {
@@ -87,6 +87,7 @@ function SignedInApp(props) {
     const [canView, setCanView] = useState([]);
     const [canEdit, setCanEdit] = useState([]);
 
+
    function handleListView(text, newId, canView, canEdit) {
        setTitle(text);
        setListId(newId);
@@ -94,6 +95,7 @@ function SignedInApp(props) {
        setCanEdit(canEdit);
        setListView(!listView);
    }
+
 
    if(!listView){
         return (<HomeView onListView={handleListView}

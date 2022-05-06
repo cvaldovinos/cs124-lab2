@@ -18,11 +18,11 @@ function HomeView(props) {
     const [showShare, setShowShare] = useState(false)
 
     const collectionRef = collection(props.db, props.collection);
-
-    let [lists,loading,error] = useCollectionData(query(collectionRef, where("canView", "array-contains", props.user.email)));
+    let [lists, loading, error] = useCollectionData(query(collectionRef, orderBy('key')));
 
     if (error) {
         console.log("ERROR: List data failed to load from Firestore")
+        console.log(error.code)
     }
 
     function handleListAdded(listName) {
@@ -143,8 +143,7 @@ function HomeView(props) {
                 </div>
                 <div id={"bottom-part"}>
                     <div id="bottom-flex" >
-
-                        {lists?.map((data) =>
+                        {lists?.map((data) => data.key !== 'b97qjRbVqp7TaMiZFdTQ' ?
                             <ListBox key = {data.key}
                                      id = {data.key}
                                      name = {data.name}
@@ -165,7 +164,7 @@ function HomeView(props) {
                                      onShareToggle = {handleShareToggle}
                                      onChangeThisUpdate = {handleChangeThisUpdate}
                                      popup={(showName || showDelete || showRename || showShare)}
-                        />)}
+                            /> : <div/>)}
                     </div>
                 </div>
                 <button id="addnotebutton"
@@ -275,7 +274,7 @@ function HomeView(props) {
                             setChangeThis("");
                         }}/>
                         <div id={"warning"}>
-                            {lists?.map((data) =>
+                            {lists?.map((data) => data.key !== 'b97qjRbVqp7TaMiZFdTQ' ?
                                 <SharedUsers changeThis={changeThis}
                                              id={data.key}
                                              owner={data.owner}
@@ -287,7 +286,7 @@ function HomeView(props) {
                                              canEdit={data.canEdit}
                                              setShowRename = {setShowRename}
                                              setChangeThis = {setChangeThis}
-                                />)}
+                                /> : <div/>)}
 
                         </div>
                     </div>

@@ -3,8 +3,8 @@ import {Fragment} from "react";
 
 
 function ListBox(props) {
-    return (
-        <Fragment>
+    return (<Fragment>
+        {props.canView &&
             <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
                     <button className={"bluebox"}
@@ -49,7 +49,7 @@ function ListBox(props) {
                     </div>
                 }
             </div>
-        </Fragment>
+        }</Fragment>
     )
 }
 
