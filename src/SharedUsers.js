@@ -24,15 +24,13 @@ function SharedUsers(props){
                 type={"text"}
                 autoComplete={"off"}
                 onKeyDown={(e) => {if (e.key === 'Enter') {
-                    props.onListShared(props.changeThis,
-                    document.getElementById('shareWithUser').value,
-                    document.getElementById('permission').value);
-                    // console.log(validUsers)
-                    console.log("hello")
-                    if (successful === true) {
+                    if (userEmails.includes(document.getElementById("shareWithUser").value)) {
+                        props.onListShared(props.changeThis,
+                            document.getElementById('shareWithUser').value,
+                            document.getElementById('permission').value);
                         document.getElementById("shareWithUser").value = "";
                     } else{
-                        console.log("INVALID EMAIL")
+                        document.getElementById("shareWithUser").value = "Invalid email";
                     }
                 }if (e.key === 'Escape') {
                 props.setShowRename(false);
