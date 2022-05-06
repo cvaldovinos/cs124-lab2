@@ -13,7 +13,6 @@ function LineList(props) {
     }
 
     return(
-
         <Fragment>
             <ul type={"none"}>
                 {props.lineList.map((data) =>
@@ -29,7 +28,6 @@ function LineList(props) {
                               priority={data.priority}
                               onItemChanged={props.onItemChanged}
                               onItemDeleted={props.onItemDeleted}
-                              onItemAdded={props.onItemAdded}
                               onEdited={props.onEdited}
                               onToggleSelected={props.onToggleSelected}
                               warning={props.warning}

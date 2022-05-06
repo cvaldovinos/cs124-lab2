@@ -19,15 +19,15 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
-let collectionName = "cs124-lab3-fe950"; // collection for each list passed in from ListView
-
-let userDocName = "b97qjRbVqp7TaMiZFdTQ"; // document id for list of registered user emails
+let collectionName = "Lists"; // collection for each list passed in from ListView
+let userDocName = "b97qjRbVqp7TaMiZFdTQ"; // document id that contains our list of registered user emails
 
 function App() {
     const auth = getAuth();
     const [user, loading, error] = useAuthState(auth);
     const [showUserField, setShowUserField] = useState("");
 
+    // updates active field
     function handleShowUserField(value) {
         if (value === showUserField){
             setShowUserField("")
@@ -36,11 +36,12 @@ function App() {
         }
     }
 
+    // updates the list of all users
     function handleUpdateUserDoc(userEmail) {
-        updateDoc(doc(db, collectionName, userDocName),
+        void updateDoc(doc(db, collectionName, userDocName),
             {
                 emails: arrayUnion(userEmail)
-            }).then(() => {})
+            })
         }
 
     if (error) {
@@ -52,6 +53,8 @@ function App() {
             <div id={"loading"}> Loading... </div>
         )
     }
+
+    // if user signs in successfully then their email is added to all users list, and they see the signed in page
     if (user) {
         handleUpdateUserDoc(user.email)
         return (
@@ -60,6 +63,7 @@ function App() {
             </div>
         )
     } else {
+        // Menu before a user has signed in
         return (
             <div id={"signInPage"}>
                 <div id={"signInBox"}>
@@ -79,6 +83,7 @@ function App() {
     }
 }
 
+
 function SignedInApp(props) {
     const [listId, setListId] = useState(0);
     const [listView, setListView] = useState(false);
@@ -86,7 +91,7 @@ function SignedInApp(props) {
     const [canView, setCanView] = useState([]);
     const [canEdit, setCanEdit] = useState([]);
 
-
+    // updates corresponding information when we view a list
    function handleListView(text, newId, canView, canEdit) {
        setTitle(text);
        setListId(newId);
@@ -95,7 +100,7 @@ function SignedInApp(props) {
        setListView(!listView);
    }
 
-
+   // shows user's home page with all their notes when they have not clicked on a particular one
    if(!listView){
         return (<HomeView onListView={handleListView}
                           db={db}
@@ -103,6 +108,7 @@ function SignedInApp(props) {
                           auth={props.auth}
                           collection={collectionName}/>)
    } else {
+        // shows an individual note
         return (<ListView
             onListView={handleListView}
             title={title}

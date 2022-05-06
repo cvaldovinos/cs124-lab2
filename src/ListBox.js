@@ -4,6 +4,7 @@ import {Fragment} from "react";
 
 function ListBox(props) {
     return (<Fragment>
+        {/*Only displays note if user can view this list*/}
         {props.canView &&
             <div className={"notes"} aria-label={"note"}>
                 <div id={"listbox"}>
@@ -21,6 +22,8 @@ function ListBox(props) {
                         }
                     }}/>
                 </div>
+
+                {/*Shows user's options to change the note depending on their permissions*/}
                 {((props.changeThis === props.id) && !props.showDelete && !props.showRename && !props.showShare) &&
                     <div id={"optionsBox"} >
                         {props.canEdit && <div><button className={"options"} tabIndex="0"

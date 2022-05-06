@@ -9,27 +9,24 @@ import './SignInAndSignUp.css'
 
 function SignInAndSignUp(props) {
 
-    const [signInWithEmailAndPassword, userSignIn, loadingSignIn, errorSignIn] = useSignInWithEmailAndPassword(props.auth)
+    const [signInWithEmailAndPassword, , , errorSignIn] = useSignInWithEmailAndPassword(props.auth)
     const [signInWithGoogle] = useSignInWithGoogle(props.auth)
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(props.auth)
     const [emailSignIn, setEmailSignIn] = useState("");
     const [passwSignIn, setPasswordSignIn] = useState("");
     const [showForgotPass, setShowForgotPass] = useState(false);
-    const [createUserWithEmailAndPassword, userCreate, loadingCreate, errorCreate] = useCreateUserWithEmailAndPassword(props.auth)
+    const [createUserWithEmailAndPassword, , , errorCreate] = useCreateUserWithEmailAndPassword(props.auth)
     const [emailSignUp, setEmailSignUp] = useState("");
     const [passwSignUp, setPasswordSignUp] = useState("");
 
-    if (userCreate || loadingCreate || userSignIn || loadingSignIn){
-        console.log("DELETE THIS LATER")
-    }
 
     return (
         <div id={"buttonGrid"}>
             <div id={"signInButton"}>
-                <button id={"signIn"} className={ props.showUserField === "signIn" ? "yo" : "bigButtons"} onClick={() => {props.handleShowUserField("signIn")}}>Sign In</button>
+                <button id={"signIn"} className={ props.showUserField === "signIn" ? "clickedBigButton" : "bigButtons"} onClick={() => {props.handleShowUserField("signIn")}}>Sign In</button>
             </div>
             <div id={"signUpButton"}>
-                <button id={"signUpButton"} className={ props.showUserField === "signUp" ? "yo" : "bigButtons"}
+                <button id={"signUpButton"} className={ props.showUserField === "signUp" ? "clickedBigButton" : "bigButtons"}
                         onClick={() => {props.handleShowUserField("signUp")}}
                 >Sign Up</button>
             </div>
@@ -62,7 +59,7 @@ function SignInAndSignUp(props) {
                                    type={"text"}
                                    placeholder={"email"}
                                    onKeyDown={(e) => {if (e.key === 'Enter') {
-                                       sendPasswordResetEmail(document.getElementById('emailBox').value).then();
+                                       void sendPasswordResetEmail(document.getElementById('emailBox').value);
                                        setShowForgotPass(false);
                                    }if (e.key === 'Escape') {
                                        setShowForgotPass(false);
@@ -79,7 +76,7 @@ function SignInAndSignUp(props) {
                     <input id="email" type={"text"} placeholder={"email"} onChange={(e) => setEmailSignUp(e.target.value)}/>
                     <input id="password" type={"password"} placeholder={"password"} onChange={(e) => setPasswordSignUp(e.target.value)}/>
                     <button  className={"bigButtons"} onClick={() => {
-                        createUserWithEmailAndPassword(emailSignUp, passwSignUp).then()
+                        void createUserWithEmailAndPassword(emailSignUp, passwSignUp)
                     }}>Register
                     </button>
                     {errorCreate && (errorCreate.code=== 'auth/invalid-email') && <p className={"loginError"}>Try another email</p>}

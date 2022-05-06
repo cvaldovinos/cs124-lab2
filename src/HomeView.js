@@ -1,21 +1,10 @@
 import './HomeView.css'
 import ListBox from "./ListBox";
 import SharedUsers from "./SharedUsers";
-import {
-    collection,
-    setDoc,
-    doc,
-    updateDoc,
-    deleteDoc,
-    query,
-    arrayRemove,
-    arrayUnion,
-    orderBy
-} from "firebase/firestore";
+import {collection, setDoc, doc, updateDoc, deleteDoc, query, arrayRemove, arrayUnion, orderBy} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useState} from "react";
 import {signOut} from "firebase/auth";
-
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
 
@@ -26,15 +15,15 @@ function HomeView(props) {
     const [showRename, setShowRename] = useState(false)
     const [showRemove, setShowRemove] = useState(false)
     const [showShare, setShowShare] = useState(false)
-
     const collectionRef = collection(props.db, props.collection);
-    let [lists, loading, error] = useCollectionData(query(collectionRef, orderBy('key')));
+    const [lists, loading, error] = useCollectionData(query(collectionRef, orderBy('key')));
 
     if (error) {
         console.log("ERROR: List data failed to load from Firestore")
         console.log(error.code)
     }
 
+    // Creates a new note
     function handleListAdded(listName) {
         let listId = generateUniqueID();
         setShowName(false)
@@ -48,13 +37,14 @@ function HomeView(props) {
             })
     }
 
-
+    // Deletes note forever
     function handleListDeleted(listId) {
         setChangeThis("");
         setShowDelete(!showDelete)
         void deleteDoc(doc(props.db, props.collection, listId));
     }
 
+    // Removes note from viewer's home page
     function handleListRemoved(listId) {
         setChangeThis("");
         setShowRemove(!showRemove)
@@ -64,6 +54,7 @@ function HomeView(props) {
             })
     }
 
+    // Renames note
     function handleListRenamed(listId, newName) {
         setChangeThis("")
         setShowRename(!showRename)
@@ -73,17 +64,13 @@ function HomeView(props) {
             })
     }
 
+    // Adds permission for a user to view and/or edit a note when it is shared with them based on the type of share
     function handleListShared(listId, shareUser, shareType) {
-        // setChangeThis("")
-        // setShowShare(!showShare)
-        console.log()
-
         if (shareType==="Editor") {
-            updateDoc(doc(props.db, props.collection, listId),
+            void updateDoc(doc(props.db, props.collection, listId),
                 {
                     canEdit: arrayUnion(shareUser)
-                }).then(() => {
-            })
+                })
         }
         void updateDoc(doc(props.db, props.collection, listId),
             {
@@ -91,6 +78,7 @@ function HomeView(props) {
             })
     }
 
+    // Handles when someone's sharing type is removed
     function handleUpdateSharing(listId, shareUser, shareType) {
         if (shareType==="Editor") {
             void updateDoc(doc(props.db, props.collection, listId),
@@ -98,12 +86,13 @@ function HomeView(props) {
                     canEdit: arrayRemove(shareUser)
                 })
         }
-        updateDoc(doc(props.db, props.collection, listId),
+        void updateDoc(doc(props.db, props.collection, listId),
             {
                 canView: arrayRemove(shareUser)
-            }).then(() => {})
+            })
     }
 
+    // Control states for displaying warnings
     function handleDeleteToggle() {
         setShowDelete(!showDelete);
     }
@@ -131,6 +120,7 @@ function HomeView(props) {
     }
 
     return (<div id="homepage">
+                {/*Home Page Header*/}
                 <div id="titled">
                     <button id="settings"
                             tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}
@@ -150,6 +140,8 @@ function HomeView(props) {
                                 onClick={() => signOut(props.auth)}>Log Out</button>
                     </div>
                 </div>
+
+                {/*Displays lists on homepage*/}
                 <div id={"bottom-part"}>
                     <div id="bottom-flex" >
                         {lists?.map((data) => data.key !== 'b97qjRbVqp7TaMiZFdTQ' ?
@@ -176,35 +168,43 @@ function HomeView(props) {
                             /> : <div/>)}
                     </div>
                 </div>
+
+                {/*Plus button to add a new note*/}
                 <button id="addnotebutton"
                         className={"circleButton"}
                         tabIndex={(showName || showDelete || showRename || showShare) ? -1 : 0}
                         aria-label={"add note"} onClick={() => setShowName(!showName)}>
                     <div>+</div>
                 </button>
+
+                {/*Displays delete warning*/}
                 {showDelete && <div>
                     <div>
+
+                        {/*Background can be clicked to make warning disappear*/}
                         <div id={"back"} onClick={() => {
                             setShowDelete(false);
                             setChangeThis("");
                         }}/>
+
+                        {/*Warning box*/}
                         <div id={"warning"}>
                             <div>
                                 This note will be <font color={"red"}>permanently deleted</font>.
                                 Are you sure you want to do this?
                             </div>
                             <div id={"warningButtons"}>
-
                                 <button id={"no"} className={"warningOption"} tabIndex={0} onClick={() => {
                                     setShowDelete(false);
                                     setChangeThis("");
                                     }}>No, Go Back</button>
                                 <button id={"yes"} className={"warningOption"} tabIndex={0} onClick={() => handleListDeleted(changeThis)}>Yes, Delete</button>
-
                             </div>
                         </div>
                     </div>
                 </div>}
+
+                {/*Displays remove warning*/}
                 {showRemove && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -228,6 +228,8 @@ function HomeView(props) {
                         </div>
                     </div>
                 </div>}
+
+                {/*Displays new note creation popup*/}
                 {showName && <div>
                     <div>
                         <div id={"back"} onClick={() => setShowName(false)}/>
@@ -251,6 +253,8 @@ function HomeView(props) {
                             </div>
                         </div>
                     </div>}
+
+                {/*Displays renaming warning*/}
                 {showRename && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -276,6 +280,8 @@ function HomeView(props) {
                         </div>
                     </div>
                 </div>}
+
+                {/*Displays sharing popup*/}
                 {showShare && <div>
                     <div>
                         <div id={"back"} onClick={() => {
@@ -283,6 +289,8 @@ function HomeView(props) {
                             setChangeThis("");
                         }}/>
                         <div id={"warning"}>
+
+                            {/*Shows only shared users for this note*/}
                             {lists?.map((data) => data.key !== 'b97qjRbVqp7TaMiZFdTQ' ?
                                 <SharedUsers changeThis={changeThis}
                                              id={data.key}

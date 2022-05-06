@@ -1,17 +1,17 @@
 import './SharedUsers.css'
-import {Fragment} from "react";
+import {Fragment, useState} from "react";
 import {query, where} from "firebase/firestore";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
 function SharedUsers(props){
+    const [showInvalid, setShowInvalid] = useState(false);
     let filteredEdit = props.canEdit.filter((e) => (e !== props.owner));
     let filteredView = props.canView.filter((e) => (!props.canEdit.includes(e)))
-
     let userEmails = [];
+
     const collectionRef = props.collectionRef;
-    let [validUsers, loadingtest, errortest] = useCollectionData(query(collectionRef, where('key', '==', 'b97qjRbVqp7TaMiZFdTQ')));
-    if (!errortest && !loadingtest) {
-        console.log(validUsers);
+    const [validUsers, loadingTest, errorTest] = useCollectionData(query(collectionRef, where('key', '==', 'b97qjRbVqp7TaMiZFdTQ')));
+    if (!errorTest && !loadingTest) {
         validUsers?.map((e) => userEmails = e.emails)
     }
 
@@ -30,13 +30,19 @@ function SharedUsers(props){
                             document.getElementById('shareWithUser').value,
                             document.getElementById('permission').value);
                         document.getElementById("shareWithUser").value = "";
+                        setShowInvalid(false);
                     } else{
-                        document.getElementById("shareWithUser").value = "Invalid email";
+                        setShowInvalid(true);
                     }
                 }if (e.key === 'Escape') {
-                props.setShowRename(false);
-                props.setChangeThis("");
+                    props.setShowRename(false);
+                    props.setChangeThis("");
                 }}}/>
+                {showInvalid &&
+                    <div id={"invalidUser"}>
+                        <span>Invalid user</span>
+                    </div>
+                }
                 <select id={"permission"}>
                     <option>Editor</option>
                     <option>Viewer</option>

@@ -19,39 +19,35 @@ function ListView(props) {
     let showDeleteButton = selected.length > 0;
     let disableChecks = (edited !== -1);
 
-    const qCreationAsc = query(collection(props.db, props.collection, props.listId, "Notes"));
-    const qCreationDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("created", "desc"));
-    const qTextAsc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("text", "asc"));
-    const qTextDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("text", "desc"));
-    const qPriorityAsc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "asc"));
-    const qPriorityDesc = query(collection(props.db, props.collection, props.listId, "Notes"), orderBy("priority", "desc"));
-
+    // Sorts note based on the type of sort selected
+    const collectionDefault = collection(props.db, props.collection, props.listId, "Notes");
     function collectionSelector() {
         if (sort === "creationDesc") {
-            return (qCreationDesc)
+            return (query(collectionDefault,  orderBy("created", "desc")))
         } else if (sort === "textAsc") {
-            return (qTextAsc)
+            return (query(collectionDefault, orderBy("text", "asc")))
         } else if (sort === "textDesc") {
-            return (qTextDesc)
+            return (query(collectionDefault, orderBy("text", "desc")))
         } else if (sort === "priorityAsc") {
-            return (qPriorityAsc)
+            return (query(collectionDefault, orderBy("priority", "asc")))
         } else if (sort === "priorityDesc") {
-            return (qPriorityDesc)
+            return (query(collectionDefault, orderBy("priority", "desc")))
         } else{
-            return(qCreationAsc)
+            return(query(collectionDefault))
         }
     }
-    let [list,loading,error] = useCollectionData(collectionSelector());
+    const [list,loading,error] = useCollectionData(collectionSelector());
 
     if (error) {
         console.log("ERROR: List data failed to load from Firestore")
     }
 
-    let showHideButton = false;
-    let showSortButton = false;
-
+    // Stores if someone is only a viewer
     let canOnlyView = props.canView.includes(props.user.email) && !props.canEdit.includes(props.user.email);
 
+    // Buttons begin as hidden but are displayed depending on the list length
+    let showHideButton = false;
+    let showSortButton = false;
     if (!loading) {
         showHideButton = list.filter(p => p.checked).length > 0;
         showSortButton = list.length > 1;
@@ -60,7 +56,7 @@ function ListView(props) {
     function handleLineEdited(lineID) {
         // if we're editing the bottommost 'Tap to Add Note' line and the text has changed, update our data/state
         if (lineID !== -2 && document.getElementById('tempTapLine').value!=="") {
-                handleItemAdded2(document.getElementById('tempTapLine').value);
+                handleItemAdded(document.getElementById('tempTapLine').value);
             document.getElementById('tempTapLine').value=""
         }
         setEdited(lineID) // update edited line state
@@ -130,26 +126,11 @@ function ListView(props) {
 
     // deletes an item by filtering it out from the data
     function handleItemDeleted(itemID) {
-        deleteDoc(doc(props.db, props.collection, props.listId, "Notes", itemID)).then(() => {});
+        void deleteDoc(doc(props.db, props.collection, props.listId, "Notes", itemID));
     }
 
-    // adds an item by generating an id and using the passing in text
+    // adds an item by generating an id and using the passed in text
     function handleItemAdded(textValue) {
-        const lineId = generateUniqueID();
-        setDoc(doc(props.db, props.collection, props.listId, "Notes", lineId),
-            {
-                key: lineId,
-                text: textValue,
-                checked: false,
-                created: 0,
-                priority: -1,
-                check_visible: false,
-                text_visible: true,
-                select_visible: false
-            }).then(() => {})
-    }
-
-    function handleItemAdded2(textValue) {
         const lineId = generateUniqueID();
         void setDoc(doc(props.db, props.collection, props.listId, "Notes", lineId),
             {
@@ -171,9 +152,8 @@ function ListView(props) {
 
 
     function tapLineType(e) {
-        // handleLineEdited(-2)
         if (e.key=== 'Enter') {
-            handleItemAdded2(document.getElementById('tempTapLine').value);
+            handleItemAdded(document.getElementById('tempTapLine').value);
             document.getElementById('tempTapLine').value="";
             document.activeElement.blur();
             setEdited(-1);
@@ -257,7 +237,6 @@ function ListView(props) {
                           onItemDeleted={handleItemDeleted}
                           onTrash={handleWarning}
                           onPriority={handlePriority}
-                          onItemAdded={handleItemAdded}
                           onEdited={handleLineEdited}
                           warning={(showWarning || showPriorities || sortOptions)}
                 />
@@ -344,34 +323,35 @@ function ListView(props) {
                          tabIndex={-1}>Tap to Add Note
                     </div>
                 </li>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
-                <li className={"empty"} onClick={() => handleLineEdited(-1)}/>
+                {getExtraLines()}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
+                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
 
             </ul>
             <div id={"bottom"} onClick={() => {
                 handleLineEdited(-1)
             }}/>
-        </div>}
+        </div>
     </Fragment>);
 }
 

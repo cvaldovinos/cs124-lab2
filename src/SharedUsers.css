@@ -11,7 +11,6 @@
      /*overflow: auto;*/
 }
 
-
 .shareList {
      width: auto;
      height: 60px;
@@ -40,4 +39,8 @@
 
 #removeButton{
      float:left;
+}
+
+#invalidUser{
+     color: red;
 }
