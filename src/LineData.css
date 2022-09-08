@@ -11,17 +11,22 @@
 .textboxes {
     border-style: none;
     font-size: 18px;
+    /*margin: 0px 0px 0px 20px;*/
     width: 99%;
+    /*width: 100%;*/
     height: auto;
-    font-family: "Trebuchet MS", serif;
+    font-family: "Trebuchet MS";
+    border-style: none;
+
 }
 
 #textboxDiv {
     position: relative;
+    /*display-in;*/
     height:20px;
     width: auto;
     padding-left: 80px;
-    margin: 0 0 0 0;
+    margin: 0 0 0 0px;
     top: -10px;
 
 }
@@ -72,9 +77,12 @@
 }
 
 li {
+    /* position: absolute; */
     margin-left: -39px;
+    /*margin-right: px;*/
     width: 100%;
     padding-left: 39px;
+    /* height: 20px; */
     background: lightgoldenrodyellow;
     border-bottom: solid cornflowerblue;
     border-width: 2px;

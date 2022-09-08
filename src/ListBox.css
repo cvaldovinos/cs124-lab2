@@ -1,5 +1,6 @@
 .settings {
     position: relative;
+    /*justify-self: flex-end;*/
     border-radius: 10px;
     border-color: black;
     top: -20px;
@@ -20,9 +21,9 @@
     background: lightsteelblue;
     border-color: black;
     margin: 5px;
-    line-height: 0;
+    line-height: 0%;
     align-content: end;
-    font-family: "Trebuchet MS", serif;
+    font-family: "Trebuchet MS";
     font-size: 15px;
 }
 
@@ -31,7 +32,7 @@
     border: solid black;
     padding: 5px;
     align-self: auto;
-    font-family: "Trebuchet MS", serif;
+    font-family: "Trebuchet MS";
     width:100%;
 }
 
@@ -39,6 +40,7 @@
     width: auto;
     height: 5%;
     padding-bottom: 20px;
+    height: 5%;
     min-width: 33%;
 }
 

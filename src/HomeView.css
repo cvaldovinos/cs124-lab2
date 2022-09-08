@@ -1,6 +1,7 @@
 #homepage {
     width: 100vw;
     height: 100vh;
+    /*border-style: solid;*/
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 150px auto;
@@ -10,6 +11,7 @@
 
 #titled {
     position: relative;
+    /*height: 64px;*/
     width: 100vw;
     background:lightsteelblue;
     grid-row: 1/span 1;
@@ -38,6 +40,8 @@
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    /*justify-content: space-around;*/
+
 }
 
 #bottom-part {
@@ -48,6 +52,7 @@
 
 
 #settings {
+
     top: 20px;
     left: 20px;
     position: relative;
