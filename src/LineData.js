@@ -60,20 +60,23 @@ function LineData(props) {
                             </span>}
                     </button>
                     {props.checked && <input type={"checkbox"}
-                                             tabIndex={props.warning ? -1 : 0}
+                                             disabled={props.canOnlyView}
+                                             tabIndex={(props.warning || props.canOnlyView) ? -1 : 0}
                                              className={checkClasses.join(" ")}
                                              aria-label={props.text}
                                              onChange={(e) => changeCheckWrapper(e, props.line.key)} checked/>}
                     {!props.checked && <input type={"checkbox"}
-                                              tabIndex={props.warning ? -1 : 0}
+                                              disabled={props.canOnlyView}
+                                              tabIndex={(props.warning || props.canOnlyView) ? -1 : 0}
                                               className={checkClasses.join(" ")}
                                               aria-label={props.text}
                                               onChange={(e) => changeCheckWrapper(e, props.line.key)}/>}
                     <div id={"textboxDiv"}>
                         <input type={"text"}
                                className={textClasses.join(" ")}
+                               disabled={props.canOnlyView}
                                onClick={(e) => clickTextWrapper(e, props.line.key)}
-                               tabIndex={props.warning ? -1 : 0}
+                               tabIndex={(props.warning || props.canOnlyView) ? -1 : 0}
                                onChange={(e) => props.onItemChanged(props.line.key, "text", e.target.value)}
                                onKeyDown={(e) =>
                                        {if (e.key === 'Enter') {
