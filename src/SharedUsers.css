@@ -1,14 +1,8 @@
 .user {
      background: none;
-     /*border: none;*/
      display: block;
      border-color: aliceblue;
-     /*flex-wrap: wrap;*/
-     /*align-self: stretch;*/
-     /*padding-left: 0;*/
-
      white-space: nowrap;
-     /*overflow: auto;*/
 }
 
 .shareList {

@@ -2,10 +2,6 @@
     width: 30px;
 }
 
-#popup {
-
-}
-
 .clickedBigButton {
     font-family: "Trebuchet MS", sans-serif;
     border-radius: 10px;
@@ -14,7 +10,6 @@
     color: white;
     text-align: center;
     font-size: 25px;
-
 }
 
 .bigButtons {
