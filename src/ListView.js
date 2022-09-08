@@ -168,7 +168,6 @@ function ListView(props) {
         return extraLines
     }
 
-
     return (<Fragment>
         <div id="container">
             <div id={"top"} onClick={() => {
@@ -241,7 +240,6 @@ function ListView(props) {
                           warning={(showWarning || showPriorities || sortOptions)}
                 />
             </div>
-            {/*<div className={"line"}><div id={"textboxDiv"}><input type={"text"}className={"textboxes"}/></div></div>*/}
             {showWarning && <div className={"popup"}>
                 <div id={"back"} onClick={() => setShowWarning(false)}/>
                 <div id={"warning"}>
@@ -324,29 +322,6 @@ function ListView(props) {
                     </div>
                 </li>
                 {getExtraLines()}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-                {/*<li className={"empty"} onClick={() => handleLineEdited(-1)}/>*/}
-
             </ul>
             <div id={"bottom"} onClick={() => {
                 handleLineEdited(-1)

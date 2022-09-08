@@ -1,32 +1,17 @@
 #signInPage {
     background-color: lightsteelblue;
-    /*position: fixed;*/
     width: 100vw;
     height: 100vh;
-    /*top: 50vh;*/
     font-family: "Georgia", serif;
-    /*line-height: 50%;*/
     justify-content: center;
     align-items: center;
     display: flex;
-    /*grid-template-columns: 50vw 50vw;*/
-    /*grid-template-rows: auto auto;*/
 }
 
 #signInBox {
-    /*position: fixed;*/
-    /*top: 50vh;*/
-    /*left: 50vw;*/
-
-    /*width: 300px;*/
     display: grid;
-    /*row-gap: normal;*/
     height: 100%;
-    /*grid-column: 1;*/
     width: 60vw;
-    /*padding-left: 50px;*/
-    /*padding-right: 20px;*/
-
 }
 
 h1 {
@@ -54,7 +39,6 @@ h1 {
 }
 
 #signIn {
-    /*height: 100px;*/
     font-size: 25px;
 }
 
@@ -63,15 +47,11 @@ h1 {
 #notesPreview {
     content:url("noteBackground.png");
     padding-left: 30px;
-    /*grid-column: 2;*/
-    /*grid-row: 2/span 1;*/
     display: block;
     float:left;
     height: 100%;
     width: 35vw;
-    /*max-width: 40vw;*/
     overflow: hidden;
-    /*width: 100%;*/
 }
 
 @media screen and (max-width: 750px) {
