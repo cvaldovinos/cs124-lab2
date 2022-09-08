@@ -1,7 +1,6 @@
 <a name="readme-top"></a>
-[Link to our running application](https://cs124-lab3-fe950--pr16-lab5-90xcykbk.web.app/)
+[Link to running application](https://cs124-lab3-fe950--pr16-lab5-90xcykbk.web.app/)
 
-We hope you enjoy our project!
 
 ## INTRODUCTION
 
@@ -55,7 +54,6 @@ This notes app allows you to create notes, keep them stored under your login det
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
@@ -103,7 +101,7 @@ Christian Valdovinos - cvaldovinos@hmc.edu
 
 Chris Couto - ccouto@hmc.edu
 
-[Link to our running application](https://cs124-lab3-fe950--pr16-lab5-90xcykbk.web.app/)
+[Link to running application](https://cs124-lab3-fe950--pr16-lab5-90xcykbk.web.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
