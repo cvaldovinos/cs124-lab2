@@ -1,0 +1,46 @@
+.user {
+     background: none;
+     /*border: none;*/
+     display: block;
+     border-color: aliceblue;
+     /*flex-wrap: wrap;*/
+     /*align-self: stretch;*/
+     /*padding-left: 0;*/
+
+     white-space: nowrap;
+     /*overflow: auto;*/
+}
+
+.shareList {
+     width: auto;
+     height: 60px;
+     overflow: auto;
+}
+
+.editPerm{
+     float: right;
+}
+
+.shareTitles {
+     color: blue;
+}
+
+#shareDiv {
+     display: flex;
+     flex-direction: row;
+}
+
+.sharedBoxes {
+     width: 50%;
+}
+.sharedBoxes2 {
+     width: 100%;
+}
+
+#removeButton{
+     float:left;
+}
+
+#invalidUser{
+     color: red;
+}
