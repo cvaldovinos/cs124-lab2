@@ -32,9 +32,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Video of App
+[//]: # (Video of App)
 
-This notes app allows you to create notes, keep them stored under your login details, and share with your friends. On each note, you can sort the items, hide checked off items, and prioritize or delete selected items.
+This notes app allows you to create notes, keep them stored under your login details, and share with your friends. On 
+each note, you can sort the items, hide checked off items, and prioritize or delete selected items.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -77,18 +78,28 @@ This notes app allows you to create notes, keep them stored under your login det
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Screenshot of Homepage
-On the login screen, you are greeted and presented the options of either logging in or signing in via an email and password or using Google authentication.
+![Homepage](public/Homepage.png)
+On the login screen, you are greeted and presented the options of either logging in or signing in via an email and 
+password or using Google authentication.
 
-Screenshot of Note homepage with options menu
-On the home page, you can add a note with the plus button in the bottom right, log out in the top right, or select the options for an individual note by clicking the button on the bottom left corner of each note.
+![NotesPage](public/NotesPage.png)
+On the home page, you can add a note with the plus button in the bottom right, log out in the top right, or select the 
+options for an individual note by clicking the button in the bottom left corner of each note.
+
+![Note](public/Note.png)
+On each note, you can add items by clicking on the "Tap to Add Note line". Then you can cross off each item with the 
+checkbox. Once an item has been checked off, the eye icon in the bottom right corner appears allowing you to hide/reveal 
+any crossed off items. Lastly, you can select lines and in the bottom right you can delete the selected items, or you 
+can assign them a priority. This feature is useful for the button in the top right corner which allows you to sort
+items either alphabetically, reverse alphabetically, oldest to newest, newest to oldest, or by priorities.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- DESIGN -->
 ## Design
 
-While creating this project, the design decisions have been tracked on this document: [Design.md](https://github.com/cvaldovinos/cs124-lab2/blob/finalVersion/design/design.md)
+While creating this project, the design decisions have been tracked on this document: 
+[Design.md](https://github.com/cvaldovinos/cs124-lab2/blob/finalVersion/design/design.md)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
